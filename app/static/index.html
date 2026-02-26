@@ -1,0 +1,1491 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Magazord • Executor de Testes</title>
+  <link rel="icon" href="/static/favicon.ico">
+  <style>
+    :root{
+      --bg:#0b1020;
+      --panel:#0f1730;
+      --panel2:#121c3b;
+      --text:#eaf0ff;
+      --muted:#9fb0d0;
+      --border:rgba(255,255,255,.08);
+
+      --red:#fe2444;
+      --pink:#fe58a3;
+      --yellow:#febf02;
+      --blue:#0232fb;
+      --green:#019f5c;
+
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius2: 14px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      background:
+        radial-gradient(1100px 600px at 0% 0%, rgba(254,36,68,.22), transparent 55%),
+        radial-gradient(900px 500px at 100% 10%, rgba(2,50,251,.20), transparent 55%),
+        radial-gradient(900px 600px at 50% 100%, rgba(1,159,92,.18), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      min-height:100vh;
+    }
+
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 18px;
+      position:sticky; top:0; z-index:50;
+      background: linear-gradient(180deg, rgba(11,16,32,.92), rgba(11,16,32,.70));
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--border);
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+    }
+    .logoCube{
+      width:34px; height:34px;
+      filter: drop-shadow(0 6px 20px rgba(0,0,0,.35));
+      border-radius:12px;
+      background: linear-gradient(135deg, rgba(254,36,68,.18), rgba(254,191,2,.16));
+      display:grid; place-items:center;
+      border:1px solid rgba(255,255,255,.12);
+      overflow:hidden;
+    }
+    .logoCube svg{width:22px; height:22px}
+    .brand h1{
+      font-size:14px; margin:0; letter-spacing:.3px;
+    }
+    .brand .sub{
+      font-size:12px; color:var(--muted); margin-top:2px;
+    }
+
+    select{
+      background: rgba(18,28,59,.85);
+      color: var(--text);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius: 12px;
+      padding:9px 10px;
+      outline:none;
+      font-family: var(--mono);
+      font-size:12px;
+      min-width: 180px;
+    }
+    select:focus{
+      border-color: rgba(254,191,2,.45);
+      box-shadow: 0 0 0 3px rgba(254,191,2,.12);
+    }
+    option{
+      background: #0f1730;
+      color: var(--text);
+    }
+
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:999px;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .dot{width:8px; height:8px; border-radius:99px; background:var(--green)}
+    .dot.warn{background:var(--yellow)}
+    .dot.err{background:var(--red)}
+
+    .layout{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:16px;
+      padding:16px;
+      max-width: none;
+      margin: 0;
+    }
+    .tabsBar{
+      background: linear-gradient(180deg, rgba(18,28,59,.78), rgba(15,23,48,.78));
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:10px 12px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .navBtn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color:var(--text);
+      cursor:pointer;
+      transition: .15s ease;
+      white-space:nowrap;
+    }
+    .navBtn:hover{background: rgba(255,255,255,.07)}
+    .navBtn.active{
+      background: rgba(255,255,255,.10);
+      border-color: rgba(255,255,255,.16);
+    }
+    .badge{
+      font-size:11px;
+      padding:4px 8px;
+      border-radius:999px;
+      background: rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
+      color: var(--muted);
+    }
+    .tabsHint{
+      margin-left:auto;
+      color: var(--muted);
+      font-size:12px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .tabsHint code{font-family:var(--mono); font-size:12px; color:var(--text); opacity:.9}
+.main{
+      display:grid;
+      grid-template-rows:auto 1fr;
+      gap:16px;
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(18,28,59,.78), rgba(15,23,48,.78));
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .cardHeader{
+      padding:14px 16px;
+      border-bottom:1px solid var(--border);
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .cardHeader h2{
+      margin:0;
+      font-size:14px;
+      letter-spacing:.3px;
+    }
+    .cardHeader p{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.35;
+    }
+    .cardBody{padding:16px}
+
+    .grid2{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:16px;
+    }
+
+    /* Novo layout (amarelo/verde/azul) */
+    .gridApp{
+      display:grid;
+      grid-template-columns: 520px 1fr;
+      grid-template-areas:
+        "options preview"
+        "runs    preview"
+        "code    code";
+      gap:16px;
+      align-items:stretch;
+    }
+    @media (max-width: 980px){
+      .gridApp{
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "options"
+          "runs"
+          "preview"
+          "code";
+      }
+    }
+
+    .areaOptions{grid-area: options;}
+    .areaRuns{grid-area: runs;}
+    .areaPreview{grid-area: preview;}
+    .areaCode{grid-area: code;}
+
+    .panelRed{border:2px solid rgba(254,36,68,.70);} 
+    .panelGreen{border:2px solid rgba(1,159,92,.70);} 
+    .panelYellow{border:2px solid rgba(254,191,2,.85);} 
+    .panelPurple{border:2px solid rgba(254,88,163,.70);} 
+    
+
+    .tabsRow{display:flex; gap:10px; margin-top:8px; flex-wrap:wrap;}
+    .btnTab{
+      height:38px;
+      width:160px;
+      padding:0 14px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      cursor:pointer;
+      font-weight:700;
+    }
+    .btnTab#tabGeral{box-shadow: 0 0 0 1px rgba(254,191,2,.35) inset;}
+    .btnTab#tabTeoria{box-shadow: 0 0 0 1px rgba(2,50,251,.25) inset;}
+    .btnTabActive{
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
+      border-color: rgba(255,255,255,.22);
+    }
+    #tabGeral.btnTabActive{border-color: rgba(254,191,2,.75); box-shadow: 0 0 0 3px rgba(254,191,2,.10) inset;}
+    #tabTeoria.btnTabActive{border-color: rgba(254,88,163,.70); box-shadow: 0 0 0 3px rgba(254,88,163,.10) inset;}
+
+    .emptyHint{
+      margin-top:14px;
+      padding:16px;
+      border:1px dashed rgba(255,255,255,.18);
+      border-radius: 14px;
+      color: var(--muted);
+      background: rgba(0,0,0,.12);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    /* Tamanhos uniformes de botões */
+    .btn{height:38px; min-width:120px;}
+    .btnTiny{min-width:120px;}
+    .btnPrimary{min-width:140px;}
+
+    /* lista de opções mais escura (melhor esforço) */
+    select option{background:#121c3b; color: var(--text);}
+
+    .panel{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      border-radius: var(--radius2);
+      padding:12px;
+    }
+    .panelTitle{
+      display:flex; align-items:center; justify-content:space-between;
+      font-size:12px;
+      color:var(--muted);
+      margin-bottom:10px;
+    }
+
+    .panelTitleRight{display:flex; align-items:center; gap:10px}
+    .iconLink{
+      width:28px; height:28px;
+      display:inline-flex; align-items:center; justify-content:center;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:10px;
+      background: rgba(255,255,255,.06);
+      cursor:pointer;
+      transition: transform .12s ease, background .12s ease, border-color .12s ease;
+    }
+    .iconLink:hover{transform: translateY(-1px); background: rgba(255,255,255,.10); border-color: rgba(255,255,255,.18)}
+    .iconLink svg{width:16px; height:16px; fill: rgba(255,255,255,.92)}
+    .panelGreen{position:relative;}
+    .signature{
+      position:absolute;
+      right:12px;
+      bottom:12px;
+      font-size:11px;
+      letter-spacing:.3px;
+      padding:6px 10px;
+      border-radius:999px;
+      background: linear-gradient(135deg, rgba(254,191,2,.18), rgba(254,36,68,.10));
+      border:1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 10px 26px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.04);
+      color: rgba(234,240,255,.82);
+      pointer-events:none;
+      user-select:none;
+      transform: translateY(0);
+      animation: sigFloat 3.2s ease-in-out infinite;
+      text-shadow: 0 2px 10px rgba(0,0,0,.45);
+    }
+    .signature b{
+      font-weight:700;
+      color: rgba(234,240,255,.92);
+    }
+    @keyframes sigFloat{
+      0%,100%{ transform: translateY(0); opacity:.92; }
+      50%{ transform: translateY(-2px); opacity:1; }
+    }
+    .btnFixed{min-width:74px;}
+    .btnFixedWide{min-width:128px;}
+
+    .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    select, input[type="text"]{
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      color: var(--text);
+      padding:10px 10px;
+      border-radius: 12px;
+      outline:none;
+      min-width: 220px;
+    }
+    button{
+      font-family:inherit;
+    }
+    .btn{
+      padding:10px 12px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      cursor:pointer;
+      transition:.15s ease;
+    }
+    .btn:hover{background: rgba(255,255,255,.09)}
+
+    /* Botões desabilitados devem ter contraste mais claro */
+    .btn:disabled,
+    .btn[disabled]{
+      opacity: .45;
+      cursor: not-allowed;
+      filter: none;
+      background: rgba(255,255,255,.03);
+      border-color: rgba(255,255,255,.10);
+      box-shadow: none;
+    }
+    .btnPrimary:disabled,
+    .btnPrimary[disabled]{
+      background: rgba(255,255,255,.04);
+      border-color: rgba(254,191,2,.22);
+    }
+    .btnPrimary{
+      border-color: rgba(254,191,2,.35);
+      background: linear-gradient(135deg, rgba(254,36,68,.18), rgba(2,50,251,.16));
+    }
+    .btnPrimary:hover{filter: brightness(1.08)}
+    .btnTiny{
+      padding:6px 10px;
+      font-size:12px;
+      border-radius: 10px;
+    }
+
+    .tree{
+      font-family: var(--mono);
+      font-size:12px;
+      line-height:1.45;
+      max-height: 170px;
+      overflow:auto;
+      padding-right:6px;
+    }
+
+    /* Linhas da árvore (nova interface) */
+    .treeRow{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 10px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.14);
+      margin-bottom:8px;
+      cursor:pointer;
+      user-select:none;
+      transition: .15s ease;
+    }
+    .treeRow:hover{ background: rgba(255,255,255,.06); }
+    .treeIcon{ width:18px; text-align:center; opacity:.95; }
+    .treeName{ flex:1; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+    .treeMeta{ font-size:11px; color: var(--muted); }
+    .treeEmpty{
+      padding:10px 12px;
+      border:1px dashed rgba(255,255,255,.18);
+      border-radius: 12px;
+      color: var(--muted);
+      background: rgba(255,255,255,.03);
+    }
+    .node{
+      display:flex; align-items:center; gap:8px;
+      padding:6px 8px;
+      border-radius: 10px;
+      cursor:pointer;
+      user-select:none;
+      border:1px solid transparent;
+    }
+    .node:hover{background: rgba(255,255,255,.06)}
+    .node.active{
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.12);
+    }
+    .ico{
+      width:10px; height:10px; border-radius:3px;
+      background: rgba(255,255,255,.18);
+    }
+    .ico.dir{background: rgba(2,50,251,.35)}
+    .ico.file{background: rgba(254,191,2,.35)}
+    .muted{color:var(--muted)}
+    .small{font-size:12px}
+
+    .split{
+      display:grid;
+      grid-template-columns: 320px 1fr;
+      gap:16px;
+    }
+    .list{
+      display:flex; flex-direction:column; gap:8px;
+      max-height: 520px;
+      overflow:auto;
+      padding-right:6px;
+    }
+    .item{
+      padding:10px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.14);
+      cursor:pointer;
+      transition: .15s ease;
+    }
+    .item:hover{background: rgba(255,255,255,.06)}
+    .item.active{
+      border-color: rgba(254,88,163,.45);
+      background: rgba(254,88,163,.08);
+    }
+    .itemTitle{font-size:13px; margin:0 0 4px}
+    .itemSub{margin:0; font-size:12px; color:var(--muted); font-family:var(--mono)}
+    iframe{
+      width:100%;
+      height: 560px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 16px;
+      background: rgba(255,255,255,.03);
+    }
+    pre{
+      margin:0;
+      white-space:pre-wrap;
+      background: rgba(0,0,0,.25);
+      border:1px solid rgba(255,255,255,.10);
+      padding:12px;
+      border-radius: 14px;
+      color: #d6e2ff;
+      max-height: 220px;
+      overflow:auto;
+      font-family: var(--mono);
+      font-size:12px;
+      line-height:1.35;
+    }
+
+    .hint{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:10px 12px;
+      border-radius: 14px;
+      border:1px dashed rgba(255,255,255,.16);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size:12px;
+      line-height:1.35;
+    }
+    .stripe{
+      height:4px;
+      background: linear-gradient(90deg, var(--red), var(--pink), var(--yellow), var(--blue), var(--green));
+    }
+
+    @media (max-width: 1020px){
+      .layout{grid-template-columns: 1fr}
+      .sidebar{position:relative; height:auto; top:auto}
+      .grid2{grid-template-columns: 1fr}
+      .split{grid-template-columns: 1fr}
+      iframe{height: 420px}
+    }
+  
+    #codeBox{
+      margin:0;
+      background: rgba(6,10,22,.55);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 14px;
+      padding: 12px;
+      min-height: 260px;
+      max-height: 360px;
+      overflow:auto;
+      font-family: var(--mono);
+      font-size: 12.5px;
+      line-height: 1.45;
+      white-space: pre-wrap;
+      overflow-wrap:anywhere;
+      word-break: break-word;
+    }
+
+    #previewFrame{
+      width:100%;
+      height: 520px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 14px;
+      background: rgba(6,10,22,.40);
+    }
+    #consoleBox{
+      margin:0;
+      background: rgba(6,10,22,.55);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 14px;
+      padding: 12px;
+      height: 520px;
+      overflow:auto;
+      font-family: var(--mono);
+      font-size: 12.5px;
+      line-height: 1.45;
+      white-space: pre-wrap;
+    }
+
+    /* v6.0 layout */
+    .gridNew{
+      display:grid;
+      grid-template-columns: 420px 1fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    .areaLeft{ min-height: 680px; }
+    .areaViewer{ min-height: 680px; }
+    .viewerWrap{
+      margin-top:10px;
+      border:1px solid var(--border);
+      background: rgba(10,16,36,.38);
+      border-radius: var(--radius2);
+      overflow:hidden;
+      min-height: 600px;
+    }
+    .viewerEmpty{
+      padding:16px;
+      color: rgba(234,240,255,.72);
+      font-size: 14px;
+    }
+    .codeBox{
+      margin:0;
+      padding:14px 14px 18px;
+      font-family: var(--mono);
+      font-size: 12.5px;
+      line-height: 1.55;
+      white-space: pre-wrap;
+      overflow-wrap:anywhere;
+      word-break: break-word;
+      overflow:auto;
+      max-height: 600px;
+    }
+    .viewerFrame{
+      width:100%;
+      height: 620px;
+      border:0;
+      background: rgba(255,255,255,.02);
+    }
+
+    .modalOverlay{
+      position:fixed;
+      inset:0;
+      z-index: 9999;
+      background: rgba(0,0,0,.55);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 18px;
+      backdrop-filter: blur(6px);
+    }
+    .modalCard{
+      width: min(980px, 96vw);
+      max-height: min(720px, 88vh);
+      background: linear-gradient(180deg, rgba(15,23,48,.96), rgba(12,18,38,.96));
+      border:1px solid rgba(255,255,255,.14);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+    }
+    .modalHead{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding: 12px 14px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+    .modalTitle{ font-weight: 700; }
+    .modalBody{
+      margin:0;
+      padding: 14px;
+      font-family: var(--mono);
+      font-size: 12.5px;
+      line-height: 1.55;
+      white-space: pre-wrap;
+      overflow:auto;
+      color: rgba(234,240,255,.92);
+    }
+
+    /* botões desabilitados devem ficar bem claros */
+    .btnDisabled, .btn[disabled], button[disabled]{
+      opacity:.45 !important;
+      filter: grayscale(35%);
+      cursor:not-allowed !important;
+      box-shadow:none !important;
+      transform:none !important;
+    }
+
+    /* manter botões de ação alinhados e com mesmo tamanho */
+    .btnFixed{ min-width: 96px; text-align:center; justify-content:center; }
+    .btnFixedWide{ min-width: 118px; text-align:center; justify-content:center; }
+</style>
+</head>
+<body>
+  <div class="pill" id="jsError" style="display:none; position:fixed; top:12px; right:12px; z-index:999; border-color: rgba(254,36,68,.55); background: rgba(254,36,68,.10); color: #ffe9ee">⚠️ Erro no JavaScript — abra F12 › Console</div>
+
+  <div class="layout">
+
+<main class="main">
+  <section class="card" id="view-app">
+    <div class="stripe"></div>
+    <div class="cardHeader">
+      <div>
+        <h2>Magazord • Entrega do Teste para vaga de Coordenador de Qualidade (Robot Framework) <span class="badge" id="uiVer">v5.4.2</span></h2>
+        <p>Execute por TAG, visualize o <b>log</b> e consulte as <b>respostas teóricas</b> em PDF.</p>
+      </div>
+      <div class="row">
+        <button class="btn btnTiny" id="btnCheck">Verificar ambiente</button>
+        <button class="btn btnTiny" id="btnInstallReq">Instalar requirements</button>
+        <button class="btn btnTiny" id="btnRefresh">Recarregar</button>
+      </div>
+    </div>
+
+    
+    <div class="cardBody gridNew">
+      <!-- ESQUERDA: opções -->
+      <div class="panel panelGreen areaLeft">
+        <div class="panelTitle">
+          <span>Menu</span>
+          <div class="panelTitleRight">
+            <span class="muted small" id="leftHint"> Sem arquivos selecionados </span>
+            <a class="iconLink" href="https://github.com/macielthiago89" target="_blank" rel="noopener" title="Abrir GitHub">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.52 2.87 8.36 6.84 9.72.5.1.68-.22.68-.48 0-.24-.01-.88-.01-1.72-2.78.62-3.36-1.38-3.36-1.38-.46-1.2-1.12-1.52-1.12-1.52-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.36 1.11 2.94.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.27 2.75 1.05A9.3 9.3 0 0 1 12 6.9c.85 0 1.71.12 2.51.35 1.9-1.32 2.74-1.05 2.74-1.05.55 1.42.2 2.47.1 2.73.64.72 1.02 1.63 1.02 2.75 0 3.95-2.34 4.82-4.57 5.07.36.32.68.95.68 1.92 0 1.38-.01 2.49-.01 2.83 0 .26.18.58.69.48A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/></svg>
+            </a>
+            <a class="iconLink" href="https://www.linkedin.com/in/thiagomacielandrade/" target="_blank" rel="noopener" title="Abrir LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.56c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.95v5.65H9.37V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.26 2.37 4.26 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="tabsRow">
+          <button class="btnTab btnTabActive" id="tabGeral">Menu Geral</button>
+          <button class="btnTab" id="tabTeoria">Respostas teóricas</button>
+        </div>
+
+        <!-- Geral -->
+        <div id="panelGeral">
+          <div class="panelTitle" style="margin-top:10px">
+            <span>Estrutura do projeto</span>
+            <span class="muted small" id="treePath">/</span>
+          </div>
+
+          <div class="row" style="margin:10px 0">
+            <select id="rootSelect"></select>
+            <button class="btn btnTiny" id="btnUp">Voltar</button>
+          </div>
+
+          <div class="tree" id="tree"></div>
+
+          <div style="height:12px"></div>
+
+          <div class="panelTitle" style="margin-top:6px">
+            <span>Execução</span>
+            <span class="muted small">Somente arquivos permitidos</span>
+          </div>
+
+          <div class="row" style="margin-top:10px">
+            <select id="tagSelect"></select>
+            <button class="btn btnPrimary" id="btnRun" disabled>Executar</button>
+          </div>
+
+          <div class="row" style="margin-top:10px">
+            <button class="btn btnTiny" id="btnOpenLog">Abrir log</button>
+            <button class="btn btnTiny" id="btnOpenCode">Abrir código</button>
+            <button class="btn btnTiny btnPrimary" id="btnRunRegressionAll">Rodar regression</button>
+          </div>
+
+          <div class="muted small" style="margin-top:10px" id="selectedInfo">
+            Selecione um arquivo para visualizar o código. A execução só é habilitada para os arquivos permitidos e TAG existente no arquivo.
+          </div>
+        </div>
+
+        <!-- Teoria -->
+        <div id="panelTeoria" style="display:none">
+          <div class="panelTitle" style="margin-top:10px; display:flex; align-items:center; justify-content:space-between; gap:10px">
+            <div style="display:flex; flex-direction:column">
+              <span>Arquivos</span>
+              <span class="muted small">MD e PDF</span>
+            </div>
+            <div class="row" style="gap:8px">
+              <button class="btn btnTiny btnFixed" id="btnOpenMd" disabled>MD</button>
+              <button class="btn btnTiny btnFixed" id="btnOpenPdf" disabled>PDF</button>
+              <button class="btn btnTiny btnGhost btnFixedWide" id="btnDownloadPdf" disabled>Baixar PDF</button>
+            </div>
+          </div>
+
+          <div class="list" id="theoryList" style="max-height:520px"></div>
+          <div class="muted small" style="margin-top:8px" id="theoryInfo">Selecione um arquivo para visualizar.</div>
+        </div>
+      <div class="signature"><b>Thiago Maciel</b> • TesteMagazord</div>
+      </div>
+
+      <!-- DIREITA: visualizador -->
+      <div class="panel panelPurple areaViewer">
+        <div class="panelTitle">
+          <span id="viewerTitle">Visualizar código</span>
+          <span class="muted small" id="viewerHint">—</span>
+        </div>
+
+        <div class="viewerWrap">
+          <div class="viewerEmpty" id="viewerEmpty">
+            Selecione um arquivo no menu ao lado.
+          </div>
+
+          <pre class="codeBox" id="viewerCode" style="display:none"></pre>
+
+          <iframe class="viewerFrame" id="viewerFrame" style="display:none"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal console -->
+    <div class="modalOverlay" id="modalOverlay" style="display:none">
+      <div class="modalCard">
+        <div class="modalHead">
+          <div class="modalTitle" id="modalTitle">Console</div>
+          <button class="btn btnTiny" id="btnModalClose">Fechar</button>
+        </div>
+        <pre class="modalBody" id="modalBody"></pre>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+  </div>
+
+
+<script>
+// v6.1 — UI simplificada (Geral = código/log, Teoria = MD/PDF) + árvore robusta
+
+window.addEventListener("error", ()=>{ try{ const b=document.getElementById("jsError"); if(b) b.style.display='inline-flex'; }catch(_){} });
+window.addEventListener("unhandledrejection", ()=>{ try{ const b=document.getElementById("jsError"); if(b) b.style.display='inline-flex'; }catch(_){} });
+
+const $ = (q)=>document.querySelector(q);
+
+const ALLOWED_RUN_FILES = new Set([
+  "parte1-api/questao1.1/tests/1.1test.robot",
+  "parte1-api/questao1.1/tests/1.2test.robot",
+  "parte2-e2e/questao2.1/2.1test.robot",
+  "parte2-e2e/questao2.2/2.2test.robot",
+  "parte3-frontend/questao3.1/tests/3.1test.robot",
+  "parte4-arquivos/questao4.1/tests/4.1test.robot",
+  "parte5-mobile/questao5.1/testes/5.1test.robot.robot",
+  "parte6-piramide/questao6.1/tests/6.1test.robot",
+  "parte6-piramide/questao6.1/tests/6.2test.robot",
+  "parte7-mocks/questao7.1/tests/7.1test.robot",
+]);
+
+let ALL_TAGS = [];           // de /api/tags
+let currentRoot = "";
+let currentPath = "";
+let selectedFile = "";       // caminho relativo
+let selectedTag = "";
+let availableTags = [];      // tags no arquivo selecionado (interseção com ALL_TAGS)
+let lastRun = null;          // informações da última execução para o log
+
+function normRel(p){ return (p||"").replaceAll("\\\\","/").replace(/^\/+/,""); }
+function esc(s){ return (s||"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;"); }
+
+function setBtnDisabled(btn, disabled){
+  btn.disabled = !!disabled;
+  btn.classList.toggle("btnDisabled", !!disabled);
+}
+function setTab(active){
+  const isGeral = active==="geral";
+  $("#tabGeral").classList.toggle("btnTabActive", isGeral);
+  $("#tabTeoria").classList.toggle("btnTabActive", !isGeral);
+  $("#panelGeral").style.display = isGeral ? "" : "none";
+  $("#panelTeoria").style.display = !isGeral ? "" : "none";
+
+  if(isGeral){
+    $("#viewerTitle").textContent = "Visualizar código";
+    $("#viewerHint").textContent = selectedFile ? selectedFile : "—";
+    if(selectedFile) showCode(selectedFile);
+    else showViewerEmpty("Selecione um arquivo no menu ao lado.");
+  }else{
+    $("#viewerTitle").textContent = "Pré-visualização";
+    $("#viewerHint").textContent = "Respostas teóricas";
+    showViewerEmpty("Selecione um arquivo em Respostas teóricas.");
+  }
+}
+
+function showViewerEmpty(msg){
+  $("#viewerEmpty").style.display = "";
+  $("#viewerEmpty").textContent = msg||"—";
+  $("#viewerCode").style.display = "none";
+  $("#viewerFrame").style.display = "none";
+  $("#viewerFrame").removeAttribute("src");
+}
+function showCode(rel){
+  $("#viewerEmpty").style.display = "none";
+  $("#viewerFrame").style.display = "none";
+  $("#viewerFrame").removeAttribute("src");
+  $("#viewerCode").style.display = "";
+  $("#viewerTitle").textContent = "Visualizar código";
+  $("#viewerHint").textContent = rel;
+
+  fetch(`/api/md?path=${encodeURIComponent(rel)}`)
+    .then(r=>r.json())
+    .then(data=>{
+      if(data && data.content!=null){
+        $("#viewerCode").textContent = data.content;
+      }else{
+        $("#viewerCode").textContent = (data && data.error) ? ("Erro: "+data.error) : "Erro ao carregar arquivo.";
+      }
+    })
+    .catch(()=>{ $("#viewerCode").textContent="Erro ao carregar arquivo."; });
+}
+function showLog(url){
+  $("#viewerEmpty").style.display = "none";
+  $("#viewerCode").style.display = "none";
+  $("#viewerFrame").style.display = "";
+  $("#viewerTitle").textContent = "Log da execução";
+  $("#viewerHint").textContent = url;
+  $("#viewerFrame").src = url;
+}
+function showPdf(rel){
+  const url = `/api/pdf?path=${encodeURIComponent(rel)}&download=0`;
+  $("#viewerEmpty").style.display = "none";
+  $("#viewerCode").style.display = "none";
+  $("#viewerFrame").style.display = "";
+  $("#viewerTitle").textContent = "PDF";
+  $("#viewerHint").textContent = rel;
+  $("#viewerFrame").src = url;
+}
+
+function toast(msg){
+  const el = $("#leftHint");
+  if(!el) return;
+  el.textContent = msg;
+  el.style.color = "rgba(234,240,255,.92)";
+  setTimeout(()=>{ el.textContent="—"; el.style.color=""; }, 4500);
+}
+
+
+function formatEnvCheck(j){
+  // Retorna um texto amigável para exibir no modal
+  try{
+    const ok = !!j.ok;
+    const missing = Array.isArray(j.packages_missing) ? j.packages_missing : [];
+    const okPkgs = Array.isArray(j.packages_ok) ? j.packages_ok : [];
+    const installedButImportFailed = Array.isArray(j.packages_installed_but_import_failed) ? j.packages_installed_but_import_failed : [];
+    const problems = Array.isArray(j.problems) ? j.problems : [];
+
+    const lines = [];
+    lines.push(ok ? "✅ Ambiente OK — pronto para executar." : "❌ Ambiente incompleto — ajustes necessários.");
+    lines.push("");
+    if(j.python) lines.push(`Python: ${j.python} (${j.python_exe||"—"})`);
+    if(j.robot_module || j.robot_cmd) lines.push(`Robot Framework: ${j.robot_module||"—"} (${j.robot_cmd||"—"})`);
+    if(j.node_cmd) lines.push(`Node: ${j.node_cmd}`);
+    if(j.npm_cmd) lines.push(`NPM: ${j.npm_cmd}`);
+    if(j.adb_cmd) lines.push(`ADB: ${j.adb_cmd}`);
+    lines.push("");
+    if(missing.length){
+      lines.push("📦 Bibliotecas ausentes (requirements.txt):");
+      missing.forEach(p=>lines.push(`- ${p}`));
+      lines.push("");
+      lines.push("➡️ Dica: clique em “Instalar requirements” e execute novamente a verificação.");
+      lines.push("");
+    }
+    if(okPkgs.length){
+      lines.push("✅ Bibliotecas encontradas:");
+      lines.push(okPkgs.join(", "));
+      lines.push("");
+    }
+
+    if(installedButImportFailed.length){
+      lines.push("⚠️ Instaladas, mas falharam ao importar:");
+      installedButImportFailed.forEach(p=>lines.push(`- ${p}`));
+      lines.push("");
+    }
+    if(problems.length){
+      lines.push("⚠️ Observações:");
+      problems.forEach(p=>lines.push(`- ${p}`));
+      lines.push("");
+    }
+    lines.push("—");
+    lines.push("Detalhes (JSON):");
+    lines.push(JSON.stringify(j, null, 2));
+    return lines.join("\n");
+  }catch(e){
+    return "Erro ao interpretar o resultado da verificação.";
+  }
+}
+function openModal(title, content){
+  $("#modalTitle").textContent = title || "Console";
+  $("#modalBody").textContent = content || "";
+  $("#modalOverlay").style.display = "flex";
+}
+function closeModal(){
+  $("#modalOverlay").style.display = "none";
+  $("#modalBody").textContent = "";
+}
+$("#btnModalClose").addEventListener("click", closeModal);
+$("#modalOverlay").addEventListener("click", (e)=>{ if(e.target && e.target.id==="modalOverlay") closeModal(); });
+
+async function loadTags(){
+  const r = await fetch("/api/tags");
+  const j = await r.json();
+  ALL_TAGS = (j && j.tags) ? j.tags : [];
+}
+
+async function loadRoots(){
+  const r = await fetch("/api/roots");
+  const j = await r.json();
+  const sel = $("#rootSelect");
+  sel.innerHTML = "";
+  const addOpt = (label, rel)=>{
+    const o=document.createElement("option");
+    o.value = rel;
+    o.textContent = label;
+    sel.appendChild(o);
+  };
+  // Importante: selecione uma pasta por padrão.
+  // Se o primeiro item for um arquivo (ex.: readme.md), a árvore ficaria vazia
+  // porque /api/tree exige diretório.
+  (j.roots||[]).forEach(x=> addOpt(x.name, x.rel));
+  (j.extras||[]).forEach(x=> addOpt(x.name, x.rel));
+
+  if(!currentRoot){
+    if((j.roots||[]).length){
+      currentRoot = j.roots[0].rel;
+    }else{
+      currentRoot = sel.value || "";
+    }
+    currentPath = currentRoot;
+    sel.value = currentRoot;
+  }
+}
+
+function renderTree(items){
+  const wrap = $("#tree");
+  wrap.innerHTML = "";
+  items.forEach(it=>{
+    const kind = (it && (it.kind || (it.is_dir ? "dir" : "file"))) || "file";
+    const row = document.createElement("div");
+    row.className = "treeRow";
+    row.dataset.rel = it.rel;
+    row.dataset.kind = kind;
+    row.innerHTML = `
+      <div class="treeIcon">${kind==="dir" ? "📁" : (it.name.endsWith(".robot") ? "🤖" : "📄")}</div>
+      <div class="treeName">${esc(it.name)}</div>
+      <div class="treeMeta">${kind==="dir" ? "pasta" : "arquivo"}</div>
+    `;
+    row.addEventListener("click", ()=>onTreeClick(it));
+    wrap.appendChild(row);
+  });
+}
+
+async function loadTree(pathRel){
+  const rel = normRel(pathRel || currentPath || "");
+  currentPath = rel;
+  $("#treePath").textContent = "/"+(rel||"");
+  try{
+    const r = await fetch(`/api/tree?path=${encodeURIComponent(rel)}`);
+    const j = await r.json().catch(()=>null);
+
+    if(!r.ok || (j && j.error)){
+      const msg = (j && (j.error || j.message)) ? (j.error || j.message) : "Erro ao listar a pasta.";
+      renderTree([]);
+      const wrap = $("#tree");
+      if(wrap){
+        const div = document.createElement("div");
+        div.className = "treeEmpty";
+        div.textContent = `⚠️ ${msg}`;
+        wrap.appendChild(div);
+      }
+      toast(msg);
+      return;
+    }
+
+    const items = (j && j.items) ? j.items : [];
+    renderTree(items);
+
+    if(!items.length){
+      const wrap = $("#tree");
+      if(wrap){
+        const div = document.createElement("div");
+        div.className = "treeEmpty";
+        div.textContent = "Nenhum item encontrado nesta pasta.";
+        wrap.appendChild(div);
+      }
+    }
+  }catch(e){
+    renderTree([]);
+    const wrap = $("#tree");
+    if(wrap){
+      const div = document.createElement("div");
+      div.className = "treeEmpty";
+      div.textContent = "⚠️ Falha ao carregar a estrutura. Verifique se o servidor está rodando.";
+      wrap.appendChild(div);
+    }
+    toast("Falha ao carregar estrutura.");
+  }
+}
+
+async function onTreeClick(it){
+  const kind = (it && (it.kind || (it.is_dir ? "dir" : "file"))) || "file";
+  if(kind==="dir"){
+    await loadTree(it.rel);
+    return;
+  }
+  // arquivo
+  selectedFile = normRel(it.rel);
+  $("#viewerHint").textContent = selectedFile;
+  showCode(selectedFile);
+
+  // detecção de tag / lista de permitidos
+  const isRunnable = ALLOWED_RUN_FILES.has(selectedFile);
+  if(!isRunnable){
+    toast("Arquivo somente para visualização (execução desabilitada).");
+  }
+
+  // carrega tags do arquivo
+  availableTags = [];
+  selectedTag = "";
+  $("#tagSelect").innerHTML = "";
+  $("#tagSelect").disabled = !isRunnable;
+  setBtnDisabled($("#btnRun"), true);
+
+  if(selectedFile.toLowerCase().endsWith(".robot") && isRunnable){
+    try{
+      const r = await fetch(`/api/robot_tags?path=${encodeURIComponent(selectedFile)}`);
+      const j = await r.json();
+      const fileTags = (j && j.tags) ? j.tags : [];
+      const allow = new Set((ALL_TAGS||[]).map(t=>(t||"").toLowerCase()));
+      availableTags = fileTags.filter(t=> allow.has((t||"").toLowerCase()));
+      // fallback: algumas suítes declaram APIMAGAZORD etc; garante unicidade
+      availableTags = [...new Set(availableTags.map(t=>(t||"").toLowerCase()))];
+      // A tag "regression" será executada via botão dedicado (executa tudo)
+      availableTags = availableTags.filter(t=>t!=="regression");
+    }catch(e){
+      availableTags = [];
+    }
+
+    const tagSel = $("#tagSelect");
+    tagSel.innerHTML = "";
+    if(availableTags.length){
+      availableTags.forEach(t=>{
+        const o=document.createElement("option");
+        o.value=t;
+        o.textContent=t.toUpperCase();
+        tagSel.appendChild(o);
+      });
+      selectedTag = tagSel.value;
+      setBtnDisabled($("#btnRun"), false);
+      $("#selectedInfo").innerHTML = `Selecionado: <b>${esc(selectedFile)}</b> • TAGs detectadas: <b>${esc(availableTags.join(", "))}</b>`;
+    }else{
+      $("#selectedInfo").innerHTML = `Selecionado: <b>${esc(selectedFile)}</b><br><span class="muted">Não foi possível detectar TAGs válidas neste arquivo. Ajuste as tags (ex.: <b>[Tags]</b> regression APIMAGAZORD).</span>`;
+      setBtnDisabled($("#btnRun"), true);
+    }
+  }else{
+    $("#selectedInfo").innerHTML = `Selecionado: <b>${esc(selectedFile)}</b>`;
+  }
+}
+
+$("#tagSelect").addEventListener("change", ()=>{
+  selectedTag = ($("#tagSelect").value||"").trim().toLowerCase();
+});
+
+$("#btnUp").addEventListener("click", async ()=>{
+  if(!currentPath) return;
+  const parts = currentPath.split("/").filter(Boolean);
+  if(parts.length<=1){
+    await loadTree(currentRoot);
+    return;
+  }
+  parts.pop();
+  await loadTree(parts.join("/"));
+});
+
+$("#rootSelect").addEventListener("change", async (e)=>{
+  currentRoot = normRel(e.target.value||"");
+  currentPath = currentRoot;
+  selectedFile = "";
+  lastRun = null;
+  setBtnDisabled($("#btnRun"), true);
+  $("#btnOpenLog").classList.remove("btnDisabled");
+  await loadTree(currentPath);
+  showViewerEmpty("Selecione um arquivo no menu ao lado.");
+});
+
+$("#btnRun").addEventListener("click", async ()=>{
+  if(!selectedFile) return toast("Selecione um arquivo.");
+  if(!selectedTag) return toast("Selecione uma TAG.");
+  if(!ALLOWED_RUN_FILES.has(selectedFile)) return toast("Este arquivo não está liberado para execução.");
+
+  // validação local: tag precisa existir no arquivo
+  if(!availableTags.includes(selectedTag)){
+    toast("TAG inválida (a TAG não está no arquivo).");
+    return;
+  }
+
+  setBtnDisabled($("#btnRun"), true);
+  const cmdInfo = [
+    `Executando: robot -i ${selectedTag} ${selectedFile}`,
+    "",
+    "Aguarde...",
+  ].join("\n");
+  openModal("Executando teste", cmdInfo);
+
+  try{
+    const r = await fetch("/api/run", {
+      method:"POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({ path: selectedFile, tag: selectedTag })
+    });
+    const j = await r.json().catch(()=>null);
+
+    if(!r.ok){
+      const msg = (j && (j.message || j.error)) ? (j.message || j.error) : "Falha na execução.";
+      if(j && j.error==="tag_not_found_in_suite"){
+        toast("TAG inválida (a TAG não está no arquivo).");
+      }else{
+        toast(msg);
+      }
+      setBtnDisabled($("#btnRun"), false);
+      return;
+    }
+
+    lastRun = j;
+    const out = [];
+    out.push(j.returncode===0 ? "✅ Execução concluída (OK)." : `⚠️ Execução concluída (código de retorno=${j.returncode}).`);
+    out.push("");
+    out.push(`Comando executado:`);
+    out.push(`robot -i ${selectedTag} ${selectedFile}`);
+    out.push("");
+    if(j.log_url) out.push("Você pode abrir o log em \"Abrir log\".");
+    out.push("—");
+    if(j.stdout_tail) out.push(j.stdout_tail);
+    if(j.stderr_tail) out.push("\n[stderr]\n"+j.stderr_tail);
+    $("#modalBody").textContent = out.join("\n");
+    toast(j.returncode===0 ? "Execução concluída (OK)." : `Execução concluída (código de retorno=${j.returncode}).`);
+    setBtnDisabled($("#btnRun"), false);
+
+    // atualiza botão log
+    if(lastRun && lastRun.log_url){
+      $("#btnOpenLog").classList.remove("btnDisabled");
+    }
+  }catch(e){
+    toast("Erro ao executar.");
+    setBtnDisabled($("#btnRun"), false);
+  }
+});
+
+$("#btnOpenLog").addEventListener("click", async ()=>{
+  // usa lastRun, senão busca a última execução
+  if(lastRun && lastRun.log_url){
+    showLog(lastRun.log_url);
+    return;
+  }
+  try{
+    const r = await fetch("/api/runs");
+    const j = await r.json();
+    const runs = (j && j.runs) ? j.runs : [];
+    const first = runs.find(x=>x && x.log_url);
+    if(first && first.log_url){
+      lastRun = first;
+      showLog(first.log_url);
+    }else{
+      toast("Não há log. Execute um teste para gerar o log.");
+    }
+  }catch(e){
+    toast("Não há log. Execute um teste para gerar o log.");
+  }
+});
+
+$("#btnOpenCode").addEventListener("click", ()=>{
+  if(!selectedFile) return toast("Selecione um arquivo.");
+  showCode(selectedFile);
+});
+
+// Regression (todos) - execução com streaming (mostra andamento em tempo real)
+$("#btnRunRegressionAll").addEventListener("click", async ()=>{
+  let n = 0;
+  try{
+    const resp = await fetch("/api/regression_count");
+    const rj = await resp.json().catch(()=>null);
+    n = (rj && typeof rj.count === "number") ? rj.count : 0;
+  }catch(e){ n = 0; }
+
+  const countTxt = n>0 ? `Executando ${n} suítes (todas com tag regression)…` : "";
+  const header =
+`Você solicitou a execução de TODOS os testes com tag "regression".
+${countTxt}
+
+Comando:
+python -m robot -i regression <raiz-do-projeto>
+
+Acompanhe a execução abaixo:`.trim();
+
+  openModal("Rodar regression (todos)", header);
+  const bodyEl = $("#modalBody");
+  bodyEl.textContent = (countTxt ? (countTxt + "\n\n") : "") + "Iniciando…\n";
+
+  try{
+    const r = await fetch("/api/run_regression_all_stream", { method: "POST" });
+    if(!r.ok){
+      const j = await r.json().catch(()=>null);
+      const msg = (j && (j.message || j.error)) ? (j.message || j.error) : "Falha ao executar regression.";
+      bodyEl.textContent = msg + "\n\nDetalhes:\n" + JSON.stringify(j, null, 2);
+      return;
+    }
+
+    const reader = r.body.getReader();
+    const dec = new TextDecoder("utf-8");
+    let buf = "";
+    let finalMeta = null;
+
+    while(true){
+      const {value, done} = await reader.read();
+      if(done) break;
+      const chunk = dec.decode(value, {stream:true});
+      buf += chunk;
+
+      // processa linhas
+      let idx;
+      while((idx = buf.indexOf("\n")) >= 0){
+        const line = buf.slice(0, idx);
+        buf = buf.slice(idx+1);
+
+        if(line.startsWith("__META__=")){
+          try{ finalMeta = JSON.parse(line.substring(9)); }catch(e){}
+          continue;
+        }
+        if(line.startsWith("__END__=")){
+          // ignora (código de retorno)
+          continue;
+        }
+
+        bodyEl.textContent += line + "\n";
+        bodyEl.scrollTop = bodyEl.scrollHeight;
+      }
+    }
+
+    // finaliza
+    if(finalMeta && finalMeta.log_url){
+      showViewer(finalMeta.log_url, "Log (regression)");
+      toast("Regression finalizada. Log aberto no visualizador.");
+      bodyEl.textContent += "\n✅ Finalizado. Log: " + location.origin + finalMeta.log_url + "\n";
+    }else{
+      toast("Regression finalizada.");
+      bodyEl.textContent += `\n✅ Finalizado.\n`;
+    }
+  }catch(e){
+    bodyEl.textContent += `\n❌ Erro ao executar regression.\n`;
+  }
+});
+
+// Teoria
+let theorySelected = "";
+
+async function loadTheory(){
+  const r = await fetch("/api/theory");
+  const j = await r.json();
+  const list = $("#theoryList");
+  list.innerHTML = "";
+
+  (j.items||[]).forEach(item=>{
+    const row = document.createElement("div");
+    row.className = "listRow";
+    row.innerHTML = `
+      <div>
+        <div class="listTitle">${esc(item.title)}</div>
+        <div class="listMeta">${esc(item.rel)}</div>
+      </div>
+    `;
+    row.addEventListener("click", ()=>{ selectTheory(item.rel); });
+    list.appendChild(row);
+  });
+}
+
+function selectTheory(rel){
+  theorySelected = normRel(rel);
+  setBtnDisabled($("#btnOpenMd"), !theorySelected);
+  setBtnDisabled($("#btnOpenPdf"), !theorySelected);
+  setBtnDisabled($("#btnDownloadPdf"), !theorySelected);
+  $("#theoryInfo").textContent = theorySelected ? `Selecionado: ${theorySelected}` : "Selecione um arquivo para visualizar.";
+}
+
+function showTheoryMd(rel){
+  $("#viewerTitle").textContent = "Pré-visualização (MD)";
+  $("#viewerHint").textContent = rel;
+  $("#viewerEmpty").style.display = "none";
+  $("#viewerFrame").style.display = "none";
+  $("#viewerFrame").removeAttribute("src");
+  $("#viewerCode").style.display = "";
+  fetch(`/api/md?path=${encodeURIComponent(rel)}`)
+    .then(r=>r.json())
+    .then(data=>{
+      if(data && data.content!=null){
+        $("#viewerCode").textContent = data.content;
+      }else{
+        $("#viewerCode").textContent = (data && data.error) ? ("Erro: "+data.error) : "Erro ao carregar.";
+      }
+    })
+    .catch(()=>{ $("#viewerCode").textContent="Erro ao carregar."; });
+}
+
+$("#btnOpenMd").addEventListener("click", ()=>{
+  if(!theorySelected) return;
+  showTheoryMd(theorySelected);
+});
+
+$("#btnOpenPdf").addEventListener("click", ()=>{
+  if(!theorySelected) return;
+  showPdf(theorySelected);
+});
+
+$("#btnDownloadPdf").addEventListener("click", ()=>{
+  if(!theorySelected) return;
+  // abre download em outra aba (para não travar o aplicativo)
+  window.open(`/api/pdf?path=${encodeURIComponent(theorySelected)}&download=1`, "_blank");
+});
+// check / install requirements => modal console
+$("#btnCheck").addEventListener("click", async ()=>{
+  openModal("Verificar ambiente", "Executando verificação...\n");
+  try{
+    const r = await fetch("/api/check");
+    const j = await r.json();
+    $("#modalBody").textContent = formatEnvCheck(j);
+  }catch(e){
+    $("#modalBody").textContent = "Erro ao verificar ambiente.";
+  }
+});
+$("#btnInstallReq").addEventListener("click", async ()=>{
+  const cmdLine = "python -m pip install -r requirements.txt";
+  openModal("Instalar requirements", `O sistema vai instalar as dependências do projeto.
+
+Comando:
+${cmdLine}
+
+Acompanhe a execução abaixo:`);
+  const bodyEl = $("#modalBody");
+    bodyEl.textContent = "Iniciando instalação…\n";
+
+
+  try{
+    const r = await fetch("/api/install_requirements_stream", { method:"POST" });
+    if(!r.ok){
+      const j = await r.json().catch(()=>null);
+      bodyEl.textContent = "❌ Falha ao iniciar instalação.\n\n" + JSON.stringify(j, null, 2);
+      return;
+    }
+
+    const reader = r.body.getReader();
+    const dec = new TextDecoder("utf-8");
+    let buf = "";
+    let ok = null;
+
+    while(true){
+      const {value, done} = await reader.read();
+      if(done) break;
+      buf += dec.decode(value, {stream:true});
+      let idx;
+      while((idx = buf.indexOf("\n")) >= 0){
+        const line = buf.slice(0, idx);
+        buf = buf.slice(idx+1);
+
+        if(line.startsWith("__END__=")){
+          ok = line.includes("ok:true");
+          continue;
+        }
+        bodyEl.textContent += line + "\n";
+        bodyEl.scrollTop = bodyEl.scrollHeight;
+      }
+    }
+
+    if(ok === true){
+      bodyEl.textContent += `\n✅ Instalação concluída. Agora clique em “Verificar ambiente”.\n`;
+      toast("Instalação concluída.");
+    }else{
+      bodyEl.textContent += `\n⚠️ Instalação terminou com avisos/erro. Verifique a saída acima.\n`;
+      toast("Instalação terminou com avisos/erro.");
+    }
+  }catch(e){
+    bodyEl.textContent += `\n❌ Erro durante a instalação.\n`;
+  }
+});
+$("#btnRefresh").addEventListener("click", ()=>location.reload());
+
+$("#tabGeral").addEventListener("click", ()=>setTab("geral"));
+$("#tabTeoria").addEventListener("click", async ()=>{ setTab("teoria"); await loadTheory(); });
+
+
+// --- EXE lifecycle: keep-alive + auto shutdown when closing the UI ---
+let __aliveTimer = null;
+let __shutdownTimer = null;
+let __isFrozen = false;
+
+async function __initExeLifecycle(){
+  try{
+    const r = await fetch("/api/is_frozen");
+    const j = await r.json();
+    __isFrozen = !!j.frozen;
+  }catch(e){ __isFrozen = false; }
+
+  // always ping alive (cheap); also cancels any pending shutdown on reload
+  try{ await fetch("/api/alive", {method:"POST"}); }catch(e){}
+  // heartbeat mais frequente para o watcher do EXE encerrar rápido após fechar a aba
+  __aliveTimer = setInterval(()=>{ try{ fetch("/api/alive", {method:"POST"}); }catch(e){} }, 2000);
+
+  if(!__isFrozen) return;
+
+  function scheduleShutdown(){
+    if(__shutdownTimer) clearTimeout(__shutdownTimer);
+    __shutdownTimer = setTimeout(()=>{
+      try{
+        // sendBeacon funciona durante fechamento da aba
+        navigator.sendBeacon("/api/shutdown");
+      }catch(e){
+        try{ fetch("/api/shutdown", {method:"POST", keepalive:true}); }catch(_){}
+      }
+    }, 250);
+  }
+  function cancelShutdown(){
+    if(__shutdownTimer){ clearTimeout(__shutdownTimer); __shutdownTimer = null; }
+  }
+
+  document.addEventListener("visibilitychange", ()=>{
+    if(document.visibilityState === "hidden") scheduleShutdown();
+    else cancelShutdown();
+  });
+
+  window.addEventListener("pagehide", ()=>{ scheduleShutdown(); });
+  window.addEventListener("beforeunload", ()=>{ scheduleShutdown(); });
+  window.addEventListener("unload", ()=>{ scheduleShutdown(); });
+  window.addEventListener("pageshow", ()=>{ cancelShutdown(); });
+}
+
+(async function boot(){
+  await __initExeLifecycle();
+  try{
+    await loadTags();
+    await loadRoots();
+    await loadTree(currentPath || currentRoot);
+  }catch(e){
+    toast("Falha ao carregar estrutura.");
+  }
+  setBtnDisabled($("#btnOpenMd"), true);
+  setBtnDisabled($("#btnDownloadPdf"), true);
+  setTab("geral");
+})();
+</script>
+
+
+</body>
+</html>

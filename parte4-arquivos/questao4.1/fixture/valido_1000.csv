@@ -1,0 +1,1001 @@
+nome;email;idade;cidade
+User 0;user0@email.com;56;São Paulo
+User 1;user1@email.com;69;Fortaleza
+User 2;user2@email.com;53;Fortaleza
+User 3;user3@email.com;64;São Paulo
+User 4;user4@email.com;63;Rio de Janeiro
+User 5;user5@email.com;30;Fortaleza
+User 6;user6@email.com;54;São Paulo
+User 7;user7@email.com;53;São Paulo
+User 8;user8@email.com;51;Fortaleza
+User 9;user9@email.com;33;São Paulo
+User 10;user10@email.com;28;São Paulo
+User 11;user11@email.com;48;São Paulo
+User 12;user12@email.com;32;São Paulo
+User 13;user13@email.com;29;Rio de Janeiro
+User 14;user14@email.com;21;Fortaleza
+User 15;user15@email.com;24;São Paulo
+User 16;user16@email.com;47;Fortaleza
+User 17;user17@email.com;70;Fortaleza
+User 18;user18@email.com;32;Fortaleza
+User 19;user19@email.com;48;Fortaleza
+User 20;user20@email.com;64;Rio de Janeiro
+User 21;user21@email.com;26;São Paulo
+User 22;user22@email.com;40;Rio de Janeiro
+User 23;user23@email.com;66;Rio de Janeiro
+User 24;user24@email.com;69;Rio de Janeiro
+User 25;user25@email.com;68;Rio de Janeiro
+User 26;user26@email.com;29;Rio de Janeiro
+User 27;user27@email.com;51;São Paulo
+User 28;user28@email.com;67;São Paulo
+User 29;user29@email.com;24;Fortaleza
+User 30;user30@email.com;27;Fortaleza
+User 31;user31@email.com;47;Rio de Janeiro
+User 32;user32@email.com;50;Fortaleza
+User 33;user33@email.com;33;São Paulo
+User 34;user34@email.com;42;Fortaleza
+User 35;user35@email.com;67;Fortaleza
+User 36;user36@email.com;31;Rio de Janeiro
+User 37;user37@email.com;58;Fortaleza
+User 38;user38@email.com;58;São Paulo
+User 39;user39@email.com;23;Rio de Janeiro
+User 40;user40@email.com;66;Rio de Janeiro
+User 41;user41@email.com;23;Fortaleza
+User 42;user42@email.com;26;Rio de Janeiro
+User 43;user43@email.com;29;Rio de Janeiro
+User 44;user44@email.com;31;Rio de Janeiro
+User 45;user45@email.com;48;Rio de Janeiro
+User 46;user46@email.com;36;São Paulo
+User 47;user47@email.com;27;Rio de Janeiro
+User 48;user48@email.com;60;Fortaleza
+User 49;user49@email.com;44;São Paulo
+User 50;user50@email.com;69;Fortaleza
+User 51;user51@email.com;20;Fortaleza
+User 52;user52@email.com;70;Fortaleza
+User 53;user53@email.com;53;Rio de Janeiro
+User 54;user54@email.com;63;São Paulo
+User 55;user55@email.com;48;Fortaleza
+User 56;user56@email.com;55;Fortaleza
+User 57;user57@email.com;33;Fortaleza
+User 58;user58@email.com;59;Rio de Janeiro
+User 59;user59@email.com;30;São Paulo
+User 60;user60@email.com;61;Fortaleza
+User 61;user61@email.com;56;Fortaleza
+User 62;user62@email.com;45;Rio de Janeiro
+User 63;user63@email.com;65;Rio de Janeiro
+User 64;user64@email.com;20;Fortaleza
+User 65;user65@email.com;65;São Paulo
+User 66;user66@email.com;57;São Paulo
+User 67;user67@email.com;39;Rio de Janeiro
+User 68;user68@email.com;52;Fortaleza
+User 69;user69@email.com;34;Fortaleza
+User 70;user70@email.com;54;São Paulo
+User 71;user71@email.com;54;São Paulo
+User 72;user72@email.com;26;São Paulo
+User 73;user73@email.com;56;Rio de Janeiro
+User 74;user74@email.com;25;Rio de Janeiro
+User 75;user75@email.com;40;São Paulo
+User 76;user76@email.com;53;Fortaleza
+User 77;user77@email.com;68;Rio de Janeiro
+User 78;user78@email.com;68;São Paulo
+User 79;user79@email.com;60;São Paulo
+User 80;user80@email.com;44;São Paulo
+User 81;user81@email.com;19;Rio de Janeiro
+User 82;user82@email.com;20;São Paulo
+User 83;user83@email.com;36;Rio de Janeiro
+User 84;user84@email.com;66;Fortaleza
+User 85;user85@email.com;38;São Paulo
+User 86;user86@email.com;22;São Paulo
+User 87;user87@email.com;36;São Paulo
+User 88;user88@email.com;53;Rio de Janeiro
+User 89;user89@email.com;63;Rio de Janeiro
+User 90;user90@email.com;35;Fortaleza
+User 91;user91@email.com;38;Rio de Janeiro
+User 92;user92@email.com;50;Rio de Janeiro
+User 93;user93@email.com;32;Fortaleza
+User 94;user94@email.com;45;Rio de Janeiro
+User 95;user95@email.com;56;São Paulo
+User 96;user96@email.com;66;Rio de Janeiro
+User 97;user97@email.com;30;Rio de Janeiro
+User 98;user98@email.com;35;Rio de Janeiro
+User 99;user99@email.com;64;São Paulo
+User 100;user100@email.com;58;Fortaleza
+User 101;user101@email.com;28;Rio de Janeiro
+User 102;user102@email.com;24;São Paulo
+User 103;user103@email.com;55;São Paulo
+User 104;user104@email.com;68;Fortaleza
+User 105;user105@email.com;67;Fortaleza
+User 106;user106@email.com;36;São Paulo
+User 107;user107@email.com;69;São Paulo
+User 108;user108@email.com;51;Fortaleza
+User 109;user109@email.com;63;Rio de Janeiro
+User 110;user110@email.com;53;São Paulo
+User 111;user111@email.com;55;Fortaleza
+User 112;user112@email.com;53;São Paulo
+User 113;user113@email.com;54;Fortaleza
+User 114;user114@email.com;36;São Paulo
+User 115;user115@email.com;69;São Paulo
+User 116;user116@email.com;20;São Paulo
+User 117;user117@email.com;58;Fortaleza
+User 118;user118@email.com;48;São Paulo
+User 119;user119@email.com;18;Rio de Janeiro
+User 120;user120@email.com;21;São Paulo
+User 121;user121@email.com;53;Rio de Janeiro
+User 122;user122@email.com;64;Rio de Janeiro
+User 123;user123@email.com;28;Rio de Janeiro
+User 124;user124@email.com;40;Rio de Janeiro
+User 125;user125@email.com;39;São Paulo
+User 126;user126@email.com;27;Fortaleza
+User 127;user127@email.com;53;Fortaleza
+User 128;user128@email.com;41;Fortaleza
+User 129;user129@email.com;46;São Paulo
+User 130;user130@email.com;25;Rio de Janeiro
+User 131;user131@email.com;56;Fortaleza
+User 132;user132@email.com;24;Rio de Janeiro
+User 133;user133@email.com;54;Fortaleza
+User 134;user134@email.com;56;Fortaleza
+User 135;user135@email.com;50;Rio de Janeiro
+User 136;user136@email.com;18;São Paulo
+User 137;user137@email.com;26;São Paulo
+User 138;user138@email.com;34;Fortaleza
+User 139;user139@email.com;48;Fortaleza
+User 140;user140@email.com;45;Rio de Janeiro
+User 141;user141@email.com;27;São Paulo
+User 142;user142@email.com;68;São Paulo
+User 143;user143@email.com;57;Rio de Janeiro
+User 144;user144@email.com;54;Fortaleza
+User 145;user145@email.com;46;Rio de Janeiro
+User 146;user146@email.com;28;São Paulo
+User 147;user147@email.com;54;Rio de Janeiro
+User 148;user148@email.com;24;Rio de Janeiro
+User 149;user149@email.com;48;Fortaleza
+User 150;user150@email.com;38;São Paulo
+User 151;user151@email.com;35;Rio de Janeiro
+User 152;user152@email.com;33;São Paulo
+User 153;user153@email.com;69;Rio de Janeiro
+User 154;user154@email.com;51;Rio de Janeiro
+User 155;user155@email.com;40;São Paulo
+User 156;user156@email.com;32;Fortaleza
+User 157;user157@email.com;23;Fortaleza
+User 158;user158@email.com;55;Fortaleza
+User 159;user159@email.com;51;Fortaleza
+User 160;user160@email.com;59;Rio de Janeiro
+User 161;user161@email.com;36;São Paulo
+User 162;user162@email.com;34;Rio de Janeiro
+User 163;user163@email.com;67;Fortaleza
+User 164;user164@email.com;30;Fortaleza
+User 165;user165@email.com;57;São Paulo
+User 166;user166@email.com;52;Fortaleza
+User 167;user167@email.com;32;Rio de Janeiro
+User 168;user168@email.com;66;Fortaleza
+User 169;user169@email.com;39;Rio de Janeiro
+User 170;user170@email.com;31;Rio de Janeiro
+User 171;user171@email.com;22;São Paulo
+User 172;user172@email.com;49;Rio de Janeiro
+User 173;user173@email.com;27;Fortaleza
+User 174;user174@email.com;33;Fortaleza
+User 175;user175@email.com;60;Rio de Janeiro
+User 176;user176@email.com;44;Fortaleza
+User 177;user177@email.com;45;Fortaleza
+User 178;user178@email.com;32;Fortaleza
+User 179;user179@email.com;68;Rio de Janeiro
+User 180;user180@email.com;40;São Paulo
+User 181;user181@email.com;33;São Paulo
+User 182;user182@email.com;29;São Paulo
+User 183;user183@email.com;63;São Paulo
+User 184;user184@email.com;64;Fortaleza
+User 185;user185@email.com;25;Rio de Janeiro
+User 186;user186@email.com;42;Rio de Janeiro
+User 187;user187@email.com;39;Fortaleza
+User 188;user188@email.com;55;Rio de Janeiro
+User 189;user189@email.com;34;São Paulo
+User 190;user190@email.com;37;São Paulo
+User 191;user191@email.com;25;Fortaleza
+User 192;user192@email.com;50;São Paulo
+User 193;user193@email.com;57;Rio de Janeiro
+User 194;user194@email.com;69;Fortaleza
+User 195;user195@email.com;60;Fortaleza
+User 196;user196@email.com;42;São Paulo
+User 197;user197@email.com;51;Fortaleza
+User 198;user198@email.com;55;Rio de Janeiro
+User 199;user199@email.com;21;São Paulo
+User 200;user200@email.com;22;Rio de Janeiro
+User 201;user201@email.com;57;São Paulo
+User 202;user202@email.com;50;Fortaleza
+User 203;user203@email.com;67;São Paulo
+User 204;user204@email.com;51;Fortaleza
+User 205;user205@email.com;60;Rio de Janeiro
+User 206;user206@email.com;38;São Paulo
+User 207;user207@email.com;54;Fortaleza
+User 208;user208@email.com;25;Fortaleza
+User 209;user209@email.com;21;Fortaleza
+User 210;user210@email.com;65;São Paulo
+User 211;user211@email.com;66;Fortaleza
+User 212;user212@email.com;30;Fortaleza
+User 213;user213@email.com;55;São Paulo
+User 214;user214@email.com;51;São Paulo
+User 215;user215@email.com;65;São Paulo
+User 216;user216@email.com;67;Rio de Janeiro
+User 217;user217@email.com;53;São Paulo
+User 218;user218@email.com;20;Rio de Janeiro
+User 219;user219@email.com;49;Rio de Janeiro
+User 220;user220@email.com;40;Rio de Janeiro
+User 221;user221@email.com;70;Rio de Janeiro
+User 222;user222@email.com;69;Rio de Janeiro
+User 223;user223@email.com;33;Fortaleza
+User 224;user224@email.com;61;Rio de Janeiro
+User 225;user225@email.com;42;Rio de Janeiro
+User 226;user226@email.com;67;São Paulo
+User 227;user227@email.com;35;Fortaleza
+User 228;user228@email.com;59;São Paulo
+User 229;user229@email.com;42;Fortaleza
+User 230;user230@email.com;36;Fortaleza
+User 231;user231@email.com;18;São Paulo
+User 232;user232@email.com;27;São Paulo
+User 233;user233@email.com;58;Rio de Janeiro
+User 234;user234@email.com;69;Rio de Janeiro
+User 235;user235@email.com;62;Rio de Janeiro
+User 236;user236@email.com;38;Fortaleza
+User 237;user237@email.com;69;Rio de Janeiro
+User 238;user238@email.com;35;Rio de Janeiro
+User 239;user239@email.com;46;São Paulo
+User 240;user240@email.com;68;Fortaleza
+User 241;user241@email.com;38;São Paulo
+User 242;user242@email.com;62;São Paulo
+User 243;user243@email.com;33;São Paulo
+User 244;user244@email.com;56;Fortaleza
+User 245;user245@email.com;29;São Paulo
+User 246;user246@email.com;37;Fortaleza
+User 247;user247@email.com;28;Rio de Janeiro
+User 248;user248@email.com;40;São Paulo
+User 249;user249@email.com;20;Rio de Janeiro
+User 250;user250@email.com;68;São Paulo
+User 251;user251@email.com;63;Fortaleza
+User 252;user252@email.com;30;São Paulo
+User 253;user253@email.com;26;Fortaleza
+User 254;user254@email.com;44;Fortaleza
+User 255;user255@email.com;30;Rio de Janeiro
+User 256;user256@email.com;52;Fortaleza
+User 257;user257@email.com;53;São Paulo
+User 258;user258@email.com;21;Rio de Janeiro
+User 259;user259@email.com;59;Rio de Janeiro
+User 260;user260@email.com;23;Rio de Janeiro
+User 261;user261@email.com;40;Fortaleza
+User 262;user262@email.com;68;Rio de Janeiro
+User 263;user263@email.com;21;Rio de Janeiro
+User 264;user264@email.com;64;Fortaleza
+User 265;user265@email.com;46;São Paulo
+User 266;user266@email.com;61;Rio de Janeiro
+User 267;user267@email.com;51;Fortaleza
+User 268;user268@email.com;37;Fortaleza
+User 269;user269@email.com;43;Rio de Janeiro
+User 270;user270@email.com;32;São Paulo
+User 271;user271@email.com;23;Rio de Janeiro
+User 272;user272@email.com;59;São Paulo
+User 273;user273@email.com;58;São Paulo
+User 274;user274@email.com;34;Rio de Janeiro
+User 275;user275@email.com;50;Fortaleza
+User 276;user276@email.com;39;Fortaleza
+User 277;user277@email.com;48;Fortaleza
+User 278;user278@email.com;29;São Paulo
+User 279;user279@email.com;19;Fortaleza
+User 280;user280@email.com;38;Fortaleza
+User 281;user281@email.com;35;Rio de Janeiro
+User 282;user282@email.com;49;Fortaleza
+User 283;user283@email.com;24;São Paulo
+User 284;user284@email.com;41;Fortaleza
+User 285;user285@email.com;35;Rio de Janeiro
+User 286;user286@email.com;26;São Paulo
+User 287;user287@email.com;22;Fortaleza
+User 288;user288@email.com;18;Fortaleza
+User 289;user289@email.com;62;Fortaleza
+User 290;user290@email.com;45;Rio de Janeiro
+User 291;user291@email.com;45;Fortaleza
+User 292;user292@email.com;21;Rio de Janeiro
+User 293;user293@email.com;58;Fortaleza
+User 294;user294@email.com;54;Rio de Janeiro
+User 295;user295@email.com;57;Rio de Janeiro
+User 296;user296@email.com;40;Fortaleza
+User 297;user297@email.com;49;Fortaleza
+User 298;user298@email.com;62;Fortaleza
+User 299;user299@email.com;42;Fortaleza
+User 300;user300@email.com;64;Fortaleza
+User 301;user301@email.com;24;Rio de Janeiro
+User 302;user302@email.com;24;São Paulo
+User 303;user303@email.com;19;São Paulo
+User 304;user304@email.com;22;Rio de Janeiro
+User 305;user305@email.com;51;Fortaleza
+User 306;user306@email.com;51;Rio de Janeiro
+User 307;user307@email.com;25;São Paulo
+User 308;user308@email.com;29;Fortaleza
+User 309;user309@email.com;45;São Paulo
+User 310;user310@email.com;20;Rio de Janeiro
+User 311;user311@email.com;20;Rio de Janeiro
+User 312;user312@email.com;20;Fortaleza
+User 313;user313@email.com;54;São Paulo
+User 314;user314@email.com;47;São Paulo
+User 315;user315@email.com;40;São Paulo
+User 316;user316@email.com;25;São Paulo
+User 317;user317@email.com;70;Rio de Janeiro
+User 318;user318@email.com;63;São Paulo
+User 319;user319@email.com;58;São Paulo
+User 320;user320@email.com;37;Rio de Janeiro
+User 321;user321@email.com;28;Rio de Janeiro
+User 322;user322@email.com;22;São Paulo
+User 323;user323@email.com;57;Rio de Janeiro
+User 324;user324@email.com;60;Fortaleza
+User 325;user325@email.com;65;São Paulo
+User 326;user326@email.com;34;Rio de Janeiro
+User 327;user327@email.com;38;Fortaleza
+User 328;user328@email.com;50;Rio de Janeiro
+User 329;user329@email.com;64;Rio de Janeiro
+User 330;user330@email.com;51;São Paulo
+User 331;user331@email.com;31;Fortaleza
+User 332;user332@email.com;35;São Paulo
+User 333;user333@email.com;62;São Paulo
+User 334;user334@email.com;21;São Paulo
+User 335;user335@email.com;32;Fortaleza
+User 336;user336@email.com;38;Rio de Janeiro
+User 337;user337@email.com;67;Fortaleza
+User 338;user338@email.com;26;São Paulo
+User 339;user339@email.com;42;Fortaleza
+User 340;user340@email.com;64;Fortaleza
+User 341;user341@email.com;33;Fortaleza
+User 342;user342@email.com;18;Rio de Janeiro
+User 343;user343@email.com;34;Rio de Janeiro
+User 344;user344@email.com;70;Fortaleza
+User 345;user345@email.com;32;Rio de Janeiro
+User 346;user346@email.com;37;Fortaleza
+User 347;user347@email.com;42;São Paulo
+User 348;user348@email.com;35;Rio de Janeiro
+User 349;user349@email.com;54;Fortaleza
+User 350;user350@email.com;46;Fortaleza
+User 351;user351@email.com;59;São Paulo
+User 352;user352@email.com;38;Rio de Janeiro
+User 353;user353@email.com;27;Fortaleza
+User 354;user354@email.com;65;Fortaleza
+User 355;user355@email.com;64;São Paulo
+User 356;user356@email.com;65;São Paulo
+User 357;user357@email.com;18;São Paulo
+User 358;user358@email.com;39;Rio de Janeiro
+User 359;user359@email.com;67;São Paulo
+User 360;user360@email.com;51;São Paulo
+User 361;user361@email.com;42;São Paulo
+User 362;user362@email.com;49;Fortaleza
+User 363;user363@email.com;59;Fortaleza
+User 364;user364@email.com;33;Rio de Janeiro
+User 365;user365@email.com;25;Rio de Janeiro
+User 366;user366@email.com;66;São Paulo
+User 367;user367@email.com;36;São Paulo
+User 368;user368@email.com;23;São Paulo
+User 369;user369@email.com;30;São Paulo
+User 370;user370@email.com;34;São Paulo
+User 371;user371@email.com;28;São Paulo
+User 372;user372@email.com;37;Fortaleza
+User 373;user373@email.com;28;Rio de Janeiro
+User 374;user374@email.com;69;Rio de Janeiro
+User 375;user375@email.com;60;São Paulo
+User 376;user376@email.com;50;Fortaleza
+User 377;user377@email.com;44;Fortaleza
+User 378;user378@email.com;54;Fortaleza
+User 379;user379@email.com;36;Rio de Janeiro
+User 380;user380@email.com;27;Fortaleza
+User 381;user381@email.com;55;Fortaleza
+User 382;user382@email.com;28;Rio de Janeiro
+User 383;user383@email.com;59;Fortaleza
+User 384;user384@email.com;27;São Paulo
+User 385;user385@email.com;45;Rio de Janeiro
+User 386;user386@email.com;48;Rio de Janeiro
+User 387;user387@email.com;36;São Paulo
+User 388;user388@email.com;20;Fortaleza
+User 389;user389@email.com;51;Fortaleza
+User 390;user390@email.com;19;Fortaleza
+User 391;user391@email.com;53;Rio de Janeiro
+User 392;user392@email.com;45;Fortaleza
+User 393;user393@email.com;63;Rio de Janeiro
+User 394;user394@email.com;31;Rio de Janeiro
+User 395;user395@email.com;43;Rio de Janeiro
+User 396;user396@email.com;61;Rio de Janeiro
+User 397;user397@email.com;24;Rio de Janeiro
+User 398;user398@email.com;37;Fortaleza
+User 399;user399@email.com;63;São Paulo
+User 400;user400@email.com;33;Fortaleza
+User 401;user401@email.com;46;São Paulo
+User 402;user402@email.com;63;Rio de Janeiro
+User 403;user403@email.com;34;Fortaleza
+User 404;user404@email.com;20;São Paulo
+User 405;user405@email.com;42;Fortaleza
+User 406;user406@email.com;66;São Paulo
+User 407;user407@email.com;61;Fortaleza
+User 408;user408@email.com;43;Rio de Janeiro
+User 409;user409@email.com;59;São Paulo
+User 410;user410@email.com;34;Fortaleza
+User 411;user411@email.com;53;Fortaleza
+User 412;user412@email.com;50;Fortaleza
+User 413;user413@email.com;26;Fortaleza
+User 414;user414@email.com;38;São Paulo
+User 415;user415@email.com;69;Rio de Janeiro
+User 416;user416@email.com;49;São Paulo
+User 417;user417@email.com;33;Fortaleza
+User 418;user418@email.com;50;São Paulo
+User 419;user419@email.com;31;Fortaleza
+User 420;user420@email.com;21;Rio de Janeiro
+User 421;user421@email.com;54;Rio de Janeiro
+User 422;user422@email.com;45;São Paulo
+User 423;user423@email.com;22;São Paulo
+User 424;user424@email.com;41;Fortaleza
+User 425;user425@email.com;36;São Paulo
+User 426;user426@email.com;45;São Paulo
+User 427;user427@email.com;22;Fortaleza
+User 428;user428@email.com;24;Rio de Janeiro
+User 429;user429@email.com;23;São Paulo
+User 430;user430@email.com;43;Rio de Janeiro
+User 431;user431@email.com;39;Fortaleza
+User 432;user432@email.com;55;São Paulo
+User 433;user433@email.com;65;Fortaleza
+User 434;user434@email.com;45;Rio de Janeiro
+User 435;user435@email.com;22;Fortaleza
+User 436;user436@email.com;37;Fortaleza
+User 437;user437@email.com;22;São Paulo
+User 438;user438@email.com;59;Fortaleza
+User 439;user439@email.com;60;Rio de Janeiro
+User 440;user440@email.com;52;São Paulo
+User 441;user441@email.com;40;Fortaleza
+User 442;user442@email.com;36;São Paulo
+User 443;user443@email.com;59;Fortaleza
+User 444;user444@email.com;43;Fortaleza
+User 445;user445@email.com;45;São Paulo
+User 446;user446@email.com;55;Fortaleza
+User 447;user447@email.com;40;Fortaleza
+User 448;user448@email.com;22;Rio de Janeiro
+User 449;user449@email.com;26;Rio de Janeiro
+User 450;user450@email.com;58;São Paulo
+User 451;user451@email.com;20;São Paulo
+User 452;user452@email.com;61;Rio de Janeiro
+User 453;user453@email.com;21;Rio de Janeiro
+User 454;user454@email.com;57;São Paulo
+User 455;user455@email.com;29;Rio de Janeiro
+User 456;user456@email.com;62;Fortaleza
+User 457;user457@email.com;28;Fortaleza
+User 458;user458@email.com;70;São Paulo
+User 459;user459@email.com;30;Rio de Janeiro
+User 460;user460@email.com;52;São Paulo
+User 461;user461@email.com;66;Fortaleza
+User 462;user462@email.com;31;Rio de Janeiro
+User 463;user463@email.com;46;Rio de Janeiro
+User 464;user464@email.com;46;Rio de Janeiro
+User 465;user465@email.com;53;Fortaleza
+User 466;user466@email.com;65;São Paulo
+User 467;user467@email.com;19;Fortaleza
+User 468;user468@email.com;28;Fortaleza
+User 469;user469@email.com;27;Rio de Janeiro
+User 470;user470@email.com;39;São Paulo
+User 471;user471@email.com;25;Rio de Janeiro
+User 472;user472@email.com;47;Rio de Janeiro
+User 473;user473@email.com;45;Rio de Janeiro
+User 474;user474@email.com;34;Rio de Janeiro
+User 475;user475@email.com;60;Fortaleza
+User 476;user476@email.com;46;Rio de Janeiro
+User 477;user477@email.com;33;São Paulo
+User 478;user478@email.com;46;Rio de Janeiro
+User 479;user479@email.com;57;São Paulo
+User 480;user480@email.com;48;Rio de Janeiro
+User 481;user481@email.com;36;Rio de Janeiro
+User 482;user482@email.com;25;Rio de Janeiro
+User 483;user483@email.com;26;Rio de Janeiro
+User 484;user484@email.com;63;Rio de Janeiro
+User 485;user485@email.com;50;Fortaleza
+User 486;user486@email.com;62;Rio de Janeiro
+User 487;user487@email.com;63;Rio de Janeiro
+User 488;user488@email.com;64;São Paulo
+User 489;user489@email.com;61;Fortaleza
+User 490;user490@email.com;51;São Paulo
+User 491;user491@email.com;38;Fortaleza
+User 492;user492@email.com;46;Rio de Janeiro
+User 493;user493@email.com;34;São Paulo
+User 494;user494@email.com;29;Fortaleza
+User 495;user495@email.com;46;São Paulo
+User 496;user496@email.com;61;Fortaleza
+User 497;user497@email.com;60;São Paulo
+User 498;user498@email.com;47;São Paulo
+User 499;user499@email.com;68;São Paulo
+User 500;user500@email.com;48;Fortaleza
+User 501;user501@email.com;23;Fortaleza
+User 502;user502@email.com;31;Rio de Janeiro
+User 503;user503@email.com;39;São Paulo
+User 504;user504@email.com;45;Fortaleza
+User 505;user505@email.com;47;São Paulo
+User 506;user506@email.com;53;Rio de Janeiro
+User 507;user507@email.com;19;Fortaleza
+User 508;user508@email.com;46;Rio de Janeiro
+User 509;user509@email.com;24;Rio de Janeiro
+User 510;user510@email.com;34;Fortaleza
+User 511;user511@email.com;21;São Paulo
+User 512;user512@email.com;20;Rio de Janeiro
+User 513;user513@email.com;22;Fortaleza
+User 514;user514@email.com;24;Fortaleza
+User 515;user515@email.com;38;Fortaleza
+User 516;user516@email.com;39;São Paulo
+User 517;user517@email.com;26;Rio de Janeiro
+User 518;user518@email.com;54;Fortaleza
+User 519;user519@email.com;27;Rio de Janeiro
+User 520;user520@email.com;24;São Paulo
+User 521;user521@email.com;57;Fortaleza
+User 522;user522@email.com;61;Fortaleza
+User 523;user523@email.com;60;São Paulo
+User 524;user524@email.com;40;Fortaleza
+User 525;user525@email.com;47;Fortaleza
+User 526;user526@email.com;37;Fortaleza
+User 527;user527@email.com;27;Rio de Janeiro
+User 528;user528@email.com;20;Fortaleza
+User 529;user529@email.com;60;Fortaleza
+User 530;user530@email.com;27;Rio de Janeiro
+User 531;user531@email.com;32;São Paulo
+User 532;user532@email.com;48;Rio de Janeiro
+User 533;user533@email.com;19;São Paulo
+User 534;user534@email.com;26;Rio de Janeiro
+User 535;user535@email.com;29;Fortaleza
+User 536;user536@email.com;34;São Paulo
+User 537;user537@email.com;56;São Paulo
+User 538;user538@email.com;43;Rio de Janeiro
+User 539;user539@email.com;44;São Paulo
+User 540;user540@email.com;27;São Paulo
+User 541;user541@email.com;53;São Paulo
+User 542;user542@email.com;58;Fortaleza
+User 543;user543@email.com;45;Fortaleza
+User 544;user544@email.com;26;Fortaleza
+User 545;user545@email.com;45;Fortaleza
+User 546;user546@email.com;25;Rio de Janeiro
+User 547;user547@email.com;42;Fortaleza
+User 548;user548@email.com;65;Rio de Janeiro
+User 549;user549@email.com;55;São Paulo
+User 550;user550@email.com;70;São Paulo
+User 551;user551@email.com;18;Rio de Janeiro
+User 552;user552@email.com;42;Fortaleza
+User 553;user553@email.com;44;Fortaleza
+User 554;user554@email.com;41;Fortaleza
+User 555;user555@email.com;70;Fortaleza
+User 556;user556@email.com;39;Rio de Janeiro
+User 557;user557@email.com;24;Rio de Janeiro
+User 558;user558@email.com;64;Fortaleza
+User 559;user559@email.com;62;Fortaleza
+User 560;user560@email.com;43;Fortaleza
+User 561;user561@email.com;22;Rio de Janeiro
+User 562;user562@email.com;49;São Paulo
+User 563;user563@email.com;25;Fortaleza
+User 564;user564@email.com;63;Fortaleza
+User 565;user565@email.com;40;São Paulo
+User 566;user566@email.com;30;Rio de Janeiro
+User 567;user567@email.com;53;Rio de Janeiro
+User 568;user568@email.com;38;São Paulo
+User 569;user569@email.com;38;São Paulo
+User 570;user570@email.com;28;São Paulo
+User 571;user571@email.com;45;São Paulo
+User 572;user572@email.com;49;Fortaleza
+User 573;user573@email.com;66;Rio de Janeiro
+User 574;user574@email.com;55;Rio de Janeiro
+User 575;user575@email.com;39;Fortaleza
+User 576;user576@email.com;66;São Paulo
+User 577;user577@email.com;59;Rio de Janeiro
+User 578;user578@email.com;60;São Paulo
+User 579;user579@email.com;44;Fortaleza
+User 580;user580@email.com;43;Fortaleza
+User 581;user581@email.com;41;Rio de Janeiro
+User 582;user582@email.com;63;São Paulo
+User 583;user583@email.com;47;Fortaleza
+User 584;user584@email.com;28;Rio de Janeiro
+User 585;user585@email.com;50;São Paulo
+User 586;user586@email.com;35;São Paulo
+User 587;user587@email.com;26;Rio de Janeiro
+User 588;user588@email.com;25;São Paulo
+User 589;user589@email.com;32;Rio de Janeiro
+User 590;user590@email.com;52;Rio de Janeiro
+User 591;user591@email.com;45;Rio de Janeiro
+User 592;user592@email.com;22;São Paulo
+User 593;user593@email.com;66;Fortaleza
+User 594;user594@email.com;33;Rio de Janeiro
+User 595;user595@email.com;51;Rio de Janeiro
+User 596;user596@email.com;22;Fortaleza
+User 597;user597@email.com;27;São Paulo
+User 598;user598@email.com;27;Fortaleza
+User 599;user599@email.com;70;São Paulo
+User 600;user600@email.com;44;Fortaleza
+User 601;user601@email.com;25;São Paulo
+User 602;user602@email.com;25;Fortaleza
+User 603;user603@email.com;28;São Paulo
+User 604;user604@email.com;36;Fortaleza
+User 605;user605@email.com;51;Rio de Janeiro
+User 606;user606@email.com;40;Fortaleza
+User 607;user607@email.com;30;São Paulo
+User 608;user608@email.com;66;São Paulo
+User 609;user609@email.com;51;Rio de Janeiro
+User 610;user610@email.com;27;Rio de Janeiro
+User 611;user611@email.com;46;Fortaleza
+User 612;user612@email.com;66;Fortaleza
+User 613;user613@email.com;70;Rio de Janeiro
+User 614;user614@email.com;61;São Paulo
+User 615;user615@email.com;60;São Paulo
+User 616;user616@email.com;51;Rio de Janeiro
+User 617;user617@email.com;40;Rio de Janeiro
+User 618;user618@email.com;59;Rio de Janeiro
+User 619;user619@email.com;64;Rio de Janeiro
+User 620;user620@email.com;65;São Paulo
+User 621;user621@email.com;32;Fortaleza
+User 622;user622@email.com;29;São Paulo
+User 623;user623@email.com;67;Fortaleza
+User 624;user624@email.com;41;São Paulo
+User 625;user625@email.com;48;São Paulo
+User 626;user626@email.com;38;São Paulo
+User 627;user627@email.com;59;São Paulo
+User 628;user628@email.com;36;São Paulo
+User 629;user629@email.com;33;São Paulo
+User 630;user630@email.com;27;Rio de Janeiro
+User 631;user631@email.com;31;São Paulo
+User 632;user632@email.com;69;São Paulo
+User 633;user633@email.com;56;Fortaleza
+User 634;user634@email.com;55;Rio de Janeiro
+User 635;user635@email.com;60;Rio de Janeiro
+User 636;user636@email.com;66;Fortaleza
+User 637;user637@email.com;30;São Paulo
+User 638;user638@email.com;61;Fortaleza
+User 639;user639@email.com;57;São Paulo
+User 640;user640@email.com;31;São Paulo
+User 641;user641@email.com;62;Fortaleza
+User 642;user642@email.com;62;São Paulo
+User 643;user643@email.com;56;Fortaleza
+User 644;user644@email.com;32;Fortaleza
+User 645;user645@email.com;52;São Paulo
+User 646;user646@email.com;43;São Paulo
+User 647;user647@email.com;25;Fortaleza
+User 648;user648@email.com;46;Rio de Janeiro
+User 649;user649@email.com;64;Fortaleza
+User 650;user650@email.com;65;Rio de Janeiro
+User 651;user651@email.com;24;Fortaleza
+User 652;user652@email.com;47;Fortaleza
+User 653;user653@email.com;39;Rio de Janeiro
+User 654;user654@email.com;56;Rio de Janeiro
+User 655;user655@email.com;29;Fortaleza
+User 656;user656@email.com;34;São Paulo
+User 657;user657@email.com;37;Fortaleza
+User 658;user658@email.com;40;Rio de Janeiro
+User 659;user659@email.com;47;Rio de Janeiro
+User 660;user660@email.com;37;Fortaleza
+User 661;user661@email.com;39;São Paulo
+User 662;user662@email.com;32;Fortaleza
+User 663;user663@email.com;59;São Paulo
+User 664;user664@email.com;70;Fortaleza
+User 665;user665@email.com;43;São Paulo
+User 666;user666@email.com;21;Rio de Janeiro
+User 667;user667@email.com;41;São Paulo
+User 668;user668@email.com;20;Rio de Janeiro
+User 669;user669@email.com;58;Rio de Janeiro
+User 670;user670@email.com;57;São Paulo
+User 671;user671@email.com;34;Rio de Janeiro
+User 672;user672@email.com;41;Fortaleza
+User 673;user673@email.com;56;Rio de Janeiro
+User 674;user674@email.com;53;São Paulo
+User 675;user675@email.com;47;Fortaleza
+User 676;user676@email.com;47;Rio de Janeiro
+User 677;user677@email.com;19;Rio de Janeiro
+User 678;user678@email.com;59;Fortaleza
+User 679;user679@email.com;18;Fortaleza
+User 680;user680@email.com;32;São Paulo
+User 681;user681@email.com;49;Fortaleza
+User 682;user682@email.com;23;Rio de Janeiro
+User 683;user683@email.com;66;São Paulo
+User 684;user684@email.com;52;Rio de Janeiro
+User 685;user685@email.com;61;Rio de Janeiro
+User 686;user686@email.com;35;Rio de Janeiro
+User 687;user687@email.com;24;Fortaleza
+User 688;user688@email.com;40;São Paulo
+User 689;user689@email.com;59;São Paulo
+User 690;user690@email.com;18;São Paulo
+User 691;user691@email.com;67;Rio de Janeiro
+User 692;user692@email.com;70;Rio de Janeiro
+User 693;user693@email.com;58;Rio de Janeiro
+User 694;user694@email.com;59;São Paulo
+User 695;user695@email.com;31;Rio de Janeiro
+User 696;user696@email.com;58;São Paulo
+User 697;user697@email.com;68;Rio de Janeiro
+User 698;user698@email.com;57;São Paulo
+User 699;user699@email.com;19;São Paulo
+User 700;user700@email.com;26;São Paulo
+User 701;user701@email.com;53;São Paulo
+User 702;user702@email.com;63;Fortaleza
+User 703;user703@email.com;52;Fortaleza
+User 704;user704@email.com;20;São Paulo
+User 705;user705@email.com;60;São Paulo
+User 706;user706@email.com;29;Fortaleza
+User 707;user707@email.com;50;Fortaleza
+User 708;user708@email.com;56;Fortaleza
+User 709;user709@email.com;31;Fortaleza
+User 710;user710@email.com;44;São Paulo
+User 711;user711@email.com;36;São Paulo
+User 712;user712@email.com;47;Fortaleza
+User 713;user713@email.com;69;Fortaleza
+User 714;user714@email.com;62;São Paulo
+User 715;user715@email.com;25;Rio de Janeiro
+User 716;user716@email.com;36;Fortaleza
+User 717;user717@email.com;67;Rio de Janeiro
+User 718;user718@email.com;34;Rio de Janeiro
+User 719;user719@email.com;52;São Paulo
+User 720;user720@email.com;36;Rio de Janeiro
+User 721;user721@email.com;40;Rio de Janeiro
+User 722;user722@email.com;28;Fortaleza
+User 723;user723@email.com;18;São Paulo
+User 724;user724@email.com;33;Fortaleza
+User 725;user725@email.com;67;São Paulo
+User 726;user726@email.com;20;Rio de Janeiro
+User 727;user727@email.com;23;Fortaleza
+User 728;user728@email.com;32;Fortaleza
+User 729;user729@email.com;57;Fortaleza
+User 730;user730@email.com;39;São Paulo
+User 731;user731@email.com;49;São Paulo
+User 732;user732@email.com;36;Rio de Janeiro
+User 733;user733@email.com;38;São Paulo
+User 734;user734@email.com;21;São Paulo
+User 735;user735@email.com;54;São Paulo
+User 736;user736@email.com;47;São Paulo
+User 737;user737@email.com;37;Rio de Janeiro
+User 738;user738@email.com;46;Rio de Janeiro
+User 739;user739@email.com;30;Rio de Janeiro
+User 740;user740@email.com;61;Fortaleza
+User 741;user741@email.com;67;Rio de Janeiro
+User 742;user742@email.com;61;Fortaleza
+User 743;user743@email.com;37;São Paulo
+User 744;user744@email.com;44;Fortaleza
+User 745;user745@email.com;39;Fortaleza
+User 746;user746@email.com;59;Fortaleza
+User 747;user747@email.com;37;São Paulo
+User 748;user748@email.com;29;São Paulo
+User 749;user749@email.com;58;São Paulo
+User 750;user750@email.com;52;Rio de Janeiro
+User 751;user751@email.com;46;São Paulo
+User 752;user752@email.com;66;Rio de Janeiro
+User 753;user753@email.com;42;Rio de Janeiro
+User 754;user754@email.com;69;São Paulo
+User 755;user755@email.com;53;São Paulo
+User 756;user756@email.com;38;Fortaleza
+User 757;user757@email.com;41;Rio de Janeiro
+User 758;user758@email.com;36;Rio de Janeiro
+User 759;user759@email.com;33;São Paulo
+User 760;user760@email.com;57;Fortaleza
+User 761;user761@email.com;39;Fortaleza
+User 762;user762@email.com;19;Rio de Janeiro
+User 763;user763@email.com;51;Rio de Janeiro
+User 764;user764@email.com;22;São Paulo
+User 765;user765@email.com;32;São Paulo
+User 766;user766@email.com;35;São Paulo
+User 767;user767@email.com;58;São Paulo
+User 768;user768@email.com;43;Fortaleza
+User 769;user769@email.com;64;Fortaleza
+User 770;user770@email.com;70;São Paulo
+User 771;user771@email.com;37;São Paulo
+User 772;user772@email.com;43;São Paulo
+User 773;user773@email.com;65;Rio de Janeiro
+User 774;user774@email.com;53;Rio de Janeiro
+User 775;user775@email.com;67;Fortaleza
+User 776;user776@email.com;27;Rio de Janeiro
+User 777;user777@email.com;46;São Paulo
+User 778;user778@email.com;61;São Paulo
+User 779;user779@email.com;32;Fortaleza
+User 780;user780@email.com;61;Fortaleza
+User 781;user781@email.com;30;Rio de Janeiro
+User 782;user782@email.com;49;Fortaleza
+User 783;user783@email.com;57;São Paulo
+User 784;user784@email.com;60;São Paulo
+User 785;user785@email.com;19;São Paulo
+User 786;user786@email.com;62;Fortaleza
+User 787;user787@email.com;64;São Paulo
+User 788;user788@email.com;64;Rio de Janeiro
+User 789;user789@email.com;25;Fortaleza
+User 790;user790@email.com;27;Rio de Janeiro
+User 791;user791@email.com;34;Rio de Janeiro
+User 792;user792@email.com;55;Fortaleza
+User 793;user793@email.com;52;Rio de Janeiro
+User 794;user794@email.com;66;São Paulo
+User 795;user795@email.com;19;São Paulo
+User 796;user796@email.com;70;São Paulo
+User 797;user797@email.com;69;Rio de Janeiro
+User 798;user798@email.com;18;Rio de Janeiro
+User 799;user799@email.com;53;São Paulo
+User 800;user800@email.com;51;Rio de Janeiro
+User 801;user801@email.com;26;São Paulo
+User 802;user802@email.com;40;São Paulo
+User 803;user803@email.com;34;Fortaleza
+User 804;user804@email.com;62;Fortaleza
+User 805;user805@email.com;38;Rio de Janeiro
+User 806;user806@email.com;58;Fortaleza
+User 807;user807@email.com;43;Rio de Janeiro
+User 808;user808@email.com;65;São Paulo
+User 809;user809@email.com;45;Rio de Janeiro
+User 810;user810@email.com;32;Rio de Janeiro
+User 811;user811@email.com;18;São Paulo
+User 812;user812@email.com;57;São Paulo
+User 813;user813@email.com;20;São Paulo
+User 814;user814@email.com;27;São Paulo
+User 815;user815@email.com;37;Fortaleza
+User 816;user816@email.com;43;Rio de Janeiro
+User 817;user817@email.com;36;Fortaleza
+User 818;user818@email.com;57;Fortaleza
+User 819;user819@email.com;54;São Paulo
+User 820;user820@email.com;65;São Paulo
+User 821;user821@email.com;31;São Paulo
+User 822;user822@email.com;66;São Paulo
+User 823;user823@email.com;24;Fortaleza
+User 824;user824@email.com;38;Rio de Janeiro
+User 825;user825@email.com;38;Fortaleza
+User 826;user826@email.com;41;São Paulo
+User 827;user827@email.com;33;Rio de Janeiro
+User 828;user828@email.com;58;São Paulo
+User 829;user829@email.com;50;São Paulo
+User 830;user830@email.com;28;Rio de Janeiro
+User 831;user831@email.com;66;Rio de Janeiro
+User 832;user832@email.com;63;Rio de Janeiro
+User 833;user833@email.com;19;São Paulo
+User 834;user834@email.com;38;Fortaleza
+User 835;user835@email.com;58;Rio de Janeiro
+User 836;user836@email.com;56;São Paulo
+User 837;user837@email.com;36;Rio de Janeiro
+User 838;user838@email.com;27;Fortaleza
+User 839;user839@email.com;40;Rio de Janeiro
+User 840;user840@email.com;38;Fortaleza
+User 841;user841@email.com;43;São Paulo
+User 842;user842@email.com;42;São Paulo
+User 843;user843@email.com;42;Rio de Janeiro
+User 844;user844@email.com;42;Fortaleza
+User 845;user845@email.com;26;Fortaleza
+User 846;user846@email.com;28;Rio de Janeiro
+User 847;user847@email.com;21;Fortaleza
+User 848;user848@email.com;58;Fortaleza
+User 849;user849@email.com;55;Fortaleza
+User 850;user850@email.com;70;São Paulo
+User 851;user851@email.com;26;São Paulo
+User 852;user852@email.com;62;Rio de Janeiro
+User 853;user853@email.com;53;Rio de Janeiro
+User 854;user854@email.com;64;São Paulo
+User 855;user855@email.com;22;Rio de Janeiro
+User 856;user856@email.com;31;São Paulo
+User 857;user857@email.com;57;São Paulo
+User 858;user858@email.com;66;Rio de Janeiro
+User 859;user859@email.com;60;São Paulo
+User 860;user860@email.com;33;Rio de Janeiro
+User 861;user861@email.com;68;Rio de Janeiro
+User 862;user862@email.com;24;Fortaleza
+User 863;user863@email.com;47;Rio de Janeiro
+User 864;user864@email.com;27;Fortaleza
+User 865;user865@email.com;43;Fortaleza
+User 866;user866@email.com;63;São Paulo
+User 867;user867@email.com;37;Rio de Janeiro
+User 868;user868@email.com;51;Rio de Janeiro
+User 869;user869@email.com;44;Fortaleza
+User 870;user870@email.com;63;Fortaleza
+User 871;user871@email.com;52;Rio de Janeiro
+User 872;user872@email.com;55;Fortaleza
+User 873;user873@email.com;61;São Paulo
+User 874;user874@email.com;38;Rio de Janeiro
+User 875;user875@email.com;58;São Paulo
+User 876;user876@email.com;31;Fortaleza
+User 877;user877@email.com;52;Fortaleza
+User 878;user878@email.com;64;Fortaleza
+User 879;user879@email.com;40;Rio de Janeiro
+User 880;user880@email.com;47;São Paulo
+User 881;user881@email.com;33;São Paulo
+User 882;user882@email.com;19;Rio de Janeiro
+User 883;user883@email.com;68;São Paulo
+User 884;user884@email.com;39;São Paulo
+User 885;user885@email.com;68;Fortaleza
+User 886;user886@email.com;35;Fortaleza
+User 887;user887@email.com;18;Rio de Janeiro
+User 888;user888@email.com;43;Fortaleza
+User 889;user889@email.com;60;São Paulo
+User 890;user890@email.com;19;Fortaleza
+User 891;user891@email.com;27;Rio de Janeiro
+User 892;user892@email.com;56;Fortaleza
+User 893;user893@email.com;22;São Paulo
+User 894;user894@email.com;37;Rio de Janeiro
+User 895;user895@email.com;38;São Paulo
+User 896;user896@email.com;35;Fortaleza
+User 897;user897@email.com;60;São Paulo
+User 898;user898@email.com;61;Fortaleza
+User 899;user899@email.com;19;Fortaleza
+User 900;user900@email.com;50;Rio de Janeiro
+User 901;user901@email.com;70;Rio de Janeiro
+User 902;user902@email.com;26;Fortaleza
+User 903;user903@email.com;33;Fortaleza
+User 904;user904@email.com;50;Fortaleza
+User 905;user905@email.com;69;Rio de Janeiro
+User 906;user906@email.com;38;Rio de Janeiro
+User 907;user907@email.com;51;Rio de Janeiro
+User 908;user908@email.com;40;Rio de Janeiro
+User 909;user909@email.com;38;Rio de Janeiro
+User 910;user910@email.com;56;São Paulo
+User 911;user911@email.com;41;São Paulo
+User 912;user912@email.com;36;Rio de Janeiro
+User 913;user913@email.com;46;Rio de Janeiro
+User 914;user914@email.com;69;Rio de Janeiro
+User 915;user915@email.com;42;Rio de Janeiro
+User 916;user916@email.com;55;São Paulo
+User 917;user917@email.com;56;São Paulo
+User 918;user918@email.com;39;Fortaleza
+User 919;user919@email.com;65;Rio de Janeiro
+User 920;user920@email.com;46;Fortaleza
+User 921;user921@email.com;18;Rio de Janeiro
+User 922;user922@email.com;66;Fortaleza
+User 923;user923@email.com;18;Fortaleza
+User 924;user924@email.com;47;São Paulo
+User 925;user925@email.com;65;Fortaleza
+User 926;user926@email.com;33;Rio de Janeiro
+User 927;user927@email.com;67;São Paulo
+User 928;user928@email.com;64;Rio de Janeiro
+User 929;user929@email.com;52;São Paulo
+User 930;user930@email.com;28;Fortaleza
+User 931;user931@email.com;42;São Paulo
+User 932;user932@email.com;60;Rio de Janeiro
+User 933;user933@email.com;61;Fortaleza
+User 934;user934@email.com;47;Rio de Janeiro
+User 935;user935@email.com;27;São Paulo
+User 936;user936@email.com;34;Rio de Janeiro
+User 937;user937@email.com;69;Rio de Janeiro
+User 938;user938@email.com;70;Rio de Janeiro
+User 939;user939@email.com;36;Fortaleza
+User 940;user940@email.com;55;Fortaleza
+User 941;user941@email.com;70;São Paulo
+User 942;user942@email.com;56;Rio de Janeiro
+User 943;user943@email.com;40;São Paulo
+User 944;user944@email.com;29;Rio de Janeiro
+User 945;user945@email.com;70;Fortaleza
+User 946;user946@email.com;57;Rio de Janeiro
+User 947;user947@email.com;57;Rio de Janeiro
+User 948;user948@email.com;60;Fortaleza
+User 949;user949@email.com;35;Rio de Janeiro
+User 950;user950@email.com;50;Fortaleza
+User 951;user951@email.com;32;São Paulo
+User 952;user952@email.com;42;São Paulo
+User 953;user953@email.com;38;Rio de Janeiro
+User 954;user954@email.com;41;Fortaleza
+User 955;user955@email.com;54;São Paulo
+User 956;user956@email.com;54;São Paulo
+User 957;user957@email.com;48;Fortaleza
+User 958;user958@email.com;29;Fortaleza
+User 959;user959@email.com;43;Fortaleza
+User 960;user960@email.com;51;Rio de Janeiro
+User 961;user961@email.com;48;Fortaleza
+User 962;user962@email.com;32;Fortaleza
+User 963;user963@email.com;61;Fortaleza
+User 964;user964@email.com;65;São Paulo
+User 965;user965@email.com;56;Fortaleza
+User 966;user966@email.com;40;São Paulo
+User 967;user967@email.com;19;São Paulo
+User 968;user968@email.com;45;Fortaleza
+User 969;user969@email.com;20;Fortaleza
+User 970;user970@email.com;62;Fortaleza
+User 971;user971@email.com;20;São Paulo
+User 972;user972@email.com;52;Rio de Janeiro
+User 973;user973@email.com;23;Rio de Janeiro
+User 974;user974@email.com;51;Fortaleza
+User 975;user975@email.com;69;São Paulo
+User 976;user976@email.com;64;Rio de Janeiro
+User 977;user977@email.com;42;Fortaleza
+User 978;user978@email.com;57;Rio de Janeiro
+User 979;user979@email.com;44;Fortaleza
+User 980;user980@email.com;22;Rio de Janeiro
+User 981;user981@email.com;69;São Paulo
+User 982;user982@email.com;63;Fortaleza
+User 983;user983@email.com;36;São Paulo
+User 984;user984@email.com;70;Fortaleza
+User 985;user985@email.com;29;Rio de Janeiro
+User 986;user986@email.com;44;Rio de Janeiro
+User 987;user987@email.com;63;São Paulo
+User 988;user988@email.com;20;São Paulo
+User 989;user989@email.com;19;São Paulo
+User 990;user990@email.com;44;Rio de Janeiro
+User 991;user991@email.com;30;São Paulo
+User 992;user992@email.com;25;Fortaleza
+User 993;user993@email.com;70;Rio de Janeiro
+User 994;user994@email.com;51;Rio de Janeiro
+User 995;user995@email.com;24;Rio de Janeiro
+User 996;user996@email.com;23;Fortaleza
+User 997;user997@email.com;38;São Paulo
+User 998;user998@email.com;43;Fortaleza
+User 999;user999@email.com;56;Fortaleza

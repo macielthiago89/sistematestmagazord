@@ -1,0 +1,11 @@
+==============================================================================
+1.1Test :: Este caso de teste tem como objetivo validar headers, não bloque...
+==============================================================================
+1.1test :: Pré condição:                                              | PASS |
+------------------------------------------------------------------------------
+1.1Test :: Este caso de teste tem como objetivo validar headers, n... | PASS |
+1 test, 1 passed, 0 failed
+==============================================================================
+Output:  E:\testemagazord\app\static\runs\20260225_195327_parte1-api__questao1_1__tests__1_1test_robot\output.xml
+Log:     E:\testemagazord\app\static\runs\20260225_195327_parte1-api__questao1_1__tests__1_1test_robot\log.html
+Report:  E:\testemagazord\app\static\runs\20260225_195327_parte1-api__questao1_1__tests__1_1test_robot\report.html

@@ -1,0 +1,1042 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Magazord • Test Runner</title>
+  <style>
+    :root{
+      --bg:#0b1020;
+      --panel:#0f1730;
+      --panel2:#121c3b;
+      --text:#eaf0ff;
+      --muted:#9fb0d0;
+      --border:rgba(255,255,255,.08);
+
+      --red:#fe2444;
+      --pink:#fe58a3;
+      --yellow:#febf02;
+      --blue:#0232fb;
+      --green:#019f5c;
+
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+      --radius2: 14px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      background:
+        radial-gradient(1100px 600px at 0% 0%, rgba(254,36,68,.22), transparent 55%),
+        radial-gradient(900px 500px at 100% 10%, rgba(2,50,251,.20), transparent 55%),
+        radial-gradient(900px 600px at 50% 100%, rgba(1,159,92,.18), transparent 60%),
+        var(--bg);
+      color:var(--text);
+      min-height:100vh;
+    }
+
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 18px;
+      position:sticky; top:0; z-index:50;
+      background: linear-gradient(180deg, rgba(11,16,32,.92), rgba(11,16,32,.70));
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--border);
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+    }
+    .logoCube{
+      width:34px; height:34px;
+      filter: drop-shadow(0 6px 20px rgba(0,0,0,.35));
+      border-radius:12px;
+      background: linear-gradient(135deg, rgba(254,36,68,.18), rgba(254,191,2,.16));
+      display:grid; place-items:center;
+      border:1px solid rgba(255,255,255,.12);
+      overflow:hidden;
+    }
+    .logoCube svg{width:22px; height:22px}
+    .brand h1{
+      font-size:14px; margin:0; letter-spacing:.3px;
+    }
+    .brand .sub{
+      font-size:12px; color:var(--muted); margin-top:2px;
+    }
+
+    select{
+      background: rgba(18,28,59,.85);
+      color: var(--text);
+      border:1px solid rgba(255,255,255,.12);
+      border-radius: 12px;
+      padding:9px 10px;
+      outline:none;
+      font-family: var(--mono);
+      font-size:12px;
+      min-width: 180px;
+    }
+    select:focus{
+      border-color: rgba(254,191,2,.45);
+      box-shadow: 0 0 0 3px rgba(254,191,2,.12);
+    }
+    option{
+      background: #0f1730;
+      color: var(--text);
+    }
+
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:999px;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .dot{width:8px; height:8px; border-radius:99px; background:var(--green)}
+    .dot.warn{background:var(--yellow)}
+    .dot.err{background:var(--red)}
+
+    .layout{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:16px;
+      padding:16px;
+      max-width: none;
+      margin: 0;
+    }
+    .tabsBar{
+      background: linear-gradient(180deg, rgba(18,28,59,.78), rgba(15,23,48,.78));
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:10px 12px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    .navBtn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+      color:var(--text);
+      cursor:pointer;
+      transition: .15s ease;
+      white-space:nowrap;
+    }
+    .navBtn:hover{background: rgba(255,255,255,.07)}
+    .navBtn.active{
+      background: rgba(255,255,255,.10);
+      border-color: rgba(255,255,255,.16);
+    }
+    .badge{
+      font-size:11px;
+      padding:4px 8px;
+      border-radius:999px;
+      background: rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.10);
+      color: var(--muted);
+    }
+    .tabsHint{
+      margin-left:auto;
+      color: var(--muted);
+      font-size:12px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .tabsHint code{font-family:var(--mono); font-size:12px; color:var(--text); opacity:.9}
+.main{
+      display:grid;
+      grid-template-rows:auto 1fr;
+      gap:16px;
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(18,28,59,.78), rgba(15,23,48,.78));
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .cardHeader{
+      padding:14px 16px;
+      border-bottom:1px solid var(--border);
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .cardHeader h2{
+      margin:0;
+      font-size:14px;
+      letter-spacing:.3px;
+    }
+    .cardHeader p{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.35;
+    }
+    .cardBody{padding:16px}
+
+    .grid2{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:16px;
+    }
+
+    /* New layout (yellow/green/blue) */
+    .gridApp{
+      display:grid;
+      grid-template-columns: 520px 1fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    .colLeft{display:flex; flex-direction:column; min-width:0;}
+    @media (max-width: 980px){
+      .gridApp{grid-template-columns: 1fr;}
+    }
+
+    .panelRed{border:2px solid rgba(254,36,68,.70);} 
+    .panelGreen{border:2px solid rgba(1,159,92,.70);} 
+    .panelYellow{border:2px solid rgba(254,191,2,.85);} 
+    .panelPurple{border:2px solid rgba(254,88,163,.70);} 
+    
+
+    .tabsRow{display:flex; gap:10px; margin-top:8px;}
+    .btnTab{
+      height:38px;
+      min-width:160px;
+      padding:0 14px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      cursor:pointer;
+      font-weight:700;
+    }
+    .btnTab#tabGeral{box-shadow: 0 0 0 1px rgba(254,191,2,.35) inset;}
+    .btnTab#tabTeoria{box-shadow: 0 0 0 1px rgba(2,50,251,.25) inset;}
+    .btnTabActive{
+      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
+      border-color: rgba(255,255,255,.22);
+    }
+    #tabGeral.btnTabActive{border-color: rgba(254,191,2,.75); box-shadow: 0 0 0 3px rgba(254,191,2,.10) inset;}
+    #tabTeoria.btnTabActive{border-color: rgba(254,88,163,.70); box-shadow: 0 0 0 3px rgba(254,88,163,.10) inset;}
+
+    .emptyHint{
+      margin-top:14px;
+      padding:16px;
+      border:1px dashed rgba(255,255,255,.18);
+      border-radius: 14px;
+      color: var(--muted);
+      background: rgba(0,0,0,.12);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    /* Uniform button sizing */
+    .btn{height:38px; min-width:120px;}
+    .btnTiny{min-width:120px;}
+    .btnPrimary{min-width:140px;}
+
+    /* darker option list (best-effort) */
+    select option{background:#121c3b; color: var(--text);}
+
+    .panel{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      border-radius: var(--radius2);
+      padding:12px;
+    }
+    .panelTitle{
+      display:flex; align-items:center; justify-content:space-between;
+      font-size:12px;
+      color:var(--muted);
+      margin-bottom:10px;
+    }
+
+    .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    select, input[type="text"]{
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+      color: var(--text);
+      padding:10px 10px;
+      border-radius: 12px;
+      outline:none;
+      min-width: 220px;
+    }
+    button{
+      font-family:inherit;
+    }
+    .btn{
+      padding:10px 12px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      cursor:pointer;
+      transition:.15s ease;
+    }
+    .btn:hover{background: rgba(255,255,255,.09)}
+    .btnPrimary{
+      border-color: rgba(254,191,2,.35);
+      background: linear-gradient(135deg, rgba(254,36,68,.18), rgba(2,50,251,.16));
+    }
+    .btnPrimary:hover{filter: brightness(1.08)}
+    .btnTiny{
+      padding:6px 10px;
+      font-size:12px;
+      border-radius: 10px;
+    }
+
+    .tree{
+      font-family: var(--mono);
+      font-size:12px;
+      line-height:1.45;
+      max-height: 390px;
+      overflow:auto;
+      padding-right:6px;
+    }
+    .node{
+      display:flex; align-items:center; gap:8px;
+      padding:6px 8px;
+      border-radius: 10px;
+      cursor:pointer;
+      user-select:none;
+      border:1px solid transparent;
+    }
+    .node:hover{background: rgba(255,255,255,.06)}
+    .node.active{
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.12);
+    }
+    .ico{
+      width:10px; height:10px; border-radius:3px;
+      background: rgba(255,255,255,.18);
+    }
+    .ico.dir{background: rgba(2,50,251,.35)}
+    .ico.file{background: rgba(254,191,2,.35)}
+    .muted{color:var(--muted)}
+    .small{font-size:12px}
+
+    .split{
+      display:grid;
+      grid-template-columns: 320px 1fr;
+      gap:16px;
+    }
+    .list{
+      display:flex; flex-direction:column; gap:8px;
+      max-height: 520px;
+      overflow:auto;
+      padding-right:6px;
+    }
+    .item{
+      padding:10px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.14);
+      cursor:pointer;
+      transition: .15s ease;
+    }
+    .item:hover{background: rgba(255,255,255,.06)}
+    .item.active{
+      border-color: rgba(254,88,163,.45);
+      background: rgba(254,88,163,.08);
+    }
+    .itemTitle{font-size:13px; margin:0 0 4px}
+    .itemSub{margin:0; font-size:12px; color:var(--muted); font-family:var(--mono)}
+    iframe{
+      width:100%;
+      height: 560px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 16px;
+      background: rgba(255,255,255,.03);
+    }
+    pre{
+      margin:0;
+      white-space:pre-wrap;
+      background: rgba(0,0,0,.25);
+      border:1px solid rgba(255,255,255,.10);
+      padding:12px;
+      border-radius: 14px;
+      color: #d6e2ff;
+      max-height: 220px;
+      overflow:auto;
+      font-family: var(--mono);
+      font-size:12px;
+      line-height:1.35;
+    }
+
+    .hint{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:10px 12px;
+      border-radius: 14px;
+      border:1px dashed rgba(255,255,255,.16);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size:12px;
+      line-height:1.35;
+    }
+    .stripe{
+      height:4px;
+      background: linear-gradient(90deg, var(--red), var(--pink), var(--yellow), var(--blue), var(--green));
+    }
+
+    @media (max-width: 1020px){
+      .layout{grid-template-columns: 1fr}
+      .sidebar{position:relative; height:auto; top:auto}
+      .grid2{grid-template-columns: 1fr}
+      .split{grid-template-columns: 1fr}
+      iframe{height: 420px}
+    }
+  
+    #codeBox{
+      margin:0;
+      background: rgba(6,10,22,.55);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 14px;
+      padding: 12px;
+      min-height: 260px;
+      max-height: 360px;
+      overflow:auto;
+      font-family: var(--mono);
+      font-size: 12.5px;
+      line-height: 1.45;
+      white-space: pre;
+    }
+
+    #previewFrame{
+      width:100%;
+      height: 520px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 14px;
+      background: rgba(6,10,22,.40);
+    }
+    #consoleBox{
+      margin:0;
+      background: rgba(6,10,22,.55);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 14px;
+      padding: 12px;
+      height: 520px;
+      overflow:auto;
+      font-family: var(--mono);
+      font-size: 12.5px;
+      line-height: 1.45;
+      white-space: pre-wrap;
+    }
+</style>
+</head>
+<body>
+  <div class="pill" id="jsError" style="display:none; position:fixed; top:12px; right:12px; z-index:999; border-color: rgba(254,36,68,.55); background: rgba(254,36,68,.10); color: #ffe9ee">⚠️ Erro no JavaScript — abra F12 › Console</div>
+
+  <div class="layout">
+
+<main class="main">
+  <section class="card" id="view-app">
+    <div class="stripe"></div>
+    <div class="cardHeader">
+      <div>
+        <h2>Magazord • Entrega do Teste (Robot Framework) <span class="badge" id="uiVer">v5.4</span></h2>
+        <p>Execute por TAG, visualize <b>log</b>, e consulte as <b>respostas teóricas</b> em PDF.</p>
+      </div>
+      <div class="row">
+        <button class="btn btnTiny" id="btnCheck">Verificar ambiente</button>
+        <button class="btn btnTiny" id="btnInstallReq">Instalar requirements</button>
+        <button class="btn btnTiny" id="btnRefresh">Recarregar</button>
+      </div>
+    </div>
+
+    <div class="cardBody gridApp">
+      <!-- LEFT (yellow + blue) -->
+      <div class="colLeft">
+        <!-- YELLOW: menus + options -->
+        <div class="panel panelRed">
+          <div class="panelTitle">
+            <span>Opções</span>
+            <span class="muted small" id="leftHint">—</span>
+          </div>
+
+          <div class="tabsRow">
+            <button class="btnTab btnTabActive" id="tabGeral">Menu Geral</button>
+            <button class="btnTab" id="tabTeoria">Respostas teóricas</button>
+          </div>
+
+          <!-- Geral -->
+          <div id="panelGeral">
+            <div class="panelTitle" style="margin-top:10px">
+              <span>Estrutura do projeto</span>
+              <span class="muted small" id="treePath">/</span>
+            </div>
+
+            <div class="row" style="margin:10px 0">
+              <select id="rootSelect"></select>
+              <button class="btn btnTiny" id="btnUp">Voltar</button>
+            </div>
+
+            <div class="tree" id="tree"></div>
+
+            <div style="height:12px"></div>
+            <div class="row">
+              <select id="tagSelect"></select>
+              <button class="btn btnPrimary" id="btnRun" disabled>Executar</button>
+            </div>
+            <div class="muted small" style="margin-top:10px" id="selectedInfo">Selecione uma pasta com <b>.robot</b> para habilitar a execução.</div>
+          </div>
+
+          <!-- Teoria -->
+          <div id="panelTeoria" style="display:none">
+            <div class="panelTitle" style="margin-top:10px">
+              <span>Arquivos .md</span>
+              <span class="muted small">Preview em PDF (lado direito)</span>
+            </div>
+
+            <div class="list" id="theoryList" style="max-height:420px"></div>
+
+            <div style="height:10px"></div>
+            <div class="row">
+              <button class="btn btnTiny" id="btnDownloadPdf" disabled>Baixar PDF</button>
+            </div>
+            <div class="muted small" style="margin-top:8px" id="theoryInfo">Selecione um arquivo para visualizar.</div>
+          </div>
+        </div>
+
+        <!-- BLUE: runs -->
+        <div class="panel panelGreen" style="margin-top:14px">
+          <div class="panelTitle">
+            <span>Execuções</span>
+            <span class="muted small" id="runsCount">—</span>
+          </div>
+          <div class="row" style="margin:10px 0">
+            <button class="btn btnTiny" id="btnClearRuns">Limpar lista</button>
+            <button class="btn btnTiny" id="btnClearConsole">Limpar console</button>
+          </div>
+          <div class="list" id="runsList" style="max-height:260px"></div>
+        </div>
+      </div>
+
+      <!-- RIGHT (yellow): preview -->
+      <div class="panel panelYellow">
+        <div class="panelTitle">
+          <span>Preview</span>
+          <span class="muted small" id="previewTitle">Nenhuma execução ainda</span>
+        </div>
+
+        <div class="row" style="margin:10px 0">
+          <button class="btn btnTiny" id="btnShowLog">Abrir log</button>
+          <button class="btn btnTiny" id="btnShowMd" disabled>Abrir MD</button>
+          <button class="btn btnTiny" id="btnShowStdout">Console</button>
+        </div>
+
+        <div class="emptyHint" id="emptyPreview">
+          Não tem execuções ainda. Para visualizar, selecione um arquivo/pasta com <b>.robot</b> e clique em <b>Executar</b>.
+        </div>
+
+        <iframe id="previewFrame" title="Preview" style="display:none"></iframe>
+        <pre id="consoleBox" style="display:none"></pre>
+      </div>
+
+      <div class="panel panelPurple" style="margin-top:14px">
+        <div class="panelTitle">
+          <span>Código</span>
+          <span class="muted small" id="codeTitle">Selecione um arquivo para visualizar.</span>
+        </div>
+        <pre id="codeBox"></pre>
+      </div>
+    </div>
+  </section>
+</main>
+
+  </div>
+
+
+<script>
+// v5.2 — debug helpers to avoid silent failures
+window.addEventListener("error", (e)=>{
+  try{
+    const b=document.getElementById("jsError");
+    if(b) b.style.display='inline-flex';
+  }catch(_){}
+});
+window.addEventListener("unhandledrejection", (e)=>{
+  try{
+    const b=document.getElementById("jsError");
+    if(b) b.style.display='inline-flex';
+  }catch(_){}
+});
+
+const $ = (q)=>document.querySelector(q);
+
+function setStatus(ok, label){
+  const dot = $("#statusDot");
+  const text = $("#statusText");
+  if(!dot || !text) return;
+  dot.style.background = ok ? "rgba(36,255,180,.9)" : "rgba(255,80,120,.9)";
+  text.textContent = label;
+}
+
+async function apiGet(url){
+  const r = await fetch(url, {cache:"no-store"});
+  if(!r.ok) throw new Error(await r.text());
+  return await r.json();
+}
+async function apiPost(url, body){
+  const r = await fetch(url, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(body)});
+  if(!r.ok) throw new Error(await r.text());
+  return await r.json();
+}
+
+function fmtRel(rel){ return rel ? ("/" + rel) : "/"; }
+function cleanTag(tag){ return (tag||"").replace(/\s+/g,""); }
+
+let currentPath = "";
+let selectedTarget = ""; // folder or file
+let selectedTheory = "";
+let lastRun = null;
+let lastTextRel = ""; // md/robot currently selected
+
+function showEmptyPreview(show){
+  $("#emptyPreview").style.display = show ? "" : "none";
+  $("#previewFrame").style.display = show ? "none" : "";
+}
+
+function showIframe(url, title){
+  $("#previewTitle").textContent = title || "—";
+  $("#consoleBox").style.display = "none";
+  $("#previewFrame").style.display = "";
+  $("#previewFrame").src = url;
+  showEmptyPreview(false);
+}
+
+function showConsole(text, title){
+  $("#previewTitle").textContent = title || "Console";
+  $("#previewFrame").style.display = "none";
+  $("#consoleBox").style.display = "";
+  $("#consoleBox").textContent = text || "";
+  showEmptyPreview(false);
+}
+
+
+function showCode(text, title){
+  $("#codeTitle").textContent = title || "—";
+  $("#codeBox").textContent = text || "";
+}
+
+function mdToHtml(md){
+  // Minimal markdown rendering (good enough for preview)
+  const esc = (s)=>s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  md = md.replace(/\r\n/g,"\n");
+  // code fences
+  md = md.replace(/```([\s\S]*?)```/g, (m,code)=>`<pre><code>${esc(code)}</code></pre>`);
+  // headings
+  md = md.replace(/^######\s?(.*)$/gm, "<h6>$1</h6>")
+         .replace(/^#####\s?(.*)$/gm, "<h5>$1</h5>")
+         .replace(/^####\s?(.*)$/gm, "<h4>$1</h4>")
+         .replace(/^###\s?(.*)$/gm, "<h3>$1</h3>")
+         .replace(/^##\s?(.*)$/gm, "<h2>$1</h2>")
+         .replace(/^#\s?(.*)$/gm, "<h1>$1</h1>");
+  // bold/italic
+  md = md.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>").replace(/\*(.*?)\*/g, "<i>$1</i>");
+  // lists
+  md = md.replace(/^\s*[-*+]\s+(.*)$/gm, "<li>$1</li>");
+  md = md.replace(/(<li>[\s\S]*?<\/li>)/g, "<ul>$1</ul>");
+  // paragraphs
+  md = md.split(/\n\n+/).map(p=>{
+    if(p.match(/^<h\d|^<pre|^<ul/)) return p;
+    return `<p>${p.replace(/\n/g,"<br/>")}</p>`;
+  }).join("");
+  return `<!doctype html><html><head><meta charset="utf-8"/><style>
+    body{font-family: var(--sans); color: #eaf0ff; background: transparent; padding:14px}
+    h1,h2,h3{margin:10px 0 6px}
+    pre{background: rgba(6,10,22,.65); padding:12px; border-radius:12px; overflow:auto}
+    code{font-family: var(--mono); font-size:12.5px}
+    a{color:#9fb0ff}
+    ul{margin:8px 0 8px 18px}
+  </style></head><body>${md}</body></html>`;
+}
+
+function showMdPreview(mdText, title){
+  $("#previewTitle").textContent = title || "MD";
+  $("#previewFrame").style.display = "";
+  $("#previewFrame").srcdoc = mdToHtml(mdText||"");
+  $("#consoleBox").style.display = "none";
+  showEmptyPreview(false);
+}
+async function loadTags(){
+  const data = await apiGet("/api/tags");
+  const sel = $("#tagSelect");
+  sel.innerHTML = "";
+  for(const t of data.tags){
+    const opt = document.createElement("option");
+    opt.value = t;
+    opt.textContent = t;
+    sel.appendChild(opt);
+  }
+}
+
+async function loadRoots(){
+  const data = await apiGet("/api/roots");
+  const sel = $("#rootSelect");
+  sel.innerHTML = "";
+  const opt0 = document.createElement("option");
+  opt0.value = ""; opt0.textContent = "Selecione uma parte (ou deixe em raiz)";
+  sel.appendChild(opt0);
+
+  for(const r of (data.roots||[])){
+    const opt = document.createElement("option");
+    opt.value = r.rel;
+    opt.textContent = r.name;
+    sel.appendChild(opt);
+  }
+  for(const e of (data.extras||[])){
+    const opt = document.createElement("option");
+    opt.value = e.rel;
+    opt.textContent = "📄 " + e.name;
+    sel.appendChild(opt);
+  }
+}
+
+async function loadTree(path){
+  const data = await apiGet("/api/tree?path=" + encodeURIComponent(path||""));
+  currentPath = (data.path || "");
+  $("#treePath").textContent = fmtRel(currentPath);
+  const tree = $("#tree");
+  tree.innerHTML = "";
+
+  const items = data.items || [];
+  if(items.length === 0){
+    const div = document.createElement("div");
+    div.className = "muted";
+    div.textContent = "Pasta vazia.";
+    tree.appendChild(div);
+    return;
+  }
+
+  for(const it of items){
+    const row = document.createElement("div");
+    row.className = "treeItem";
+    const isRobot = (!it.is_dir) && (String(it.name||"").toLowerCase().endsWith(".robot"));
+    row.innerHTML = `
+      <div class="treeName">
+        <span class="ico">${it.is_dir ? "📁" : (isRobot ? "🤖" : "📄")}</span>
+        <span>${it.name}</span>
+      </div>
+      <div class="treeMeta">${it.is_dir ? "pasta" : (isRobot ? ".robot" : "arquivo")}</div>
+    `;
+
+    row.onclick = async ()=>{
+      if(it.is_dir){
+        await loadTree(it.rel);
+        await selectTarget(it.rel);
+        return;
+      }
+
+      // file clicked: select it, enable execute if .robot, and show content if text
+      await selectTarget(it.rel);
+      const lower = String(it.name||"").toLowerCase();
+      if(lower.endsWith(".robot") || lower.endsWith(".md") || lower.endsWith(".txt") || lower.endsWith(".py") || lower.endsWith(".json") || lower.endsWith(".xml")){
+        try{
+          const res = await apiGet("/api/md?path=" + encodeURIComponent(it.rel));
+          lastTextRel = it.rel;
+          $("#btnShowMd").disabled = false;
+          showCode(res.content||"", it.name);
+        }catch(e){
+          showConsole(String(e), "Falha ao abrir arquivo");
+        }
+      }
+    };
+    tree.appendChild(row);
+  }
+}
+
+async function selectTarget(rel){
+  selectedTarget = rel || "";
+  const info = $("#selectedInfo");
+  if(!selectedTarget){
+    info.innerHTML = "Selecione um arquivo de teste permitido (<b>.robot</b>) para habilitar a execução.";
+    $("#btnRun").disabled = true;
+    $("#leftHint").textContent = "—";
+    return;
+  }
+  $("#leftHint").textContent = fmtRel(selectedTarget);
+
+  const has = await apiGet("/api/has_robot?path=" + encodeURIComponent(selectedTarget));
+  $("#btnRun").disabled = !has.has_robot;
+
+  if(has.has_robot){
+    info.innerHTML = `Selecionado: <b>${selectedTarget}</b> • pronto para executar`;
+  }else{
+    const low = String(selectedTarget).toLowerCase();
+    const isRobot = low.endsWith(".robot") || low.endsWith(".robot.robot");
+    if(isRobot){
+      info.innerHTML = `Selecionado: <b>${selectedTarget}</b> • <span class="muted">não executável (apenas os arquivos permitidos)</span>`;
+    }else{
+      info.innerHTML = `Selecionado: <b>${selectedTarget}</b> • <span class="muted">visualização apenas</span>`;
+    }
+  }
+}
+
+async function runNow(){
+  const tag = cleanTag($("#tagSelect").value);
+  const path = selectedTarget || $("#rootSelect").value || "";
+  if(!path){ alert("Selecione uma pasta."); return; }
+  $("#btnRun").disabled = true;
+  $("#previewTitle").textContent = "Executando…";
+  showConsole("Executando robot… aguarde\n", "Executando…");
+  try{
+    const res = await apiPost("/api/run", {path, tag});
+    lastRun = res;
+    // after running, do not keep showing old theory/text
+    lastTextRel = "";
+    $("#btnShowMd").disabled = true;
+    await loadRuns();
+        // prefer log
+    if(res.log_url){
+      showIframe(res.log_url, "Log • " + res.run_id);
+    }else{
+      showConsole((res.stdout_tail||"") + "\n" + (res.stderr_tail||""), "Console • " + res.run_id);
+    }
+  }catch(e){
+    showConsole(String(e), "Erro ao executar");
+  }finally{
+    // re-check enable
+    await selectTarget(selectedTarget);
+  }
+}
+
+async function loadRuns(){
+  const data = await apiGet("/api/runs");
+  const list = $("#runsList");
+  list.innerHTML = "";
+  const runs = data.runs || [];
+  $("#runsCount").textContent = runs.length ? `${runs.length} recentes` : "Nenhuma execução";
+  if(!runs.length){
+    const div = document.createElement("div");
+    div.className = "muted";
+    div.textContent = "Nenhuma execução ainda.";
+    list.appendChild(div);
+    return;
+  }
+  for(const r of runs){
+    const item = document.createElement("div");
+    item.className = "listItem";
+    const when = (r.created_at || "").replace("T"," ");
+    const rc = (r.returncode === null || r.returncode === undefined) ? "—" : r.returncode;
+    item.innerHTML = `
+      <div class="listTitle">${r.run_id}</div>
+      <div class="listMeta">${when}${when?" • ":""}rc=${rc}</div>
+    `;
+    item.onclick = ()=>{
+      lastRun = r;
+      $("#previewTitle").textContent = r.run_id;
+      if(r.log_url){
+        showIframe(r.log_url, "Log • " + r.run_id);
+      }else{
+        showConsole("Abra o Console para carregar os logs desta execução.", "Console • " + r.run_id);
+      }
+    };
+    list.appendChild(item);
+  }
+}
+
+async function loadTheory(){
+  const data = await apiGet("/api/theory");
+  const list = $("#theoryList");
+  list.innerHTML = "";
+  const items = data.items || [];
+  if(!items.length){
+    const div = document.createElement("div");
+    div.className = "muted";
+    div.textContent = "Nenhum arquivo teórico encontrado.";
+    list.appendChild(div);
+    return;
+  }
+  for(const it of items){
+    const row = document.createElement("div");
+    row.className = "listItem";
+    row.innerHTML = `
+      <div class="listTitle">${it.title}</div>
+    `;
+    row.onclick = ()=> selectTheory(it.rel, it.title);
+    list.appendChild(row);
+  }
+}
+
+async function selectTheory(rel, title){
+  selectedTheory = rel;
+  $("#theoryInfo").innerHTML = `Selecionado: <b>${title}</b>`;
+  $("#btnDownloadPdf").disabled = false;
+  lastTextRel = rel;
+  $("#btnShowMd").disabled = false;
+  // show pdf in preview
+  const pdfUrl = "/api/pdf?path=" + encodeURIComponent(rel);
+  showIframe(pdfUrl, "PDF • " + title);
+}
+
+function switchTab(which){
+  const isG = which === "geral";
+  $("#panelGeral").style.display = isG ? "" : "none";
+  $("#panelTeoria").style.display = isG ? "none" : "";
+  $("#tabGeral").classList.toggle("btnTabActive", isG);
+  $("#tabTeoria").classList.toggle("btnTabActive", !isG);
+  // Console disabled on Teoria tab
+  $("#btnShowStdout").disabled = !isG;
+}
+
+
+async function doInstallReq(){
+  showConsole("Instalando requirements…\nIsso pode demorar alguns minutos.\n", "Instalando…");
+  showEmptyPreview(false);
+  try{
+    const res = await apiPost("/api/install_requirements", {});
+    showConsole(res.output || res.error || "", res.ok ? "Requirements instalados" : "Falha ao instalar");
+  }catch(e){
+    showConsole(String(e), "Falha ao instalar");
+  }
+}
+
+async function doCheck(){
+  try{
+    const res = await apiGet("/api/check");
+    const lines = [];
+    lines.push("CHECKLIST DO AMBIENTE");
+    lines.push("----------------------");
+    lines.push("Python: " + (res.python||"?"));
+    lines.push("Robot cmd: " + (res.robot_cmd||"NÃO ENCONTRADO"));
+    lines.push("Robot import: " + (res.robot_import ? ("OK ("+(res.robot_version||"?")+")") : ("ERRO: "+(res.robot_import_error||""))));
+    lines.push("Pip: " + (res.pip_ok ? ("OK • "+(res.pip_version||"")) : "NÃO OK"));
+    lines.push("Node: " + (res.node_cmd||"NÃO ENCONTRADO"));
+    lines.push("NPM: " + (res.npm_cmd||"NÃO ENCONTRADO"));
+    lines.push("ADB: " + (res.adb_cmd||"NÃO ENCONTRADO"));
+    lines.push("");
+    lines.push("Requirements faltando (" + (res.requirements_missing?.length||0) + "):");
+    (res.requirements_missing||[]).slice(0,40).forEach(x=>lines.push(" - " + x));
+    if((res.requirements_missing||[]).length > 40) lines.push(" ...");
+    lines.push("");
+    lines.push("READY: " + (res.ready ? "SIM" : "NÃO"));
+    showConsole(lines.join("\n"), "Verificação do ambiente");
+  }catch(e){
+    showConsole(String(e), "Falha na verificação");
+  }
+}
+
+function wire(){
+  $("#btnRefresh").onclick = async ()=>{
+    await loadTags(); await loadRoots();
+    await loadTree($("#rootSelect").value || "");
+    await selectTarget($("#rootSelect").value || "");
+    await loadRuns();
+    await loadTheory();
+  };
+
+  $("#rootSelect").onchange = async ()=>{
+    await loadTree($("#rootSelect").value || "");
+    await selectTarget($("#rootSelect").value || "");
+  };
+  $("#btnUp").onclick = async ()=>{
+    if(!currentPath) return;
+    const parts = currentPath.split("/").filter(Boolean);
+    parts.pop();
+    const up = parts.join("/");
+    await loadTree(up);
+    await selectTarget(up || ($("#rootSelect").value||""));
+  };
+
+  $("#btnRun").onclick = runNow;
+  $("#btnShowLog").onclick = ()=>{
+    if(lastRun?.log_url) showIframe(lastRun.log_url, "Log • " + lastRun.run_id);
+  };
+  $("#btnShowStdout").onclick = ()=>{
+    if(!lastRun){
+      showConsole("Nenhuma execução selecionada.", "Console");
+      return;
+    }
+    // load stdout/stderr files if available
+    (async ()=>{
+      try{
+        const parts = [];
+        if(lastRun.stdout_url){
+          const a = await fetch(lastRun.stdout_url, {cache:"no-store"});
+          parts.push(await a.text());
+        }
+        if(lastRun.stderr_url){
+          const b = await fetch(lastRun.stderr_url, {cache:"no-store"});
+          const tx = await b.text();
+          if(tx.trim()) parts.push("\n[STDERR]\n" + tx);
+        }
+        showConsole(parts.join("\n"), "Console • " + lastRun.run_id);
+      }catch(e){
+        showConsole(String(e), "Falha ao carregar console");
+      }
+    })();
+  };
+
+  $("#btnShowMd").onclick = async ()=>{
+    if(!lastTextRel && !selectedTheory){
+      showConsole("Nenhum arquivo selecionado.", "Abrir MD");
+      return;
+    }
+    const rel = lastTextRel || selectedTheory;
+    try{
+      const res = await apiGet("/api/md?path=" + encodeURIComponent(rel));
+      showMdPreview(res.content||"", "MD • " + rel.split("/").pop());
+    }catch(e){
+      showConsole(String(e), "Falha ao abrir MD");
+    }
+  };
+
+  $("#tabGeral").onclick = ()=> switchTab("geral");
+  $("#tabTeoria").onclick = ()=> { switchTab("teoria"); };
+
+  $("#btnDownloadPdf").onclick = ()=>{
+    if(!selectedTheory) return;
+    window.open("/api/pdf?download=1&path=" + encodeURIComponent(selectedTheory), "_blank");
+  };
+
+
+  $("#btnClearConsole").onclick = ()=>{
+    $("#consoleBox").textContent = "";
+    $("#textBox").textContent = "";
+    $("#previewTitle").textContent = "Console limpo";
+  };
+  $("#btnClearRuns").onclick = async ()=>{
+    await apiPost("/api/clear_runs", {});
+    lastRun = null;
+    showEmptyPreview(true);
+    $("#previewTitle").textContent = "Nenhuma execução ainda";
+    await loadRuns();
+  };
+
+  $("#btnInstallReq").onclick = doInstallReq;
+  $("#btnCheck").onclick = doCheck;
+}
+
+async function init(){
+  try{
+    await loadTags();
+    await loadRoots();
+    await loadTree($("#rootSelect").value || "");
+    await selectTarget($("#rootSelect").value || "");
+    await loadRuns();
+    await loadTheory();
+    setStatus(true, "Servidor OK");
+    showEmptyPreview(true);
+    wire();
+  }catch(e){
+    setStatus(false, "Servidor offline");
+    console.error(e);
+  }
+}
+init();
+</script>
+
+</body>
+</html>

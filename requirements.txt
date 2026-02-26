@@ -1,0 +1,9 @@
+robotframework
+robotframework-seleniumlibrary
+robotframework-requests
+robotframework-faker
+python-dotenv==1.0.1
+flask
+reportlab>=4.0
+jsonschema
+reportlab>=4.0

@@ -1,0 +1,7 @@
+robotframework
+robotframework-seleniumlibrary
+Faker
+python-dotenv==1.0.1
+robotframework-requests
+flask
+jsonschema

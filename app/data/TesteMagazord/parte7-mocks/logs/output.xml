@@ -1,0 +1,1257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.1 (Python 3.14.2 on win32)" generated="2026-02-25T14:37:32.610323" rpa="false" schemaversion="5">
+<suite id="s1" name="Questao7.1" source="F:\TesteMagazord\parte7-mocks\questao7.1">
+<suite id="s1-s1" name="Tests" source="F:\TesteMagazord\parte7-mocks\questao7.1\tests">
+<suite id="s1-s1-s1" name="7.1Test" source="F:\TesteMagazord\parte7-mocks\questao7.1\tests\7.1test.robot">
+<test id="s1-s1-s1-t1" name="7.1test" line="11">
+<kw name="Start Mock Server" owner="001resourcetestsetup" type="SETUP">
+<kw name="Create Directory" owner="OperatingSystem">
+<msg time="2026-02-25T14:37:32.891730" level="INFO" html="true">Directory '&lt;a href="file://F:\TesteMagazord\parte7-mocks\logs"&gt;F:\TesteMagazord\parte7-mocks\logs&lt;/a&gt;' already exists.</msg>
+<arg>${EXECDIR}${/}logs</arg>
+<doc>Creates the specified directory.</doc>
+<status status="PASS" start="2026-02-25T14:37:32.891473" elapsed="0.000328"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-02-25T14:37:32.892295" level="INFO">${mock_script} = F:\TesteMagazord\parte7-mocks\questao7.1\resources\..\mocks\api_mock_server.py</msg>
+<var>${mock_script}</var>
+<arg>F:\\TesteMagazord\\parte7-mocks\\questao7.1\\resources${/}..${/}mocks${/}api_mock_server.py</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-02-25T14:37:32.891935" elapsed="0.000397"/>
+</kw>
+<kw name="Start Process" owner="Process">
+<msg time="2026-02-25T14:37:32.893387" level="INFO">Starting process:
+python F:\TesteMagazord\parte7-mocks\questao7.1\resources\..\mocks\api_mock_server.py</msg>
+<msg time="2026-02-25T14:37:32.900477" level="INFO">${p} = &lt;Popen: returncode: None args: ['python', 'F:\\TesteMagazord\\parte7-mocks\\...&gt;</msg>
+<var>${p}</var>
+<arg>python</arg>
+<arg>${mock_script}</arg>
+<arg>stdout=${EXECDIR}${/}logs${/}mock_stdout.txt</arg>
+<arg>stderr=${EXECDIR}${/}logs${/}mock_stderr.txt</arg>
+<doc>Starts a new process on background.</doc>
+<status status="PASS" start="2026-02-25T14:37:32.892468" elapsed="0.008054"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-02-25T14:37:32.902054" level="INFO">${MOCK_PROC} = &lt;Popen: returncode: None args: ['python', 'F:\\TesteMagazord\\parte7-mocks\\...&gt;</msg>
+<arg>${MOCK_PROC}</arg>
+<arg>${p}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-02-25T14:37:32.900686" elapsed="0.001545"/>
+</kw>
+<kw name="Wait Until Keyword Succeeds" owner="BuiltIn">
+<kw name="Healthcheck Mock" owner="001resourcetestsetup">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-02-25T14:37:32.904792" level="INFO">Creating Session using : alias=mock, url=http://127.0.0.1:5050, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>mock</arg>
+<arg>${BASE}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-02-25T14:37:32.904569" elapsed="0.000747"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-02-25T14:37:33.425827" level="INFO">GET Request : url=http://127.0.0.1:5050/__health 
+ path_url=/__health 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-25T14:37:33.425928" level="INFO">GET Response : url=http://127.0.0.1:5050/__health 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.6 Python/3.14.2', 'Date': 'Wed, 25 Feb 2026 17:37:33 GMT', 'Content-Type': 'application/json', 'Content-Length': '12', 'Connection': 'close'} 
+ body={"ok":true}
+ 
+ </msg>
+<msg time="2026-02-25T14:37:33.426032" level="INFO">${r} = &lt;Response [200]&gt;</msg>
+<var>${r}</var>
+<arg>mock</arg>
+<arg>/__health</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-25T14:37:32.905602" elapsed="0.520453"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.426735" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${r.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.426183" elapsed="0.000622"/>
+</kw>
+<status status="PASS" start="2026-02-25T14:37:32.903992" elapsed="0.522898"/>
+</kw>
+<arg>10x</arg>
+<arg>1s</arg>
+<arg>Healthcheck Mock</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<status status="PASS" start="2026-02-25T14:37:32.902840" elapsed="0.524106"/>
+</kw>
+<status status="PASS" start="2026-02-25T14:37:32.890911" elapsed="0.536086"/>
+</kw>
+<kw name="GET /products - sucesso + schema" owner="003tests">
+<kw name="Reset Mock State" owner="002resourcetestteardown">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-02-25T14:37:33.430123" level="INFO">POST Request : url=http://127.0.0.1:5050/__reset 
+ path_url=/__reset 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2026-02-25T14:37:33.430180" level="INFO">POST Response : url=http://127.0.0.1:5050/__reset 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.6 Python/3.14.2', 'Date': 'Wed, 25 Feb 2026 17:37:33 GMT', 'Content-Type': 'application/json', 'Content-Length': '15', 'Connection': 'close'} 
+ body={"reset":true}
+ 
+ </msg>
+<msg time="2026-02-25T14:37:33.430269" level="INFO">${r} = &lt;Response [200]&gt;</msg>
+<var>${r}</var>
+<arg>mock</arg>
+<arg>/__reset</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.427721" elapsed="0.002570"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.430915" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${r.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.430410" elapsed="0.000571"/>
+</kw>
+<status status="PASS" start="2026-02-25T14:37:33.427541" elapsed="0.003510"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-02-25T14:37:33.433185" level="INFO">GET Request : url=http://127.0.0.1:5050/products 
+ path_url=/products 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-25T14:37:33.433236" level="INFO">GET Response : url=http://127.0.0.1:5050/products 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.6 Python/3.14.2', 'Date': 'Wed, 25 Feb 2026 17:37:33 GMT', 'Content-Type': 'application/json', 'Content-Length': '246', 'Connection': 'close'} 
+ body=[{"category":"mock","description":"Mock item","id":1,"image":"https://example.com/p.png","price":100.0,"title":"Product"},{"category":"mock","description":"Mock item 2","id":2,"image":"https://example.com/p2.png","price":50.5,"title":"Another"}]
+ 
+ </msg>
+<msg time="2026-02-25T14:37:33.433321" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>mock</arg>
+<arg>/products</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.431178" elapsed="0.002165"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.433924" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.433451" elapsed="0.000530"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.434577" level="INFO">${items} = [{'category': 'mock', 'description': 'Mock item', 'id': 1, 'image': 'https://example.com/p.png', 'price': 100.0, 'title': 'Product'}, {'category': 'mock', 'description': 'Mock item 2', 'id': 2, 'image...</msg>
+<var>${items}</var>
+<arg>${resp.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.434096" elapsed="0.000529"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.435061" level="INFO">Length is 2.</msg>
+<msg time="2026-02-25T14:37:33.435146" level="INFO">${qtd} = 2</msg>
+<var>${qtd}</var>
+<arg>${items}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.434719" elapsed="0.000457"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${qtd} &gt;= 1</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.435353" elapsed="0.000640"/>
+</kw>
+<kw name="Validate Product Schema" owner="schema_validator">
+<arg>${items}[0]</arg>
+<arg>${SCHEMA}</arg>
+<status status="PASS" start="2026-02-25T14:37:33.436213" elapsed="0.001972"/>
+</kw>
+<status status="PASS" start="2026-02-25T14:37:33.427309" elapsed="0.011116"/>
+</kw>
+<kw name="POST /products - criar produto" owner="003tests">
+<kw name="Reset Mock State" owner="002resourcetestteardown">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-02-25T14:37:33.442353" level="INFO">POST Request : url=http://127.0.0.1:5050/__reset 
+ path_url=/__reset 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2026-02-25T14:37:33.442438" level="INFO">POST Response : url=http://127.0.0.1:5050/__reset 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.6 Python/3.14.2', 'Date': 'Wed, 25 Feb 2026 17:37:33 GMT', 'Content-Type': 'application/json', 'Content-Length': '15', 'Connection': 'close'} 
+ body={"reset":true}
+ 
+ </msg>
+<msg time="2026-02-25T14:37:33.442561" level="INFO">${r} = &lt;Response [200]&gt;</msg>
+<var>${r}</var>
+<arg>mock</arg>
+<arg>/__reset</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.439296" elapsed="0.003295"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.443409" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${r.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.442745" elapsed="0.000754"/>
+</kw>
+<status status="PASS" start="2026-02-25T14:37:33.439022" elapsed="0.004555"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.444082" level="INFO">&amp;{payload} = { title=New Product | price=123.45 | description=abc | category=mock | image=https://example.com/x.png }</msg>
+<var>&amp;{payload}</var>
+<arg>title=New Product</arg>
+<arg>price=123.45</arg>
+<arg>description=abc</arg>
+<arg>category=mock</arg>
+<arg>image=https://example.com/x.png</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.443704" elapsed="0.000403"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-02-25T14:37:33.446644" level="INFO">POST Request : url=http://127.0.0.1:5050/products 
+ path_url=/products 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '123', 'Content-Type': 'application/json'} 
+ body=b'{"title": "New Product", "price": "123.45", "description": "abc", "category": "mock", "image": "https://example.com/x.png"}' 
+ </msg>
+<msg time="2026-02-25T14:37:33.446702" level="INFO">POST Response : url=http://127.0.0.1:5050/products 
+ status=201, reason=CREATED 
+ headers={'Server': 'Werkzeug/3.1.6 Python/3.14.2', 'Date': 'Wed, 25 Feb 2026 17:37:33 GMT', 'Content-Type': 'application/json', 'Content-Length': '120', 'Connection': 'close'} 
+ body={"category":"mock","description":"abc","id":3,"image":"https://example.com/x.png","price":123.45,"title":"New Product"}
+ 
+ </msg>
+<msg time="2026-02-25T14:37:33.446794" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>mock</arg>
+<arg>/products</arg>
+<arg>json=${payload}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.444210" elapsed="0.002606"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.447471" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>201</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.446944" elapsed="0.000592"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.448165" level="INFO">${obj} = {'category': 'mock', 'description': 'abc', 'id': 3, 'image': 'https://example.com/x.png', 'price': 123.45, 'title': 'New Product'}</msg>
+<var>${obj}</var>
+<arg>${resp.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.447689" elapsed="0.000501"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${obj}</arg>
+<arg>id</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.448282" elapsed="0.000138"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${obj}[title]</arg>
+<arg>New Product</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.448514" elapsed="0.000236"/>
+</kw>
+<kw name="Validate Product Schema" owner="schema_validator">
+<arg>${obj}</arg>
+<arg>${SCHEMA}</arg>
+<status status="PASS" start="2026-02-25T14:37:33.448839" elapsed="0.000918"/>
+</kw>
+<status status="PASS" start="2026-02-25T14:37:33.438739" elapsed="0.011078"/>
+</kw>
+<kw name="PUT /products/:id - atualizar produto" owner="003tests">
+<kw name="Reset Mock State" owner="002resourcetestteardown">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-02-25T14:37:33.461063" level="INFO">POST Request : url=http://127.0.0.1:5050/__reset 
+ path_url=/__reset 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2026-02-25T14:37:33.461208" level="INFO">POST Response : url=http://127.0.0.1:5050/__reset 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.6 Python/3.14.2', 'Date': 'Wed, 25 Feb 2026 17:37:33 GMT', 'Content-Type': 'application/json', 'Content-Length': '15', 'Connection': 'close'} 
+ body={"reset":true}
+ 
+ </msg>
+<msg time="2026-02-25T14:37:33.461427" level="INFO">${r} = &lt;Response [200]&gt;</msg>
+<var>${r}</var>
+<arg>mock</arg>
+<arg>/__reset</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.450473" elapsed="0.010991"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.462210" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${r.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.461607" elapsed="0.000666"/>
+</kw>
+<status status="PASS" start="2026-02-25T14:37:33.450302" elapsed="0.012029"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.462758" level="INFO">&amp;{payload} = { title=Updated | price=77.7 }</msg>
+<var>&amp;{payload}</var>
+<arg>title=Updated</arg>
+<arg>price=77.7</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.462452" elapsed="0.000330"/>
+</kw>
+<kw name="PUT On Session" owner="RequestsLibrary">
+<msg time="2026-02-25T14:37:33.465353" level="INFO">PUT Request : url=http://127.0.0.1:5050/products/1 
+ path_url=/products/1 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '37', 'Content-Type': 'application/json'} 
+ body=b'{"title": "Updated", "price": "77.7"}' 
+ </msg>
+<msg time="2026-02-25T14:37:33.465404" level="INFO">PUT Response : url=http://127.0.0.1:5050/products/1 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.6 Python/3.14.2', 'Date': 'Wed, 25 Feb 2026 17:37:33 GMT', 'Content-Type': 'application/json', 'Content-Length': '120', 'Connection': 'close'} 
+ body={"category":"mock","description":"Mock item","id":1,"image":"https://example.com/p.png","price":77.7,"title":"Updated"}
+ 
+ </msg>
+<msg time="2026-02-25T14:37:33.465488" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>mock</arg>
+<arg>/products/1</arg>
+<arg>json=${payload}</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.462907" elapsed="0.002603"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.466098" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.465624" elapsed="0.000530"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.466796" level="INFO">${obj} = {'category': 'mock', 'description': 'Mock item', 'id': 1, 'image': 'https://example.com/p.png', 'price': 77.7, 'title': 'Updated'}</msg>
+<var>${obj}</var>
+<arg>${resp.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.466287" elapsed="0.000534"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.467127" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${obj}[id]</arg>
+<arg>1</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.466920" elapsed="0.000252"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${obj}[title]</arg>
+<arg>Updated</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.467269" elapsed="0.000226"/>
+</kw>
+<kw name="Validate Product Schema" owner="schema_validator">
+<arg>${obj}</arg>
+<arg>${SCHEMA}</arg>
+<status status="PASS" start="2026-02-25T14:37:33.467585" elapsed="0.001384"/>
+</kw>
+<status status="PASS" start="2026-02-25T14:37:33.450094" elapsed="0.019040"/>
+</kw>
+<kw name="DELETE /products/:id - deletar produto" owner="003tests">
+<kw name="Reset Mock State" owner="002resourcetestteardown">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-02-25T14:37:33.474980" level="INFO">POST Request : url=http://127.0.0.1:5050/__reset 
+ path_url=/__reset 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2026-02-25T14:37:33.475070" level="INFO">POST Response : url=http://127.0.0.1:5050/__reset 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.6 Python/3.14.2', 'Date': 'Wed, 25 Feb 2026 17:37:33 GMT', 'Content-Type': 'application/json', 'Content-Length': '15', 'Connection': 'close'} 
+ body={"reset":true}
+ 
+ </msg>
+<msg time="2026-02-25T14:37:33.475181" level="INFO">${r} = &lt;Response [200]&gt;</msg>
+<var>${r}</var>
+<arg>mock</arg>
+<arg>/__reset</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.470857" elapsed="0.004351"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.475881" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${r.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.475352" elapsed="0.000586"/>
+</kw>
+<status status="PASS" start="2026-02-25T14:37:33.470444" elapsed="0.005567"/>
+</kw>
+<kw name="DELETE On Session" owner="RequestsLibrary">
+<msg time="2026-02-25T14:37:33.478444" level="INFO">DELETE Request : url=http://127.0.0.1:5050/products/2 
+ path_url=/products/2 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2026-02-25T14:37:33.478503" level="INFO">DELETE Response : url=http://127.0.0.1:5050/products/2 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.6 Python/3.14.2', 'Date': 'Wed, 25 Feb 2026 17:37:33 GMT', 'Content-Type': 'application/json', 'Content-Length': '24', 'Connection': 'close'} 
+ body={"deleted":true,"id":2}
+ 
+ </msg>
+<msg time="2026-02-25T14:37:33.478596" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>mock</arg>
+<arg>/products/2</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.476147" elapsed="0.002471"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.479249" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.478740" elapsed="0.000569"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.479934" level="INFO">${obj} = {'deleted': True, 'id': 2}</msg>
+<var>${obj}</var>
+<arg>${resp.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.479450" elapsed="0.000507"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${obj}[deleted]</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.480048" elapsed="0.000213"/>
+</kw>
+<status status="PASS" start="2026-02-25T14:37:33.470017" elapsed="0.010296"/>
+</kw>
+<kw name="Erro 500 simulado" owner="003tests">
+<kw name="Reset Mock State" owner="002resourcetestteardown">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-02-25T14:37:33.482929" level="INFO">POST Request : url=http://127.0.0.1:5050/__reset 
+ path_url=/__reset 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2026-02-25T14:37:33.482979" level="INFO">POST Response : url=http://127.0.0.1:5050/__reset 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.6 Python/3.14.2', 'Date': 'Wed, 25 Feb 2026 17:37:33 GMT', 'Content-Type': 'application/json', 'Content-Length': '15', 'Connection': 'close'} 
+ body={"reset":true}
+ 
+ </msg>
+<msg time="2026-02-25T14:37:33.483060" level="INFO">${r} = &lt;Response [200]&gt;</msg>
+<var>${r}</var>
+<arg>mock</arg>
+<arg>/__reset</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.480917" elapsed="0.002165"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.483625" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${r.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.483183" elapsed="0.000497"/>
+</kw>
+<status status="PASS" start="2026-02-25T14:37:33.480747" elapsed="0.003021"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.484163" level="INFO">&amp;{params} = { error=500 }</msg>
+<var>&amp;{params}</var>
+<arg>error=500</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.483890" elapsed="0.000296"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-02-25T14:37:33.489564" level="INFO">GET Request : url=http://127.0.0.1:5050/products?error=500 
+ path_url=/products?error=500 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-25T14:37:33.489635" level="INFO">GET Response : url=http://127.0.0.1:5050/products?error=500 
+ status=500, reason=INTERNAL SERVER ERROR 
+ headers={'Server': 'Werkzeug/3.1.6 Python/3.14.2', 'Date': 'Wed, 25 Feb 2026 17:37:33 GMT', 'Content-Type': 'application/json', 'Content-Length': '21', 'Connection': 'close'} 
+ body={"error":"internal"}
+ 
+ </msg>
+<msg time="2026-02-25T14:37:33.489751" level="INFO">${resp} = &lt;Response [500]&gt;</msg>
+<var>${resp}</var>
+<arg>mock</arg>
+<arg>/products</arg>
+<arg>params=${params}</arg>
+<arg>expected_status=ANY</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.484278" elapsed="0.005500"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.490496" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>500</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.489924" elapsed="0.000643"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${resp.text}</arg>
+<arg>internal</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.490744" elapsed="0.001129"/>
+</kw>
+<status status="PASS" start="2026-02-25T14:37:33.480544" elapsed="0.011420"/>
+</kw>
+<kw name="Rate limit simulado (429 após 10 GETs)" owner="003tests">
+<kw name="Reset Mock State" owner="002resourcetestteardown">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-02-25T14:37:33.494984" level="INFO">POST Request : url=http://127.0.0.1:5050/__reset 
+ path_url=/__reset 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2026-02-25T14:37:33.495043" level="INFO">POST Response : url=http://127.0.0.1:5050/__reset 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.6 Python/3.14.2', 'Date': 'Wed, 25 Feb 2026 17:37:33 GMT', 'Content-Type': 'application/json', 'Content-Length': '15', 'Connection': 'close'} 
+ body={"reset":true}
+ 
+ </msg>
+<msg time="2026-02-25T14:37:33.495138" level="INFO">${r} = &lt;Response [200]&gt;</msg>
+<var>${r}</var>
+<arg>mock</arg>
+<arg>/__reset</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.492797" elapsed="0.002363"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.495804" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${r.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.495285" elapsed="0.000579"/>
+</kw>
+<status status="PASS" start="2026-02-25T14:37:33.492609" elapsed="0.003332"/>
+</kw>
+<for flavor="IN RANGE">
+<iter>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-02-25T14:37:33.498202" level="INFO">GET Request : url=http://127.0.0.1:5050/products 
+ path_url=/products 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-25T14:37:33.498253" level="INFO">GET Response : url=http://127.0.0.1:5050/products 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.6 Python/3.14.2', 'Date': 'Wed, 25 Feb 2026 17:37:33 GMT', 'Content-Type': 'application/json', 'Content-Length': '246', 'Connection': 'close'} 
+ body=[{"category":"mock","description":"Mock item","id":1,"image":"https://example.com/p.png","price":100.0,"title":"Product"},{"category":"mock","description":"Mock item 2","id":2,"image":"https://example.com/p2.png","price":50.5,"title":"Another"}]
+ 
+ </msg>
+<msg time="2026-02-25T14:37:33.498339" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>mock</arg>
+<arg>/products</arg>
+<arg>expected_status=ANY</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.496334" elapsed="0.002027"/>
+</kw>
+<if>
+<branch type="IF" condition="${i} &lt;= 10">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.499122" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.498628" elapsed="0.000579"/>
+</kw>
+<status status="PASS" start="2026-02-25T14:37:33.498450" elapsed="0.000795"/>
+</branch>
+<branch type="ELSE">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>429</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2026-02-25T14:37:33.499370" elapsed="0.000017"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${resp.text}</arg>
+<arg>Rate limit</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" start="2026-02-25T14:37:33.499478" elapsed="0.000015"/>
+</kw>
+<status status="NOT RUN" start="2026-02-25T14:37:33.499274" elapsed="0.000246"/>
+</branch>
+<status status="PASS" start="2026-02-25T14:37:33.498424" elapsed="0.001117"/>
+</if>
+<var name="${i}">1</var>
+<status status="PASS" start="2026-02-25T14:37:33.496241" elapsed="0.003325"/>
+</iter>
+<iter>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-02-25T14:37:33.503081" level="INFO">GET Request : url=http://127.0.0.1:5050/products 
+ path_url=/products 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-25T14:37:33.503222" level="INFO">GET Response : url=http://127.0.0.1:5050/products 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.6 Python/3.14.2', 'Date': 'Wed, 25 Feb 2026 17:37:33 GMT', 'Content-Type': 'application/json', 'Content-Length': '246', 'Connection': 'close'} 
+ body=[{"category":"mock","description":"Mock item","id":1,"image":"https://example.com/p.png","price":100.0,"title":"Product"},{"category":"mock","description":"Mock item 2","id":2,"image":"https://example.com/p2.png","price":50.5,"title":"Another"}]
+ 
+ </msg>
+<msg time="2026-02-25T14:37:33.503511" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>mock</arg>
+<arg>/products</arg>
+<arg>expected_status=ANY</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.499775" elapsed="0.003779"/>
+</kw>
+<if>
+<branch type="IF" condition="${i} &lt;= 10">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.505699" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.504254" elapsed="0.001623"/>
+</kw>
+<status status="PASS" start="2026-02-25T14:37:33.503760" elapsed="0.002247"/>
+</branch>
+<branch type="ELSE">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>429</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2026-02-25T14:37:33.506186" elapsed="0.000022"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${resp.text}</arg>
+<arg>Rate limit</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" start="2026-02-25T14:37:33.506306" elapsed="0.000020"/>
+</kw>
+<status status="NOT RUN" start="2026-02-25T14:37:33.506048" elapsed="0.000309"/>
+</branch>
+<status status="PASS" start="2026-02-25T14:37:33.503704" elapsed="0.002674"/>
+</if>
+<var name="${i}">2</var>
+<status status="PASS" start="2026-02-25T14:37:33.499699" elapsed="0.006709"/>
+</iter>
+<iter>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-02-25T14:37:33.509618" level="INFO">GET Request : url=http://127.0.0.1:5050/products 
+ path_url=/products 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-25T14:37:33.509683" level="INFO">GET Response : url=http://127.0.0.1:5050/products 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.6 Python/3.14.2', 'Date': 'Wed, 25 Feb 2026 17:37:33 GMT', 'Content-Type': 'application/json', 'Content-Length': '246', 'Connection': 'close'} 
+ body=[{"category":"mock","description":"Mock item","id":1,"image":"https://example.com/p.png","price":100.0,"title":"Product"},{"category":"mock","description":"Mock item 2","id":2,"image":"https://example.com/p2.png","price":50.5,"title":"Another"}]
+ 
+ </msg>
+<msg time="2026-02-25T14:37:33.509862" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>mock</arg>
+<arg>/products</arg>
+<arg>expected_status=ANY</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.506639" elapsed="0.003247"/>
+</kw>
+<if>
+<branch type="IF" condition="${i} &lt;= 10">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.510775" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.510211" elapsed="0.000615"/>
+</kw>
+<status status="PASS" start="2026-02-25T14:37:33.510014" elapsed="0.000847"/>
+</branch>
+<branch type="ELSE">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>429</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2026-02-25T14:37:33.511019" elapsed="0.000024"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${resp.text}</arg>
+<arg>Rate limit</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" start="2026-02-25T14:37:33.511163" elapsed="0.000021"/>
+</kw>
+<status status="NOT RUN" start="2026-02-25T14:37:33.510886" elapsed="0.000337"/>
+</branch>
+<status status="PASS" start="2026-02-25T14:37:33.509991" elapsed="0.001257"/>
+</if>
+<var name="${i}">3</var>
+<status status="PASS" start="2026-02-25T14:37:33.506565" elapsed="0.004705"/>
+</iter>
+<iter>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-02-25T14:37:33.513688" level="INFO">GET Request : url=http://127.0.0.1:5050/products 
+ path_url=/products 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-25T14:37:33.513741" level="INFO">GET Response : url=http://127.0.0.1:5050/products 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.6 Python/3.14.2', 'Date': 'Wed, 25 Feb 2026 17:37:33 GMT', 'Content-Type': 'application/json', 'Content-Length': '246', 'Connection': 'close'} 
+ body=[{"category":"mock","description":"Mock item","id":1,"image":"https://example.com/p.png","price":100.0,"title":"Product"},{"category":"mock","description":"Mock item 2","id":2,"image":"https://example.com/p2.png","price":50.5,"title":"Another"}]
+ 
+ </msg>
+<msg time="2026-02-25T14:37:33.513841" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>mock</arg>
+<arg>/products</arg>
+<arg>expected_status=ANY</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.511526" elapsed="0.002338"/>
+</kw>
+<if>
+<branch type="IF" condition="${i} &lt;= 10">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.514604" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.514109" elapsed="0.000566"/>
+</kw>
+<status status="PASS" start="2026-02-25T14:37:33.513939" elapsed="0.000776"/>
+</branch>
+<branch type="ELSE">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>429</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2026-02-25T14:37:33.514835" elapsed="0.000017"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${resp.text}</arg>
+<arg>Rate limit</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" start="2026-02-25T14:37:33.514933" elapsed="0.000015"/>
+</kw>
+<status status="NOT RUN" start="2026-02-25T14:37:33.514744" elapsed="0.000231"/>
+</branch>
+<status status="PASS" start="2026-02-25T14:37:33.513920" elapsed="0.001072"/>
+</if>
+<var name="${i}">4</var>
+<status status="PASS" start="2026-02-25T14:37:33.511453" elapsed="0.003559"/>
+</iter>
+<iter>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-02-25T14:37:33.517375" level="INFO">GET Request : url=http://127.0.0.1:5050/products 
+ path_url=/products 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-25T14:37:33.517438" level="INFO">GET Response : url=http://127.0.0.1:5050/products 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.6 Python/3.14.2', 'Date': 'Wed, 25 Feb 2026 17:37:33 GMT', 'Content-Type': 'application/json', 'Content-Length': '246', 'Connection': 'close'} 
+ body=[{"category":"mock","description":"Mock item","id":1,"image":"https://example.com/p.png","price":100.0,"title":"Product"},{"category":"mock","description":"Mock item 2","id":2,"image":"https://example.com/p2.png","price":50.5,"title":"Another"}]
+ 
+ </msg>
+<msg time="2026-02-25T14:37:33.517552" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>mock</arg>
+<arg>/products</arg>
+<arg>expected_status=ANY</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.515210" elapsed="0.002365"/>
+</kw>
+<if>
+<branch type="IF" condition="${i} &lt;= 10">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.518394" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.517856" elapsed="0.000628"/>
+</kw>
+<status status="PASS" start="2026-02-25T14:37:33.517666" elapsed="0.000894"/>
+</branch>
+<branch type="ELSE">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>429</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2026-02-25T14:37:33.518768" elapsed="0.000034"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${resp.text}</arg>
+<arg>Rate limit</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" start="2026-02-25T14:37:33.519040" elapsed="0.000030"/>
+</kw>
+<status status="NOT RUN" start="2026-02-25T14:37:33.518607" elapsed="0.000509"/>
+</branch>
+<status status="PASS" start="2026-02-25T14:37:33.517639" elapsed="0.001511"/>
+</if>
+<var name="${i}">5</var>
+<status status="PASS" start="2026-02-25T14:37:33.515139" elapsed="0.004054"/>
+</iter>
+<iter>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-02-25T14:37:33.523904" level="INFO">GET Request : url=http://127.0.0.1:5050/products 
+ path_url=/products 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-25T14:37:33.523987" level="INFO">GET Response : url=http://127.0.0.1:5050/products 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.6 Python/3.14.2', 'Date': 'Wed, 25 Feb 2026 17:37:33 GMT', 'Content-Type': 'application/json', 'Content-Length': '246', 'Connection': 'close'} 
+ body=[{"category":"mock","description":"Mock item","id":1,"image":"https://example.com/p.png","price":100.0,"title":"Product"},{"category":"mock","description":"Mock item 2","id":2,"image":"https://example.com/p2.png","price":50.5,"title":"Another"}]
+ 
+ </msg>
+<msg time="2026-02-25T14:37:33.524134" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>mock</arg>
+<arg>/products</arg>
+<arg>expected_status=ANY</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.519659" elapsed="0.004504"/>
+</kw>
+<if>
+<branch type="IF" condition="${i} &lt;= 10">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.525669" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.524649" elapsed="0.001092"/>
+</kw>
+<status status="PASS" start="2026-02-25T14:37:33.524295" elapsed="0.001490"/>
+</branch>
+<branch type="ELSE">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>429</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2026-02-25T14:37:33.525938" elapsed="0.000059"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${resp.text}</arg>
+<arg>Rate limit</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" start="2026-02-25T14:37:33.526098" elapsed="0.000017"/>
+</kw>
+<status status="NOT RUN" start="2026-02-25T14:37:33.525814" elapsed="0.000367"/>
+</branch>
+<status status="PASS" start="2026-02-25T14:37:33.524255" elapsed="0.001946"/>
+</if>
+<var name="${i}">6</var>
+<status status="PASS" start="2026-02-25T14:37:33.519460" elapsed="0.006765"/>
+</iter>
+<iter>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-02-25T14:37:33.528746" level="INFO">GET Request : url=http://127.0.0.1:5050/products 
+ path_url=/products 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-25T14:37:33.528800" level="INFO">GET Response : url=http://127.0.0.1:5050/products 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.6 Python/3.14.2', 'Date': 'Wed, 25 Feb 2026 17:37:33 GMT', 'Content-Type': 'application/json', 'Content-Length': '246', 'Connection': 'close'} 
+ body=[{"category":"mock","description":"Mock item","id":1,"image":"https://example.com/p.png","price":100.0,"title":"Product"},{"category":"mock","description":"Mock item 2","id":2,"image":"https://example.com/p2.png","price":50.5,"title":"Another"}]
+ 
+ </msg>
+<msg time="2026-02-25T14:37:33.528903" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>mock</arg>
+<arg>/products</arg>
+<arg>expected_status=ANY</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.526505" elapsed="0.002420"/>
+</kw>
+<if>
+<branch type="IF" condition="${i} &lt;= 10">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.529677" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.529177" elapsed="0.000561"/>
+</kw>
+<status status="PASS" start="2026-02-25T14:37:33.529001" elapsed="0.000779"/>
+</branch>
+<branch type="ELSE">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>429</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2026-02-25T14:37:33.529899" elapsed="0.000016"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${resp.text}</arg>
+<arg>Rate limit</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" start="2026-02-25T14:37:33.529995" elapsed="0.000015"/>
+</kw>
+<status status="NOT RUN" start="2026-02-25T14:37:33.529809" elapsed="0.000229"/>
+</branch>
+<status status="PASS" start="2026-02-25T14:37:33.528982" elapsed="0.001073"/>
+</if>
+<var name="${i}">7</var>
+<status status="PASS" start="2026-02-25T14:37:33.526364" elapsed="0.003712"/>
+</iter>
+<iter>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-02-25T14:37:33.532323" level="INFO">GET Request : url=http://127.0.0.1:5050/products 
+ path_url=/products 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-25T14:37:33.532377" level="INFO">GET Response : url=http://127.0.0.1:5050/products 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.6 Python/3.14.2', 'Date': 'Wed, 25 Feb 2026 17:37:33 GMT', 'Content-Type': 'application/json', 'Content-Length': '246', 'Connection': 'close'} 
+ body=[{"category":"mock","description":"Mock item","id":1,"image":"https://example.com/p.png","price":100.0,"title":"Product"},{"category":"mock","description":"Mock item 2","id":2,"image":"https://example.com/p2.png","price":50.5,"title":"Another"}]
+ 
+ </msg>
+<msg time="2026-02-25T14:37:33.532475" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>mock</arg>
+<arg>/products</arg>
+<arg>expected_status=ANY</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.530274" elapsed="0.002224"/>
+</kw>
+<if>
+<branch type="IF" condition="${i} &lt;= 10">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.533262" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.532749" elapsed="0.000573"/>
+</kw>
+<status status="PASS" start="2026-02-25T14:37:33.532573" elapsed="0.000782"/>
+</branch>
+<branch type="ELSE">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>429</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2026-02-25T14:37:33.533468" elapsed="0.000017"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${resp.text}</arg>
+<arg>Rate limit</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" start="2026-02-25T14:37:33.533568" elapsed="0.000015"/>
+</kw>
+<status status="NOT RUN" start="2026-02-25T14:37:33.533378" elapsed="0.000252"/>
+</branch>
+<status status="PASS" start="2026-02-25T14:37:33.532555" elapsed="0.001093"/>
+</if>
+<var name="${i}">8</var>
+<status status="PASS" start="2026-02-25T14:37:33.530200" elapsed="0.003468"/>
+</iter>
+<iter>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-02-25T14:37:33.537439" level="INFO">GET Request : url=http://127.0.0.1:5050/products 
+ path_url=/products 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-25T14:37:33.537592" level="INFO">GET Response : url=http://127.0.0.1:5050/products 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.6 Python/3.14.2', 'Date': 'Wed, 25 Feb 2026 17:37:33 GMT', 'Content-Type': 'application/json', 'Content-Length': '246', 'Connection': 'close'} 
+ body=[{"category":"mock","description":"Mock item","id":1,"image":"https://example.com/p.png","price":100.0,"title":"Product"},{"category":"mock","description":"Mock item 2","id":2,"image":"https://example.com/p2.png","price":50.5,"title":"Another"}]
+ 
+ </msg>
+<msg time="2026-02-25T14:37:33.537866" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>mock</arg>
+<arg>/products</arg>
+<arg>expected_status=ANY</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.533866" elapsed="0.004055"/>
+</kw>
+<if>
+<branch type="IF" condition="${i} &lt;= 10">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.539729" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.538721" elapsed="0.001092"/>
+</kw>
+<status status="PASS" start="2026-02-25T14:37:33.538093" elapsed="0.001775"/>
+</branch>
+<branch type="ELSE">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>429</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2026-02-25T14:37:33.540083" elapsed="0.000044"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${resp.text}</arg>
+<arg>Rate limit</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" start="2026-02-25T14:37:33.540302" elapsed="0.000117"/>
+</kw>
+<status status="NOT RUN" start="2026-02-25T14:37:33.539898" elapsed="0.000581"/>
+</branch>
+<status status="PASS" start="2026-02-25T14:37:33.538058" elapsed="0.002451"/>
+</if>
+<var name="${i}">9</var>
+<status status="PASS" start="2026-02-25T14:37:33.533795" elapsed="0.006749"/>
+</iter>
+<iter>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-02-25T14:37:33.543035" level="INFO">GET Request : url=http://127.0.0.1:5050/products 
+ path_url=/products 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-25T14:37:33.543101" level="INFO">GET Response : url=http://127.0.0.1:5050/products 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.6 Python/3.14.2', 'Date': 'Wed, 25 Feb 2026 17:37:33 GMT', 'Content-Type': 'application/json', 'Content-Length': '246', 'Connection': 'close'} 
+ body=[{"category":"mock","description":"Mock item","id":1,"image":"https://example.com/p.png","price":100.0,"title":"Product"},{"category":"mock","description":"Mock item 2","id":2,"image":"https://example.com/p2.png","price":50.5,"title":"Another"}]
+ 
+ </msg>
+<msg time="2026-02-25T14:37:33.543203" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>mock</arg>
+<arg>/products</arg>
+<arg>expected_status=ANY</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.540804" elapsed="0.002421"/>
+</kw>
+<if>
+<branch type="IF" condition="${i} &lt;= 10">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.544046" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.543521" elapsed="0.000582"/>
+</kw>
+<status status="PASS" start="2026-02-25T14:37:33.543302" elapsed="0.000835"/>
+</branch>
+<branch type="ELSE">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>429</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2026-02-25T14:37:33.544250" elapsed="0.000017"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${resp.text}</arg>
+<arg>Rate limit</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" start="2026-02-25T14:37:33.544349" elapsed="0.000015"/>
+</kw>
+<status status="NOT RUN" start="2026-02-25T14:37:33.544161" elapsed="0.000230"/>
+</branch>
+<status status="PASS" start="2026-02-25T14:37:33.543283" elapsed="0.001126"/>
+</if>
+<var name="${i}">10</var>
+<status status="PASS" start="2026-02-25T14:37:33.540729" elapsed="0.003701"/>
+</iter>
+<iter>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-02-25T14:37:33.546643" level="INFO">GET Request : url=http://127.0.0.1:5050/products 
+ path_url=/products 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-25T14:37:33.546693" level="INFO">GET Response : url=http://127.0.0.1:5050/products 
+ status=429, reason=TOO MANY REQUESTS 
+ headers={'Server': 'Werkzeug/3.1.6 Python/3.14.2', 'Date': 'Wed, 25 Feb 2026 17:37:33 GMT', 'Content-Type': 'application/json', 'Content-Length': '32', 'Connection': 'close'} 
+ body={"error":"Rate limit exceeded"}
+ 
+ </msg>
+<msg time="2026-02-25T14:37:33.546847" level="INFO">${resp} = &lt;Response [429]&gt;</msg>
+<var>${resp}</var>
+<arg>mock</arg>
+<arg>/products</arg>
+<arg>expected_status=ANY</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.544627" elapsed="0.002255"/>
+</kw>
+<if>
+<branch type="IF" condition="${i} &lt;= 10">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2026-02-25T14:37:33.547177" elapsed="0.000019"/>
+</kw>
+<status status="NOT RUN" start="2026-02-25T14:37:33.546984" elapsed="0.000243"/>
+</branch>
+<branch type="ELSE">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.547786" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>429</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.547328" elapsed="0.000511"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${resp.text}</arg>
+<arg>Rate limit</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.547942" elapsed="0.000477"/>
+</kw>
+<status status="PASS" start="2026-02-25T14:37:33.547249" elapsed="0.001206"/>
+</branch>
+<status status="PASS" start="2026-02-25T14:37:33.546963" elapsed="0.001511"/>
+</if>
+<var name="${i}">11</var>
+<status status="PASS" start="2026-02-25T14:37:33.544554" elapsed="0.003942"/>
+</iter>
+<iter>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-02-25T14:37:33.550718" level="INFO">GET Request : url=http://127.0.0.1:5050/products 
+ path_url=/products 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-25T14:37:33.550791" level="INFO">GET Response : url=http://127.0.0.1:5050/products 
+ status=429, reason=TOO MANY REQUESTS 
+ headers={'Server': 'Werkzeug/3.1.6 Python/3.14.2', 'Date': 'Wed, 25 Feb 2026 17:37:33 GMT', 'Content-Type': 'application/json', 'Content-Length': '32', 'Connection': 'close'} 
+ body={"error":"Rate limit exceeded"}
+ 
+ </msg>
+<msg time="2026-02-25T14:37:33.550884" level="INFO">${resp} = &lt;Response [429]&gt;</msg>
+<var>${resp}</var>
+<arg>mock</arg>
+<arg>/products</arg>
+<arg>expected_status=ANY</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.548703" elapsed="0.002204"/>
+</kw>
+<if>
+<branch type="IF" condition="${i} &lt;= 10">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" start="2026-02-25T14:37:33.551145" elapsed="0.000018"/>
+</kw>
+<status status="NOT RUN" start="2026-02-25T14:37:33.550979" elapsed="0.000214"/>
+</branch>
+<branch type="ELSE">
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-02-25T14:37:33.551873" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>429</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.551291" elapsed="0.000665"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${resp.text}</arg>
+<arg>Rate limit</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.552150" elapsed="0.000995"/>
+</kw>
+<status status="PASS" start="2026-02-25T14:37:33.551213" elapsed="0.002006"/>
+</branch>
+<status status="PASS" start="2026-02-25T14:37:33.550961" elapsed="0.002295"/>
+</if>
+<var name="${i}">12</var>
+<status status="PASS" start="2026-02-25T14:37:33.548628" elapsed="0.004668"/>
+</iter>
+<var>${i}</var>
+<value>1</value>
+<value>13</value>
+<status status="PASS" start="2026-02-25T14:37:33.496022" elapsed="0.057317"/>
+</for>
+<status status="PASS" start="2026-02-25T14:37:33.492335" elapsed="0.061140"/>
+</kw>
+<kw name="Stop Mock Server" owner="002resourcetestteardown" type="TEARDOWN">
+<kw name="Run Keyword And Ignore Error" owner="BuiltIn">
+<kw name="Terminate Process" owner="Process">
+<msg time="2026-02-25T14:37:33.555892" level="INFO">Gracefully terminating process.</msg>
+<msg time="2026-02-25T14:37:33.657344" level="INFO">Process completed.</msg>
+<arg>${MOCK_PROC}</arg>
+<doc>Stops the process gracefully or forcefully.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.555522" elapsed="0.101954"/>
+</kw>
+<arg>Terminate Process</arg>
+<arg>${MOCK_PROC}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<status status="PASS" start="2026-02-25T14:37:33.554925" elapsed="0.102636"/>
+</kw>
+<status status="PASS" start="2026-02-25T14:37:33.554353" elapsed="0.103281"/>
+</kw>
+<doc>Pré condição:
+
+Usuario  e senha cadastrado</doc>
+<tag>7.1test</tag>
+<tag>E2EMAGAZORD</tag>
+<tag>regression</tag>
+<status status="PASS" start="2026-02-25T14:37:32.890194" elapsed="0.767601"/>
+</test>
+<doc>Este caso de teste tem como objetivo adicionar um produto ao carrinho</doc>
+<status status="PASS" start="2026-02-25T14:37:32.661716" elapsed="0.996696"/>
+</suite>
+<status status="PASS" start="2026-02-25T14:37:32.660284" elapsed="0.999027"/>
+</suite>
+<status status="PASS" start="2026-02-25T14:37:32.612228" elapsed="1.047827"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">7.1test</stat>
+<stat pass="1" fail="0" skip="0">E2EMAGAZORD</stat>
+<stat pass="1" fail="0" skip="0">regression</stat>
+</tag>
+<suite>
+<stat name="Questao7.1" id="s1" pass="1" fail="0" skip="0">Questao7.1</stat>
+<stat name="Tests" id="s1-s1" pass="1" fail="0" skip="0">Questao7.1.Tests</stat>
+<stat name="7.1Test" id="s1-s1-s1" pass="1" fail="0" skip="0">Questao7.1.Tests.7.1Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.1 (Python 3.14.2 on win32)" generated="2026-02-26T00:39:13.566285" rpa="false" schemaversion="5">
+<suite id="s1" name="4.1Test" source="E:\testemagazord\app\data\TesteMagazord\parte4-arquivos\questao4.1\tests\4.1test.robot">
+<test id="s1-t1" name="4.1test" line="11">
+<kw name="Test Setup" owner="001resourcetestsetup" type="SETUP">
+<kw name="Acessar o site &quot;the-internet&quot;" owner="001resourcetestsetup" source_name="Acessar o site &quot;${titulosite}&quot;">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-02-26T00:39:14.466097" level="INFO">Opening browser 'headlesschrome' to base url 'https://the-internet.herokuapp.com/upload'.</msg>
+<arg>url=${site}</arg>
+<arg>browser=headlesschrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-02-26T00:39:14.465843" elapsed="2.553297"/>
+</kw>
+<kw name="Set Window Size" owner="SeleniumLibrary">
+<arg>1920</arg>
+<arg>1080</arg>
+<doc>Sets current windows size to given ``width`` and ``height``.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.020617" elapsed="0.037186"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.058234" elapsed="0.028772"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${titulo_pagina_inicial}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.087228" elapsed="0.115389"/>
+</kw>
+<status status="PASS" start="2026-02-26T00:39:14.464827" elapsed="2.737998"/>
+</kw>
+<status status="PASS" start="2026-02-26T00:39:14.464521" elapsed="2.738412"/>
+</kw>
+<kw name="Gerar csv dinamico" owner="003tests">
+<kw name="Generate" owner="csv_generator">
+<msg time="2026-02-26T00:39:17.207454" level="INFO">${arquivo} = E:\testemagazord\app\data\fixture\valido_10.csv</msg>
+<var>${arquivo}</var>
+<arg>../fixture/valido_${qtd}.csv</arg>
+<arg>${qtd}</arg>
+<status status="PASS" start="2026-02-26T00:39:17.203781" elapsed="0.003822"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-26T00:39:17.209233" level="INFO">CSV gerado em: E:\testemagazord\app\data\fixture\valido_10.csv</msg>
+<arg>CSV gerado em: ${arquivo}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.208515" elapsed="0.000777"/>
+</kw>
+<kw name="File Should Exist" owner="OperatingSystem">
+<msg time="2026-02-26T00:39:17.209795" level="INFO" html="true">File '&lt;a href="file://E:\testemagazord\app\data\fixture\valido_10.csv"&gt;E:\testemagazord\app\data\fixture\valido_10.csv&lt;/a&gt;' exists.</msg>
+<arg>${arquivo}</arg>
+<doc>Fails unless the given ``path`` points to an existing file.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.209458" elapsed="0.000396"/>
+</kw>
+<arg>10</arg>
+<status status="PASS" start="2026-02-26T00:39:17.203286" elapsed="0.006641"/>
+</kw>
+<kw name="Gerar csv dinamico" owner="003tests">
+<kw name="Generate" owner="csv_generator">
+<msg time="2026-02-26T00:39:17.212427" level="INFO">${arquivo} = E:\testemagazord\app\data\fixture\valido_100.csv</msg>
+<var>${arquivo}</var>
+<arg>../fixture/valido_${qtd}.csv</arg>
+<arg>${qtd}</arg>
+<status status="PASS" start="2026-02-26T00:39:17.210363" elapsed="0.002139"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-26T00:39:17.213173" level="INFO">CSV gerado em: E:\testemagazord\app\data\fixture\valido_100.csv</msg>
+<arg>CSV gerado em: ${arquivo}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.212787" elapsed="0.000444"/>
+</kw>
+<kw name="File Should Exist" owner="OperatingSystem">
+<msg time="2026-02-26T00:39:17.213705" level="INFO" html="true">File '&lt;a href="file://E:\testemagazord\app\data\fixture\valido_100.csv"&gt;E:\testemagazord\app\data\fixture\valido_100.csv&lt;/a&gt;' exists.</msg>
+<arg>${arquivo}</arg>
+<doc>Fails unless the given ``path`` points to an existing file.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.213386" elapsed="0.000408"/>
+</kw>
+<arg>100</arg>
+<status status="PASS" start="2026-02-26T00:39:17.210103" elapsed="0.003800"/>
+</kw>
+<kw name="Gerar csv dinamico" owner="003tests">
+<kw name="Generate" owner="csv_generator">
+<msg time="2026-02-26T00:39:17.218726" level="INFO">${arquivo} = E:\testemagazord\app\data\fixture\valido_1000.csv</msg>
+<var>${arquivo}</var>
+<arg>../fixture/valido_${qtd}.csv</arg>
+<arg>${qtd}</arg>
+<status status="PASS" start="2026-02-26T00:39:17.214350" elapsed="0.004427"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-26T00:39:17.220665" level="INFO">CSV gerado em: E:\testemagazord\app\data\fixture\valido_1000.csv</msg>
+<arg>CSV gerado em: ${arquivo}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.219451" elapsed="0.001336"/>
+</kw>
+<kw name="File Should Exist" owner="OperatingSystem">
+<msg time="2026-02-26T00:39:17.221997" level="INFO" html="true">File '&lt;a href="file://E:\testemagazord\app\data\fixture\valido_1000.csv"&gt;E:\testemagazord\app\data\fixture\valido_1000.csv&lt;/a&gt;' exists.</msg>
+<arg>${arquivo}</arg>
+<doc>Fails unless the given ``path`` points to an existing file.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.221194" elapsed="0.000977"/>
+</kw>
+<arg>1000</arg>
+<status status="PASS" start="2026-02-26T00:39:17.214089" elapsed="0.008264"/>
+</kw>
+<kw name="Realizar o upload do arquivo valido &quot;valido_10&quot;" owner="003tests" source_name="Realizar o upload do arquivo valido &quot;${nomecsv}&quot;">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-02-26T00:39:17.223856" level="INFO">${arquivo} = E:\testemagazord\app\data\TesteMagazord\parte4-arquivos\questao4.1\fixture\valido_10.csv</msg>
+<var>${arquivo}</var>
+<arg>${variable_fixture}\\${nomecsv}.csv</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.223267" elapsed="0.000642"/>
+</kw>
+<kw name="Choose File" owner="SeleniumLibrary">
+<msg time="2026-02-26T00:39:17.224496" level="INFO">Sending E:\testemagazord\app\data\TesteMagazord\parte4-arquivos\questao4.1\fixture\valido_10.csv to browser.</msg>
+<arg>${btnescolherarquivo}</arg>
+<arg>${arquivo}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.224159" elapsed="0.036770"/>
+</kw>
+<status status="PASS" start="2026-02-26T00:39:17.222741" elapsed="0.038365"/>
+</kw>
+<kw name="Realizar o upload do arquivo csv &quot;vazio&quot;" owner="003tests" source_name="Realizar o upload do arquivo csv &quot;${tipodecsv}&quot;">
+<if>
+<branch type="IF" condition="&quot;${tipodecsv}&quot; == &quot;vazio&quot;">
+<kw name="Realizar o upload do arquivo csv vazio" owner="003tests">
+<kw name="Normalize Path" owner="OperatingSystem">
+<msg time="2026-02-26T00:39:17.263217" level="INFO">${arquivo} = ..\fixture\vazio.csv</msg>
+<var>${arquivo}</var>
+<arg>../fixture/vazio.csv</arg>
+<doc>Normalizes the given path.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.263056" elapsed="0.000195"/>
+</kw>
+<kw name="Create File" owner="OperatingSystem">
+<msg time="2026-02-26T00:39:17.264519" level="INFO" html="true">Created file '&lt;a href="file://E:\testemagazord\app\data\fixture\vazio.csv"&gt;E:\testemagazord\app\data\fixture\vazio.csv&lt;/a&gt;'.</msg>
+<arg>${arquivo}</arg>
+<arg>${EMPTY}</arg>
+<arg>encoding=UTF-8</arg>
+<doc>Creates a file with the given content and encoding.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.263490" elapsed="0.001121"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-02-26T00:39:17.265153" level="INFO">${arquivo} = E:\testemagazord\app\data\TesteMagazord\parte4-arquivos\questao4.1\fixture\vazio.csv</msg>
+<var>${arquivo}</var>
+<arg>${variable_fixture}\\vazio.csv</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.264802" elapsed="0.000385"/>
+</kw>
+<kw name="Choose File" owner="SeleniumLibrary">
+<msg time="2026-02-26T00:39:17.265819" level="INFO">Sending E:\testemagazord\app\data\TesteMagazord\parte4-arquivos\questao4.1\fixture\vazio.csv to browser.</msg>
+<arg>${btnescolherarquivo}</arg>
+<arg>${arquivo}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.265451" elapsed="0.030893"/>
+</kw>
+<status status="PASS" start="2026-02-26T00:39:17.262700" elapsed="0.033752"/>
+</kw>
+<status status="PASS" start="2026-02-26T00:39:17.261915" elapsed="0.034575"/>
+</branch>
+<branch type="ELSE IF" condition="&quot;${tipodecsv}&quot; == &quot;formato inválido&quot;">
+<kw name="Realizar o upload do arquivo csv com formato inválido" owner="003tests">
+<status status="NOT RUN" start="2026-02-26T00:39:17.296756" elapsed="0.000033"/>
+</kw>
+<status status="NOT RUN" start="2026-02-26T00:39:17.296546" elapsed="0.000276"/>
+</branch>
+<branch type="ELSE IF" condition="&quot;${tipodecsv}&quot; == &quot;dados malformados&quot;">
+<kw name="Realizar o upload do arquivo csv com dados malformados" owner="003tests">
+<status status="NOT RUN" start="2026-02-26T00:39:17.297002" elapsed="0.000028"/>
+</kw>
+<status status="NOT RUN" start="2026-02-26T00:39:17.296859" elapsed="0.000202"/>
+</branch>
+<status status="PASS" start="2026-02-26T00:39:17.261868" elapsed="0.035224"/>
+</if>
+<status status="PASS" start="2026-02-26T00:39:17.261517" elapsed="0.035627"/>
+</kw>
+<kw name="Realizar o upload do arquivo csv &quot;formato inválido&quot;" owner="003tests" source_name="Realizar o upload do arquivo csv &quot;${tipodecsv}&quot;">
+<if>
+<branch type="IF" condition="&quot;${tipodecsv}&quot; == &quot;vazio&quot;">
+<kw name="Realizar o upload do arquivo csv vazio" owner="003tests">
+<status status="NOT RUN" start="2026-02-26T00:39:17.298036" elapsed="0.000044"/>
+</kw>
+<status status="NOT RUN" start="2026-02-26T00:39:17.297686" elapsed="0.000440"/>
+</branch>
+<branch type="ELSE IF" condition="&quot;${tipodecsv}&quot; == &quot;formato inválido&quot;">
+<kw name="Realizar o upload do arquivo csv com formato inválido" owner="003tests">
+<kw name="Normalize Path" owner="OperatingSystem">
+<msg time="2026-02-26T00:39:17.298868" level="INFO">${arquivo} = ..\fixture\invalido.txt</msg>
+<var>${arquivo}</var>
+<arg>../fixture/invalido.txt</arg>
+<doc>Normalizes the given path.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.298695" elapsed="0.000205"/>
+</kw>
+<kw name="Create File" owner="OperatingSystem">
+<msg time="2026-02-26T00:39:17.299681" level="INFO" html="true">Created file '&lt;a href="file://E:\testemagazord\app\data\fixture\invalido.txt"&gt;E:\testemagazord\app\data\fixture\invalido.txt&lt;/a&gt;'.</msg>
+<arg>${arquivo}</arg>
+<arg>Este arquivo não é um CSV</arg>
+<arg>encoding=UTF-8</arg>
+<doc>Creates a file with the given content and encoding.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.299036" elapsed="0.000723"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-02-26T00:39:17.300289" level="INFO">${arquivo} = E:\testemagazord\app\data\TesteMagazord\parte4-arquivos\questao4.1\fixture\invalido.txt</msg>
+<var>${arquivo}</var>
+<arg>${variable_fixture}\\invalido.txt</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.299936" elapsed="0.000386"/>
+</kw>
+<kw name="Choose File" owner="SeleniumLibrary">
+<msg time="2026-02-26T00:39:17.300686" level="INFO">Sending E:\testemagazord\app\data\TesteMagazord\parte4-arquivos\questao4.1\fixture\invalido.txt to browser.</msg>
+<arg>${btnescolherarquivo}</arg>
+<arg>${arquivo}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.300471" elapsed="0.032919"/>
+</kw>
+<status status="PASS" start="2026-02-26T00:39:17.298434" elapsed="0.035073"/>
+</kw>
+<status status="PASS" start="2026-02-26T00:39:17.298170" elapsed="0.035377"/>
+</branch>
+<branch type="ELSE IF" condition="&quot;${tipodecsv}&quot; == &quot;dados malformados&quot;">
+<kw name="Realizar o upload do arquivo csv com dados malformados" owner="003tests">
+<status status="NOT RUN" start="2026-02-26T00:39:17.333909" elapsed="0.000073"/>
+</kw>
+<status status="NOT RUN" start="2026-02-26T00:39:17.333589" elapsed="0.000430"/>
+</branch>
+<status status="PASS" start="2026-02-26T00:39:17.297653" elapsed="0.036406"/>
+</if>
+<status status="PASS" start="2026-02-26T00:39:17.297350" elapsed="0.036769"/>
+</kw>
+<kw name="Realizar o upload do arquivo csv &quot;dados malformados&quot;" owner="003tests" source_name="Realizar o upload do arquivo csv &quot;${tipodecsv}&quot;">
+<if>
+<branch type="IF" condition="&quot;${tipodecsv}&quot; == &quot;vazio&quot;">
+<kw name="Realizar o upload do arquivo csv vazio" owner="003tests">
+<status status="NOT RUN" start="2026-02-26T00:39:17.334822" elapsed="0.000031"/>
+</kw>
+<status status="NOT RUN" start="2026-02-26T00:39:17.334542" elapsed="0.000344"/>
+</branch>
+<branch type="ELSE IF" condition="&quot;${tipodecsv}&quot; == &quot;formato inválido&quot;">
+<kw name="Realizar o upload do arquivo csv com formato inválido" owner="003tests">
+<status status="NOT RUN" start="2026-02-26T00:39:17.335131" elapsed="0.000029"/>
+</kw>
+<status status="NOT RUN" start="2026-02-26T00:39:17.334918" elapsed="0.000274"/>
+</branch>
+<branch type="ELSE IF" condition="&quot;${tipodecsv}&quot; == &quot;dados malformados&quot;">
+<kw name="Realizar o upload do arquivo csv com dados malformados" owner="003tests">
+<kw name="Normalize Path" owner="OperatingSystem">
+<msg time="2026-02-26T00:39:17.338092" level="INFO">${arquivo} = ..\fixture\invalido.txt</msg>
+<var>${arquivo}</var>
+<arg>../fixture/invalido.txt</arg>
+<doc>Normalizes the given path.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.337877" elapsed="0.000252"/>
+</kw>
+<kw name="Create File" owner="OperatingSystem">
+<msg time="2026-02-26T00:39:17.339141" level="INFO" html="true">Created file '&lt;a href="file://E:\testemagazord\app\data\fixture\invalido.txt"&gt;E:\testemagazord\app\data\fixture\invalido.txt&lt;/a&gt;'.</msg>
+<arg>${arquivo}</arg>
+<arg>Coluna1,Coluna2,\nColuna3Valor1,Valor2,Valor3</arg>
+<arg>encoding=UTF-8</arg>
+<doc>Creates a file with the given content and encoding.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.338294" elapsed="0.000955"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-02-26T00:39:17.339842" level="INFO">${arquivo} = E:\testemagazord\app\data\TesteMagazord\parte4-arquivos\questao4.1\fixture\invalido.txt</msg>
+<var>${arquivo}</var>
+<arg>${variable_fixture}\\invalido.txt</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.339482" elapsed="0.000390"/>
+</kw>
+<kw name="Choose File" owner="SeleniumLibrary">
+<msg time="2026-02-26T00:39:17.340242" level="INFO">Sending E:\testemagazord\app\data\TesteMagazord\parte4-arquivos\questao4.1\fixture\invalido.txt to browser.</msg>
+<arg>${btnescolherarquivo}</arg>
+<arg>${arquivo}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.340012" elapsed="0.017426"/>
+</kw>
+<status status="PASS" start="2026-02-26T00:39:17.337474" elapsed="0.020144"/>
+</kw>
+<status status="PASS" start="2026-02-26T00:39:17.335224" elapsed="0.022441"/>
+</branch>
+<status status="PASS" start="2026-02-26T00:39:17.334524" elapsed="0.023195"/>
+</if>
+<status status="PASS" start="2026-02-26T00:39:17.334331" elapsed="0.023453"/>
+</kw>
+<kw name="Validar upload do arquivo bem sucedido" owner="003tests">
+<kw name="Realizar o upload do arquivo csv vazio" owner="003tests">
+<kw name="Normalize Path" owner="OperatingSystem">
+<msg time="2026-02-26T00:39:17.358892" level="INFO">${arquivo} = ..\fixture\vazio.csv</msg>
+<var>${arquivo}</var>
+<arg>../fixture/vazio.csv</arg>
+<doc>Normalizes the given path.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.358741" elapsed="0.000181"/>
+</kw>
+<kw name="Create File" owner="OperatingSystem">
+<msg time="2026-02-26T00:39:17.359800" level="INFO" html="true">Created file '&lt;a href="file://E:\testemagazord\app\data\fixture\vazio.csv"&gt;E:\testemagazord\app\data\fixture\vazio.csv&lt;/a&gt;'.</msg>
+<arg>${arquivo}</arg>
+<arg>${EMPTY}</arg>
+<arg>encoding=UTF-8</arg>
+<doc>Creates a file with the given content and encoding.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.359070" elapsed="0.000811"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-02-26T00:39:17.360308" level="INFO">${arquivo} = E:\testemagazord\app\data\TesteMagazord\parte4-arquivos\questao4.1\fixture\vazio.csv</msg>
+<var>${arquivo}</var>
+<arg>${variable_fixture}\\vazio.csv</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.360019" elapsed="0.000317"/>
+</kw>
+<kw name="Choose File" owner="SeleniumLibrary">
+<msg time="2026-02-26T00:39:17.360655" level="INFO">Sending E:\testemagazord\app\data\TesteMagazord\parte4-arquivos\questao4.1\fixture\vazio.csv to browser.</msg>
+<arg>${btnescolherarquivo}</arg>
+<arg>${arquivo}</arg>
+<doc>Inputs the ``file_path`` into the file input field ``locator``.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.360463" elapsed="0.017773"/>
+</kw>
+<status status="PASS" start="2026-02-26T00:39:17.358503" elapsed="0.019840"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2026-02-26T00:39:17.378693" level="INFO">Clicking button '//input[@id="file-submit"]'.</msg>
+<arg>${btnupload}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.378496" elapsed="0.198573"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>${mensagem_sucesso}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.577323" elapsed="0.020654"/>
+</kw>
+<status status="PASS" start="2026-02-26T00:39:17.358149" elapsed="0.239998"/>
+</kw>
+<kw name="Test teardown" owner="002resourcetestteardown" type="TEARDOWN">
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2026-02-26T00:39:17.684113" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="../../../data/TesteMagazord/None/ARQUIVOSMAGAZORD-4.1test.png"&gt;&lt;img src="../../../data/TesteMagazord/None/ARQUIVOSMAGAZORD-4.1test.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${EVIDENCIA}-${CASODETESTE}.png</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.599177" elapsed="0.085028"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2026-02-26T00:39:17.684380" elapsed="2.186063"/>
+</kw>
+<arg>ARQUIVOSMAGAZORD</arg>
+<arg>4.1test</arg>
+<status status="PASS" start="2026-02-26T00:39:17.598591" elapsed="2.271978"/>
+</kw>
+<doc>Pré condição:
+
+Usuario  e senha cadastrado</doc>
+<tag>4.1test</tag>
+<tag>ARQUIVOSMAGAZORD</tag>
+<tag>regression</tag>
+<status status="PASS" start="2026-02-26T00:39:14.463823" elapsed="5.406809"/>
+</test>
+<doc>Este caso de teste tem como objetivo adicionar um produto ao carrinho</doc>
+<status status="PASS" start="2026-02-26T00:39:13.567822" elapsed="6.303330"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">4.1test</stat>
+<stat pass="1" fail="0" skip="0">ARQUIVOSMAGAZORD</stat>
+<stat pass="1" fail="0" skip="0">regression</stat>
+</tag>
+<suite>
+<stat name="4.1Test" id="s1" pass="1" fail="0" skip="0">4.1Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

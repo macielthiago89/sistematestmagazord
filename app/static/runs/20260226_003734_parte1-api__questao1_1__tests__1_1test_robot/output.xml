@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.1 (Python 3.14.2 on win32)" generated="2026-02-26T00:37:35.180743" rpa="false" schemaversion="5">
+<suite id="s1" name="1.1Test" source="E:\testemagazord\app\data\TesteMagazord\parte1-api\questao1.1\tests\1.1test.robot">
+<test id="s1-t1" name="1.1test" line="7">
+<kw name="Validar headers rate limit" owner="003tests">
+<kw name="Criar sessao GitHub" owner="003tests">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-02-26T00:37:36.079216" level="INFO">Creating Session using : alias=magazord, url=https://api.github.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<arg>${sessao}</arg>
+<arg>${base_url}</arg>
+<arg>verify=${True}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-02-26T00:37:36.078896" elapsed="0.000538"/>
+</kw>
+<status status="PASS" start="2026-02-26T00:37:36.065987" elapsed="0.013566"/>
+</kw>
+<kw name="Fazer GET usuario GitHub" owner="003tests">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-02-26T00:37:36.616630" level="INFO">GET Request : url=https://api.github.com/users/github 
+ path_url=/users/github 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-26T00:37:36.616791" level="INFO">GET Response : url=https://api.github.com/users/github 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 26 Feb 2026 03:37:24 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'public, max-age=60, s-maxage=60', 'Vary': 'Accept,Accept-Encoding, Accept, X-Requested-With', 'ETag': 'W/"7107e88c19fdbd63f109243e96d6fae5adb5d24fd96c50b6551c91c654641176"', 'Last-Modified': 'Tue, 24 Feb 2026 15:58:00 GMT', 'X-GitHub-Media-Type': 'github.v3; format=json', 'x-github-api-version-selected': '2022-11-28', 'Access-Control-Expose-Headers': 'ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset', 'Access-Control-Allow-Origin': '*', 'Strict-Transport-Security': 'max-age=31536000; includeSubdomains; preload', 'X-Frame-Options': 'deny', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '0', 'Referrer-Policy': 'origin-when-cross-origin, strict-origin-when-cross-origin', 'Content-Security-Policy': "default-src 'none'", 'Content-Encoding': 'gzip', 'Server': 'github.com', 'Accept-Ranges': 'bytes', 'X-RateLimit-Limit': '60', 'X-RateLimit-Remaining': '55', 'X-RateLimit-Reset': '1772080644', 'X-RateLimit-Resource': 'core', 'X-RateLimit-Used': '5', 'Content-Length': '519', 'X-GitHub-Request-Id': '773F:310D30:1BEA135:1E86381:699FC002'} 
+ body={"login":"github","id":9919,"node_id":"MDEyOk9yZ2FuaXphdGlvbjk5MTk=","avatar_url":"https://avatars.githubusercontent.com/u/9919?v=4","gravatar_id":"","url":"https://api.github.com/users/github","html_url":"https://github.com/github","followers_url":"https://api.github.com/users/github/followers","following_url":"https://api.github.com/users/github/following{/other_user}","gists_url":"https://api.github.com/users/github/gists{/gist_id}","starred_url":"https://api.github.com/users/github/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/github/subscriptions","organizations_url":"https://api.github.com/users/github/orgs","repos_url":"https://api.github.com/users/github/repos","events_url":"https://api.github.com/users/github/events{/privacy}","received_events_url":"https://api.github.com/users/github/received_events","type":"Organization","user_view_type":"public","site_admin":false,"name":"GitHub","company":null,"blog":"https://github.com/about","location":"San Francisco, CA","email":null,"hireable":null,"bio":"How people build software.","twitter_username":null,"public_repos":539,"public_gists":0,"followers":69300,"following":0,"created_at":"2008-05-11T04:37:31Z","updated_at":"2026-02-24T15:58:00Z"} 
+ </msg>
+<msg time="2026-02-26T00:37:36.616953" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>${sessao}</arg>
+<arg>${endpoint}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-26T00:37:36.079981" elapsed="0.537003"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2026-02-26T00:37:36.617073" elapsed="0.000068"/>
+</return>
+<msg time="2026-02-26T00:37:36.617318" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<status status="PASS" start="2026-02-26T00:37:36.079732" elapsed="0.537725"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-02-26T00:37:36.618926" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-02-26T00:37:36.617679" elapsed="0.001408"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${resp.headers}</arg>
+<arg>X-RateLimit-Limit</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2026-02-26T00:37:36.619369" elapsed="0.001233"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${resp.headers}</arg>
+<arg>X-RateLimit-Remaining</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2026-02-26T00:37:36.620885" elapsed="0.000817"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${resp.headers}</arg>
+<arg>X-RateLimit-Reset</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2026-02-26T00:37:36.621971" elapsed="0.000682"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-02-26T00:37:36.623734" level="INFO">${limit} = 60</msg>
+<var>${limit}</var>
+<arg>${resp.headers}</arg>
+<arg>X-RateLimit-Limit</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-02-26T00:37:36.622855" elapsed="0.000928"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-02-26T00:37:36.624768" level="INFO">${remaining} = 55</msg>
+<var>${remaining}</var>
+<arg>${resp.headers}</arg>
+<arg>X-RateLimit-Remaining</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-02-26T00:37:36.624032" elapsed="0.000784"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-02-26T00:37:36.625606" level="INFO">${reset} = 1772080644</msg>
+<var>${reset}</var>
+<arg>${resp.headers}</arg>
+<arg>X-RateLimit-Reset</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-02-26T00:37:36.625032" elapsed="0.000701"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2026-02-26T00:37:36.626767" level="INFO">${limit} = 60</msg>
+<var>${limit}</var>
+<arg>${limit}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2026-02-26T00:37:36.626027" elapsed="0.000784"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2026-02-26T00:37:36.627250" level="INFO">${remaining} = 55</msg>
+<var>${remaining}</var>
+<arg>${remaining}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2026-02-26T00:37:36.626965" elapsed="0.000312"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2026-02-26T00:37:36.627660" level="INFO">${reset} = 1772080644</msg>
+<var>${reset}</var>
+<arg>${reset}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2026-02-26T00:37:36.627398" elapsed="0.000290"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${limit} &gt; 0</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-02-26T00:37:36.627799" elapsed="0.000358"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${remaining} &gt;= 0</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-02-26T00:37:36.628271" elapsed="0.000321"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${reset} &gt; 0</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-02-26T00:37:36.628705" elapsed="0.000259"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-26T00:37:36.629349" level="INFO">RateLimit: limit=60 remaining=55 reset=1772080644</msg>
+<arg>RateLimit: limit=${limit} remaining=${remaining} reset=${reset}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-26T00:37:36.629077" elapsed="0.000320"/>
+</kw>
+<status status="PASS" start="2026-02-26T00:37:36.065613" elapsed="0.563861"/>
+</kw>
+<kw name="Nao bloquear testes" owner="003tests">
+<kw name="Criar sessao GitHub" owner="003tests">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-02-26T00:37:36.630281" level="INFO">Creating Session using : alias=magazord, url=https://api.github.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<arg>${sessao}</arg>
+<arg>${base_url}</arg>
+<arg>verify=${True}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-02-26T00:37:36.630075" elapsed="0.000371"/>
+</kw>
+<status status="PASS" start="2026-02-26T00:37:36.629861" elapsed="0.000668"/>
+</kw>
+<kw name="Fazer GET usuario GitHub" owner="003tests">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-02-26T00:37:37.109502" level="INFO">GET Request : url=https://api.github.com/users/github 
+ path_url=/users/github 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-26T00:37:37.109661" level="INFO">GET Response : url=https://api.github.com/users/github 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 26 Feb 2026 03:37:38 GMT', 'Cache-Control': 'public, max-age=60, s-maxage=60', 'Vary': 'Accept,Accept-Encoding, Accept, X-Requested-With', 'ETag': '"7107e88c19fdbd63f109243e96d6fae5adb5d24fd96c50b6551c91c654641176"', 'Last-Modified': 'Tue, 24 Feb 2026 15:58:00 GMT', 'x-github-api-version-selected': '2022-11-28', 'Access-Control-Expose-Headers': 'ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset', 'Access-Control-Allow-Origin': '*', 'Strict-Transport-Security': 'max-age=31536000; includeSubdomains; preload', 'X-Frame-Options': 'deny', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '0', 'Referrer-Policy': 'origin-when-cross-origin, strict-origin-when-cross-origin', 'Content-Security-Policy': "default-src 'none'", 'Server': 'github.com', 'Content-Type': 'application/json; charset=utf-8', 'X-GitHub-Media-Type': 'github.v3; format=json', 'Content-Encoding': 'gzip', 'Accept-Ranges': 'bytes', 'X-RateLimit-Limit': '60', 'X-RateLimit-Remaining': '54', 'X-RateLimit-Reset': '1772080644', 'X-RateLimit-Resource': 'core', 'X-RateLimit-Used': '6', 'Content-Length': '519', 'X-GitHub-Request-Id': '7802:D6B19:1BF02AE:1E8ACD8:699FC003'} 
+ body={"login":"github","id":9919,"node_id":"MDEyOk9yZ2FuaXphdGlvbjk5MTk=","avatar_url":"https://avatars.githubusercontent.com/u/9919?v=4","gravatar_id":"","url":"https://api.github.com/users/github","html_url":"https://github.com/github","followers_url":"https://api.github.com/users/github/followers","following_url":"https://api.github.com/users/github/following{/other_user}","gists_url":"https://api.github.com/users/github/gists{/gist_id}","starred_url":"https://api.github.com/users/github/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/github/subscriptions","organizations_url":"https://api.github.com/users/github/orgs","repos_url":"https://api.github.com/users/github/repos","events_url":"https://api.github.com/users/github/events{/privacy}","received_events_url":"https://api.github.com/users/github/received_events","type":"Organization","user_view_type":"public","site_admin":false,"name":"GitHub","company":null,"blog":"https://github.com/about","location":"San Francisco, CA","email":null,"hireable":null,"bio":"How people build software.","twitter_username":null,"public_repos":539,"public_gists":0,"followers":69300,"following":0,"created_at":"2008-05-11T04:37:31Z","updated_at":"2026-02-24T15:58:00Z"} 
+ </msg>
+<msg time="2026-02-26T00:37:37.109884" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>${sessao}</arg>
+<arg>${endpoint}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-26T00:37:36.630880" elapsed="0.479080"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2026-02-26T00:37:37.110082" elapsed="0.000101"/>
+</return>
+<msg time="2026-02-26T00:37:37.110435" level="INFO">${resp1} = &lt;Response [200]&gt;</msg>
+<var>${resp1}</var>
+<status status="PASS" start="2026-02-26T00:37:36.630671" elapsed="0.479801"/>
+</kw>
+<kw name="Rate limit guard" owner="003tests">
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-02-26T00:37:37.111962" level="INFO">${remaining} = 54</msg>
+<var>${remaining}</var>
+<arg>${resp.headers}</arg>
+<arg>X-RateLimit-Remaining</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-02-26T00:37:37.111301" elapsed="0.000704"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-02-26T00:37:37.112810" level="INFO">${reset} = 1772080644</msg>
+<var>${reset}</var>
+<arg>${resp.headers}</arg>
+<arg>X-RateLimit-Reset</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" start="2026-02-26T00:37:37.112187" elapsed="0.000663"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2026-02-26T00:37:37.113421" level="INFO">${remaining} = 54</msg>
+<var>${remaining}</var>
+<arg>${remaining}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2026-02-26T00:37:37.113019" elapsed="0.000438"/>
+</kw>
+<kw name="Convert To Integer" owner="BuiltIn">
+<msg time="2026-02-26T00:37:37.113948" level="INFO">${reset} = 1772080644</msg>
+<var>${reset}</var>
+<arg>${reset}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<status status="PASS" start="2026-02-26T00:37:37.113598" elapsed="0.000385"/>
+</kw>
+<if>
+<branch type="IF" condition="${remaining} &lt;= ${THRESHOLD}">
+<kw name="Get Current Date" owner="DateTime">
+<var>${now}</var>
+<arg>result_format=epoch</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<status status="NOT RUN" start="2026-02-26T00:37:37.114364" elapsed="0.000029"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<var>${wait_ms}</var>
+<arg>max(0, (${reset}*1000) - (${now}*1000) + ${SAFETY_MS})</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="NOT RUN" start="2026-02-26T00:37:37.114497" elapsed="0.000025"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<arg>[Guard] remaining=${remaining} -&gt; esperando ${wait_ms} ms até o reset</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-02-26T00:37:37.114633" elapsed="0.000043"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<arg>${wait_ms}ms</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-02-26T00:37:37.114778" elapsed="0.000025"/>
+</kw>
+<status status="NOT RUN" start="2026-02-26T00:37:37.114139" elapsed="0.000698"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-26T00:37:37.115255" level="INFO">[Guard] remaining=54 ok</msg>
+<arg>[Guard] remaining=${remaining} ok</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-26T00:37:37.115000" elapsed="0.000301"/>
+</kw>
+<status status="PASS" start="2026-02-26T00:37:37.114902" elapsed="0.000441"/>
+</branch>
+<status status="PASS" start="2026-02-26T00:37:37.114080" elapsed="0.001300"/>
+</if>
+<arg>${resp1}</arg>
+<status status="PASS" start="2026-02-26T00:37:37.110911" elapsed="0.004518"/>
+</kw>
+<kw name="Fazer GET usuario GitHub" owner="003tests">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-02-26T00:37:37.167355" level="INFO">GET Request : url=https://api.github.com/users/github 
+ path_url=/users/github 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-26T00:37:37.167476" level="INFO">GET Response : url=https://api.github.com/users/github 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 26 Feb 2026 03:37:38 GMT', 'Cache-Control': 'public, max-age=60, s-maxage=60', 'Vary': 'Accept,Accept-Encoding, Accept, X-Requested-With', 'ETag': '"7107e88c19fdbd63f109243e96d6fae5adb5d24fd96c50b6551c91c654641176"', 'Last-Modified': 'Tue, 24 Feb 2026 15:58:00 GMT', 'x-github-api-version-selected': '2022-11-28', 'Access-Control-Expose-Headers': 'ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset', 'Access-Control-Allow-Origin': '*', 'Strict-Transport-Security': 'max-age=31536000; includeSubdomains; preload', 'X-Frame-Options': 'deny', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '0', 'Referrer-Policy': 'origin-when-cross-origin, strict-origin-when-cross-origin', 'Content-Security-Policy': "default-src 'none'", 'Server': 'github.com', 'Content-Type': 'application/json; charset=utf-8', 'X-GitHub-Media-Type': 'github.v3; format=json', 'Content-Encoding': 'gzip', 'Accept-Ranges': 'bytes', 'X-RateLimit-Limit': '60', 'X-RateLimit-Remaining': '53', 'X-RateLimit-Reset': '1772080644', 'X-RateLimit-Resource': 'core', 'X-RateLimit-Used': '7', 'Content-Length': '519', 'X-GitHub-Request-Id': '7802:D6B19:1BF02B9:1E8ACE0:699FC003'} 
+ body={"login":"github","id":9919,"node_id":"MDEyOk9yZ2FuaXphdGlvbjk5MTk=","avatar_url":"https://avatars.githubusercontent.com/u/9919?v=4","gravatar_id":"","url":"https://api.github.com/users/github","html_url":"https://github.com/github","followers_url":"https://api.github.com/users/github/followers","following_url":"https://api.github.com/users/github/following{/other_user}","gists_url":"https://api.github.com/users/github/gists{/gist_id}","starred_url":"https://api.github.com/users/github/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/github/subscriptions","organizations_url":"https://api.github.com/users/github/orgs","repos_url":"https://api.github.com/users/github/repos","events_url":"https://api.github.com/users/github/events{/privacy}","received_events_url":"https://api.github.com/users/github/received_events","type":"Organization","user_view_type":"public","site_admin":false,"name":"GitHub","company":null,"blog":"https://github.com/about","location":"San Francisco, CA","email":null,"hireable":null,"bio":"How people build software.","twitter_username":null,"public_repos":539,"public_gists":0,"followers":69300,"following":0,"created_at":"2008-05-11T04:37:31Z","updated_at":"2026-02-24T15:58:00Z"} 
+ </msg>
+<msg time="2026-02-26T00:37:37.167656" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>${sessao}</arg>
+<arg>${endpoint}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-26T00:37:37.115806" elapsed="0.051895"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2026-02-26T00:37:37.167820" elapsed="0.000077"/>
+</return>
+<msg time="2026-02-26T00:37:37.168155" level="INFO">${resp2} = &lt;Response [200]&gt;</msg>
+<var>${resp2}</var>
+<status status="PASS" start="2026-02-26T00:37:37.115577" elapsed="0.052617"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${resp2.status_code} in [200, 403]</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2026-02-26T00:37:37.168346" elapsed="0.000958"/>
+</kw>
+<status status="PASS" start="2026-02-26T00:37:36.629626" elapsed="0.539798"/>
+</kw>
+<kw name="Detectar rate limit atingido" owner="003tests">
+<kw name="Criar sessao GitHub" owner="003tests">
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2026-02-26T00:37:37.170577" level="INFO">Creating Session using : alias=magazord, url=https://api.github.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<arg>${sessao}</arg>
+<arg>${base_url}</arg>
+<arg>verify=${True}</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-02-26T00:37:37.170342" elapsed="0.000404"/>
+</kw>
+<status status="PASS" start="2026-02-26T00:37:37.170023" elapsed="0.000861"/>
+</kw>
+<kw name="Fazer GET usuario GitHub" owner="003tests">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-02-26T00:37:37.682773" level="INFO">GET Request : url=https://api.github.com/users/github 
+ path_url=/users/github 
+ headers={'User-Agent': 'python-requests/2.32.5', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-02-26T00:37:37.682909" level="INFO">GET Response : url=https://api.github.com/users/github 
+ status=200, reason=OK 
+ headers={'Date': 'Thu, 26 Feb 2026 03:37:38 GMT', 'Cache-Control': 'public, max-age=60, s-maxage=60', 'Vary': 'Accept,Accept-Encoding, Accept, X-Requested-With', 'ETag': '"7107e88c19fdbd63f109243e96d6fae5adb5d24fd96c50b6551c91c654641176"', 'Last-Modified': 'Tue, 24 Feb 2026 15:58:00 GMT', 'x-github-api-version-selected': '2022-11-28', 'Access-Control-Expose-Headers': 'ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset', 'Access-Control-Allow-Origin': '*', 'Strict-Transport-Security': 'max-age=31536000; includeSubdomains; preload', 'X-Frame-Options': 'deny', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '0', 'Referrer-Policy': 'origin-when-cross-origin, strict-origin-when-cross-origin', 'Content-Security-Policy': "default-src 'none'", 'Server': 'github.com', 'Content-Type': 'application/json; charset=utf-8', 'X-GitHub-Media-Type': 'github.v3; format=json', 'Content-Encoding': 'gzip', 'Accept-Ranges': 'bytes', 'X-RateLimit-Limit': '60', 'X-RateLimit-Remaining': '52', 'X-RateLimit-Reset': '1772080644', 'X-RateLimit-Resource': 'core', 'X-RateLimit-Used': '8', 'Content-Length': '519', 'X-GitHub-Request-Id': '7804:3BED05:1C14771:1EB04C9:699FC003'} 
+ body={"login":"github","id":9919,"node_id":"MDEyOk9yZ2FuaXphdGlvbjk5MTk=","avatar_url":"https://avatars.githubusercontent.com/u/9919?v=4","gravatar_id":"","url":"https://api.github.com/users/github","html_url":"https://github.com/github","followers_url":"https://api.github.com/users/github/followers","following_url":"https://api.github.com/users/github/following{/other_user}","gists_url":"https://api.github.com/users/github/gists{/gist_id}","starred_url":"https://api.github.com/users/github/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/github/subscriptions","organizations_url":"https://api.github.com/users/github/orgs","repos_url":"https://api.github.com/users/github/repos","events_url":"https://api.github.com/users/github/events{/privacy}","received_events_url":"https://api.github.com/users/github/received_events","type":"Organization","user_view_type":"public","site_admin":false,"name":"GitHub","company":null,"blog":"https://github.com/about","location":"San Francisco, CA","email":null,"hireable":null,"bio":"How people build software.","twitter_username":null,"public_repos":539,"public_gists":0,"followers":69300,"following":0,"created_at":"2008-05-11T04:37:31Z","updated_at":"2026-02-24T15:58:00Z"} 
+ </msg>
+<msg time="2026-02-26T00:37:37.683086" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>${sessao}</arg>
+<arg>${endpoint}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-02-26T00:37:37.171306" elapsed="0.511809"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2026-02-26T00:37:37.683193" elapsed="0.000045"/>
+</return>
+<msg time="2026-02-26T00:37:37.683384" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<status status="PASS" start="2026-02-26T00:37:37.171061" elapsed="0.512355"/>
+</kw>
+<if>
+<branch type="IF" condition="${resp.status_code} == 403">
+<kw name="Log" owner="BuiltIn">
+<arg>Rate limit atingido (403) detectado.</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" start="2026-02-26T00:37:37.683998" elapsed="0.000035"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${resp.text}</arg>
+<arg>rate limit</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" start="2026-02-26T00:37:37.684185" elapsed="0.000039"/>
+</kw>
+<status status="NOT RUN" start="2026-02-26T00:37:37.683511" elapsed="0.000775"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-02-26T00:37:37.686129" level="INFO">Ainda com cota (status=200). Teste detecta 403 quando ocorrer.</msg>
+<arg>Ainda com cota (status=${resp.status_code}). Teste detecta 403 quando ocorrer.</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-02-26T00:37:37.684652" elapsed="0.001628"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-02-26T00:37:37.687783" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-02-26T00:37:37.686609" elapsed="0.001343"/>
+</kw>
+<status status="PASS" start="2026-02-26T00:37:37.684396" elapsed="0.003694"/>
+</branch>
+<status status="PASS" start="2026-02-26T00:37:37.683487" elapsed="0.004698"/>
+</if>
+<status status="PASS" start="2026-02-26T00:37:37.169671" elapsed="0.518633"/>
+</kw>
+<doc>Pré condição:
+
+Usuario  e senha cadastrado</doc>
+<tag>1.1test</tag>
+<tag>APIMAGAZORD</tag>
+<tag>regression</tag>
+<status status="PASS" start="2026-02-26T00:37:36.064884" elapsed="1.623646"/>
+</test>
+<doc>Este caso de teste tem como objetivo validar headers, não bloquear os testes e detectar limite de rate</doc>
+<status status="PASS" start="2026-02-26T00:37:35.183034" elapsed="2.506352"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">1.1test</stat>
+<stat pass="1" fail="0" skip="0">APIMAGAZORD</stat>
+<stat pass="1" fail="0" skip="0">regression</stat>
+</tag>
+<suite>
+<stat name="1.1Test" id="s1" pass="1" fail="0" skip="0">1.1Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

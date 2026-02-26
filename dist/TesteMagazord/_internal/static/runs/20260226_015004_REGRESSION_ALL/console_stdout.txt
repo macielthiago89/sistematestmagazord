@@ -1,0 +1,190 @@
+==============================================================================
+TesteMagazord                                                                 
+==============================================================================
+TesteMagazord.Parte1-Api                                                      
+==============================================================================
+TesteMagazord.Parte1-Api.Questao1.1                                           
+==============================================================================
+TesteMagazord.Parte1-Api.Questao1.1.Tests                                     
+==============================================================================
+TesteMagazord.Parte1-Api.Questao1.1.Tests.1.1Test :: Este caso de teste tem...
+==============================================================================
+1.1test :: Pr� condi��o:                                              | PASS |
+------------------------------------------------------------------------------
+TesteMagazord.Parte1-Api.Questao1.1.Tests.1.1Test :: Este caso de ... | PASS |
+1 test, 1 passed, 0 failed
+==============================================================================
+TesteMagazord.Parte1-Api.Questao1.1.Tests.1.2Test :: Este caso de teste tem...
+==============================================================================
+1.2test :: Pr� condi��o:                                              | FAIL |
+HTTPError: 403 Client Error: Forbidden for url: https://reqres.in/api/login
+------------------------------------------------------------------------------
+TesteMagazord.Parte1-Api.Questao1.1.Tests.1.2Test :: Este caso de ... | FAIL |
+1 test, 0 passed, 1 failed
+==============================================================================
+TesteMagazord.Parte1-Api.Questao1.1.Tests                             | FAIL |
+2 tests, 1 passed, 1 failed
+==============================================================================
+TesteMagazord.Parte1-Api.Questao1.1                                   | FAIL |
+2 tests, 1 passed, 1 failed
+==============================================================================
+TesteMagazord.Parte1-Api                                              | FAIL |
+2 tests, 1 passed, 1 failed
+==============================================================================
+TesteMagazord.Parte2-2E2                                                      
+==============================================================================
+TesteMagazord.Parte2-2E2.Questao2.1                                           
+==============================================================================
+TesteMagazord.Parte2-2E2.Questao2.1.2.1Test :: Este caso de teste tem como ...
+==============================================================================
+2.1test :: Pr� condi��o:                                              | PASS |
+------------------------------------------------------------------------------
+TesteMagazord.Parte2-2E2.Questao2.1.2.1Test :: Este caso de teste ... | PASS |
+1 test, 1 passed, 0 failed
+==============================================================================
+TesteMagazord.Parte2-2E2.Questao2.1                                   | PASS |
+1 test, 1 passed, 0 failed
+==============================================================================
+TesteMagazord.Parte2-2E2.Questao2.2                                           
+==============================================================================
+TesteMagazord.Parte2-2E2.Questao2.2.2.2Test :: Este caso de teste tem como ...
+==============================================================================
+2.2test :: Pr� condi��o:                                              | PASS |
+------------------------------------------------------------------------------
+TesteMagazord.Parte2-2E2.Questao2.2.2.2Test :: Este caso de teste ... | PASS |
+1 test, 1 passed, 0 failed
+==============================================================================
+TesteMagazord.Parte2-2E2.Questao2.2                                   | PASS |
+1 test, 1 passed, 0 failed
+==============================================================================
+TesteMagazord.Parte2-2E2                                              | PASS |
+2 tests, 2 passed, 0 failed
+==============================================================================
+TesteMagazord.Parte3-Frontend                                                 
+==============================================================================
+TesteMagazord.Parte3-Frontend.Questao3.1                                      
+==============================================================================
+TesteMagazord.Parte3-Frontend.Questao3.1.Tests                                
+==============================================================================
+TesteMagazord.Parte3-Frontend.Questao3.1.Tests.3.1Test :: Este caso de test...
+==============================================================================
+3.1test :: Pr� condi��o:                                              | PASS |
+------------------------------------------------------------------------------
+TesteMagazord.Parte3-Frontend.Questao3.1.Tests.3.1Test :: Este cas... | PASS |
+1 test, 1 passed, 0 failed
+==============================================================================
+TesteMagazord.Parte3-Frontend.Questao3.1.Tests                        | PASS |
+1 test, 1 passed, 0 failed
+==============================================================================
+TesteMagazord.Parte3-Frontend.Questao3.1                              | PASS |
+1 test, 1 passed, 0 failed
+==============================================================================
+TesteMagazord.Parte3-Frontend                                         | PASS |
+1 test, 1 passed, 0 failed
+==============================================================================
+TesteMagazord.Parte4-Arquivos                                                 
+==============================================================================
+TesteMagazord.Parte4-Arquivos.Questao4.1                                      
+==============================================================================
+TesteMagazord.Parte4-Arquivos.Questao4.1.Tests                                
+==============================================================================
+TesteMagazord.Parte4-Arquivos.Questao4.1.Tests.4.1Test :: Este caso de test...
+==============================================================================
+4.1test :: Pr� condi��o:                                              | PASS |
+------------------------------------------------------------------------------
+TesteMagazord.Parte4-Arquivos.Questao4.1.Tests.4.1Test :: Este cas... | PASS |
+1 test, 1 passed, 0 failed
+==============================================================================
+TesteMagazord.Parte4-Arquivos.Questao4.1.Tests                        | PASS |
+1 test, 1 passed, 0 failed
+==============================================================================
+TesteMagazord.Parte4-Arquivos.Questao4.1                              | PASS |
+1 test, 1 passed, 0 failed
+==============================================================================
+TesteMagazord.Parte4-Arquivos                                         | PASS |
+1 test, 1 passed, 0 failed
+==============================================================================
+TesteMagazord.Parte5-Mobile                                                   
+==============================================================================
+TesteMagazord.Parte5-Mobile.Questao5.1                                        
+==============================================================================
+TesteMagazord.Parte5-Mobile.Questao5.1.Testes                                 
+==============================================================================
+TesteMagazord.Parte5-Mobile.Questao5.1.Testes.5.1Test.Robot                   
+==============================================================================
+5.1test :: Exemplo gen�rico: abre o app, interage com 1 elemento e... [ WARN ] Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("HTTPConnection(host='127.0.0.1', port=4723): Failed to establish a new connection: [WinError 10061] Nenhuma conex�o p�de ser feita porque a m�quina de destino as recusou ativamente")': /wd/hub/session
+[ WARN ] Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("HTTPConnection(host='127.0.0.1', port=4723): Failed to establish a new connection: [WinError 10061] Nenhuma conex�o p�de ser feita porque a m�quina de destino as recusou ativamente")': /wd/hub/session
+[ WARN ] Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("HTTPConnection(host='127.0.0.1', port=4723): Failed to establish a new connection: [WinError 10061] Nenhuma conex�o p�de ser feita porque a m�quina de destino as recusou ativamente")': /wd/hub/session
+[ WARN ] Keyword 'Capture Page Screenshot' could not be run on failure: No application is open
+| FAIL |
+MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=4723): Max retries exceeded with url: /wd/hub/session (Caused by NewConnectionError("HTTPConnection(host='127.0.0.1', port=4723): Failed to establish a new connection: [WinError 10061] Nenhuma conex�o p�de ser feita porque a m�quina de destino as recusou ativamente"))
+------------------------------------------------------------------------------
+TesteMagazord.Parte5-Mobile.Questao5.1.Testes.5.1Test.Robot           | FAIL |
+1 test, 0 passed, 1 failed
+==============================================================================
+TesteMagazord.Parte5-Mobile.Questao5.1.Testes                         | FAIL |
+1 test, 0 passed, 1 failed
+==============================================================================
+TesteMagazord.Parte5-Mobile.Questao5.1                                | FAIL |
+1 test, 0 passed, 1 failed
+==============================================================================
+TesteMagazord.Parte5-Mobile                                           | FAIL |
+1 test, 0 passed, 1 failed
+==============================================================================
+TesteMagazord.Parte6-Piramide                                                 
+==============================================================================
+TesteMagazord.Parte6-Piramide.Questao6.1                                      
+==============================================================================
+TesteMagazord.Parte6-Piramide.Questao6.1.Tests                                
+==============================================================================
+TesteMagazord.Parte6-Piramide.Questao6.1.Tests.6.1Test :: Este caso de test...
+==============================================================================
+6.1test :: Pr� condi��o:                                              | PASS |
+------------------------------------------------------------------------------
+TesteMagazord.Parte6-Piramide.Questao6.1.Tests.6.1Test :: Este cas... | PASS |
+1 test, 1 passed, 0 failed
+==============================================================================
+TesteMagazord.Parte6-Piramide.Questao6.1.Tests.6.2Test :: Este caso de test...
+==============================================================================
+6.2test :: Pr� condi��o:                                              | PASS |
+------------------------------------------------------------------------------
+TesteMagazord.Parte6-Piramide.Questao6.1.Tests.6.2Test :: Este cas... | PASS |
+1 test, 1 passed, 0 failed
+==============================================================================
+TesteMagazord.Parte6-Piramide.Questao6.1.Tests                        | PASS |
+2 tests, 2 passed, 0 failed
+==============================================================================
+TesteMagazord.Parte6-Piramide.Questao6.1                              | PASS |
+2 tests, 2 passed, 0 failed
+==============================================================================
+TesteMagazord.Parte6-Piramide                                         | PASS |
+2 tests, 2 passed, 0 failed
+==============================================================================
+TesteMagazord.Parte7-Mocks                                                    
+==============================================================================
+TesteMagazord.Parte7-Mocks.Questao7.1                                         
+==============================================================================
+TesteMagazord.Parte7-Mocks.Questao7.1.Tests                                   
+==============================================================================
+TesteMagazord.Parte7-Mocks.Questao7.1.Tests.7.1Test :: Este caso de teste t...
+==============================================================================
+7.1test :: Pr� condi��o:                                              | PASS |
+------------------------------------------------------------------------------
+TesteMagazord.Parte7-Mocks.Questao7.1.Tests.7.1Test :: Este caso d... | PASS |
+1 test, 1 passed, 0 failed
+==============================================================================
+TesteMagazord.Parte7-Mocks.Questao7.1.Tests                           | PASS |
+1 test, 1 passed, 0 failed
+==============================================================================
+TesteMagazord.Parte7-Mocks.Questao7.1                                 | PASS |
+1 test, 1 passed, 0 failed
+==============================================================================
+TesteMagazord.Parte7-Mocks                                            | PASS |
+1 test, 1 passed, 0 failed
+==============================================================================
+TesteMagazord                                                         | FAIL |
+10 tests, 8 passed, 2 failed
+==============================================================================
+Output:  E:\testemagazord\app\static\runs\20260226_015004_REGRESSION_ALL\output.xml
+Log:     E:\testemagazord\app\static\runs\20260226_015004_REGRESSION_ALL\log.html
+Report:  E:\testemagazord\app\static\runs\20260226_015004_REGRESSION_ALL\report.html

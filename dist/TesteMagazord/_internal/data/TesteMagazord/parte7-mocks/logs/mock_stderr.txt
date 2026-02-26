@@ -1,0 +1,27 @@
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5050
+Press CTRL+C to quit
+127.0.0.1 - - [25/Feb/2026 14:37:33] "GET /__health HTTP/1.1" 200 -
+127.0.0.1 - - [25/Feb/2026 14:37:33] "POST /__reset HTTP/1.1" 200 -
+127.0.0.1 - - [25/Feb/2026 14:37:33] "GET /products HTTP/1.1" 200 -
+127.0.0.1 - - [25/Feb/2026 14:37:33] "POST /__reset HTTP/1.1" 200 -
+127.0.0.1 - - [25/Feb/2026 14:37:33] "POST /products HTTP/1.1" 201 -
+127.0.0.1 - - [25/Feb/2026 14:37:33] "POST /__reset HTTP/1.1" 200 -
+127.0.0.1 - - [25/Feb/2026 14:37:33] "PUT /products/1 HTTP/1.1" 200 -
+127.0.0.1 - - [25/Feb/2026 14:37:33] "POST /__reset HTTP/1.1" 200 -
+127.0.0.1 - - [25/Feb/2026 14:37:33] "DELETE /products/2 HTTP/1.1" 200 -
+127.0.0.1 - - [25/Feb/2026 14:37:33] "POST /__reset HTTP/1.1" 200 -
+127.0.0.1 - - [25/Feb/2026 14:37:33] "GET /products?error=500 HTTP/1.1" 500 -
+127.0.0.1 - - [25/Feb/2026 14:37:33] "POST /__reset HTTP/1.1" 200 -
+127.0.0.1 - - [25/Feb/2026 14:37:33] "GET /products HTTP/1.1" 200 -
+127.0.0.1 - - [25/Feb/2026 14:37:33] "GET /products HTTP/1.1" 200 -
+127.0.0.1 - - [25/Feb/2026 14:37:33] "GET /products HTTP/1.1" 200 -
+127.0.0.1 - - [25/Feb/2026 14:37:33] "GET /products HTTP/1.1" 200 -
+127.0.0.1 - - [25/Feb/2026 14:37:33] "GET /products HTTP/1.1" 200 -
+127.0.0.1 - - [25/Feb/2026 14:37:33] "GET /products HTTP/1.1" 200 -
+127.0.0.1 - - [25/Feb/2026 14:37:33] "GET /products HTTP/1.1" 200 -
+127.0.0.1 - - [25/Feb/2026 14:37:33] "GET /products HTTP/1.1" 200 -
+127.0.0.1 - - [25/Feb/2026 14:37:33] "GET /products HTTP/1.1" 200 -
+127.0.0.1 - - [25/Feb/2026 14:37:33] "GET /products HTTP/1.1" 200 -
+127.0.0.1 - - [25/Feb/2026 14:37:33] "GET /products HTTP/1.1" 429 -
+127.0.0.1 - - [25/Feb/2026 14:37:33] "GET /products HTTP/1.1" 429 -

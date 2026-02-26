@@ -1,0 +1,11 @@
+==============================================================================
+7.1Test :: Este caso de teste tem como objetivo adicionar um produto ao car...
+==============================================================================
+7.1test :: Pré condição:                                              | PASS |
+------------------------------------------------------------------------------
+7.1Test :: Este caso de teste tem como objetivo adicionar um produ... | PASS |
+1 test, 1 passed, 0 failed
+==============================================================================
+Output:  E:\testemagazord\app\static\runs\20260225_191436_parte7-mocks__questao7_1__tests__7_1test_robot\output.xml
+Log:     E:\testemagazord\app\static\runs\20260225_191436_parte7-mocks__questao7_1__tests__7_1test_robot\log.html
+Report:  E:\testemagazord\app\static\runs\20260225_191436_parte7-mocks__questao7_1__tests__7_1test_robot\report.html
