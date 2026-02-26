@@ -4,7 +4,7 @@
 
 ---
 ## Execução do sistema
-- O executável ficará em `dist/main.exe`.
+- O executável ficará em `dist\TesteMagazord\TesteMagazord.exe`.
 
 Ao executar o EXE:
 - ele sobe o servidor local
@@ -13,7 +13,7 @@ Ao executar o EXE:
 
 ## Visão geral
 
-Este projeto sobe um servidor local e abre uma **tela HTML** (tema escuro com cores do logo) para:
+Este projeto sobe um servidor local e abre uma **tela HTML** para:
 
 - Navegar pela **estrutura de pastas** do teste
 - Executar Robot Framework por **TAG** (`robot -i TAG`)
